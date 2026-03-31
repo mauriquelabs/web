@@ -9,18 +9,18 @@ export default function Hero({ language }: HeroProps) {
     en: {
       h1: "Maurique Labs",
       subheadline:
-        "Technology · Culture · Community",
+        "Technology · Creativity · Culture",
       description:
-        "We help entrepreneurs, artists, brands, and small businesses transform ideas into real projects — and build active communities around them. One partner bridging the gap between digital and culture.",
+        "A hybrid agency combining digital projects and event production. We help entrepreneurs, artists, brands, and small businesses transform ideas into real projects and build active communities around them — with flexible, accessible solutions that bridge technology and the cultural ecosystem.",
       ctaPrimary: "See Our Work",
       ctaSecondary: "Let's Collaborate",
     },
     es: {
       h1: "Maurique Labs",
       subheadline:
-        "Tecnología · Cultura · Comunidad",
+        "Tecnología · Creatividad · Cultura",
       description:
-        "Ayudamos a emprendedores, artistas, marcas y pequeñas empresas a transformar ideas en proyectos reales — y a construir comunidades activas alrededor de ellas. Un partner único entre lo digital y la cultura.",
+        "Una agencia híbrida de proyectos digitales y organización de eventos. Ayudamos a emprendedores, artistas, marcas y pequeñas empresas a transformar ideas en proyectos reales y construir comunidades activas alrededor de sus marcas — con soluciones flexibles y accesibles que actúan como puente entre la tecnología y el ecosistema cultural.",
       ctaPrimary: "Ver Nuestro Trabajo",
       ctaSecondary: "Colaboremos",
     },
