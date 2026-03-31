@@ -21,10 +21,8 @@ app.get("/{*path}", (req, res) => {
   res.sendFile(path.join(distPath, "index.html"));
 });
 
-app.listen(port, () => {
-  console.log(`🚀 Fusion Starter server running on port ${port}`);
-  console.log(`📱 Frontend: http://localhost:${port}`);
-  console.log(`🔧 API: http://localhost:${port}/api`);
+app.listen(Number(port), "0.0.0.0", () => {
+  console.log(`Server running on 0.0.0.0:${port}`);
 });
 
 // Graceful shutdown
