@@ -9,18 +9,18 @@ export default function Hero({ language }: HeroProps) {
     en: {
       h1: "Maurique Labs",
       subheadline:
-        "A creative agency connecting music, technology, and culture through events and digital projects.",
+        "Technology · Culture · Community",
       description:
-        "We design and produce cultural and corporate events that bring together creators, brands, and communities. We also develop digital projects that help them grow, from web design and content creation to innovative collaborations that blend art and technology.",
+        "We help entrepreneurs, artists, brands, and small businesses transform ideas into real projects — and build active communities around them. One partner bridging the gap between digital and culture.",
       ctaPrimary: "See Our Work",
       ctaSecondary: "Let's Collaborate",
     },
     es: {
       h1: "Maurique Labs",
       subheadline:
-        "Una agencia creativa que conecta música, tecnología y cultura a través de eventos y proyectos digitales.",
+        "Tecnología · Cultura · Comunidad",
       description:
-        "Diseñamos y producimos eventos culturales y corporativos que reúnen creadores, marcas y comunidades. También desarrollamos proyectos digitales que los ayudan a crecer, desde diseño web y creación de contenido hasta colaboraciones innovadoras que mezclan arte y tecnología.",
+        "Ayudamos a emprendedores, artistas, marcas y pequeñas empresas a transformar ideas en proyectos reales — y a construir comunidades activas alrededor de ellas. Un partner único entre lo digital y la cultura.",
       ctaPrimary: "Ver Nuestro Trabajo",
       ctaSecondary: "Colaboremos",
     },
@@ -45,15 +45,15 @@ export default function Hero({ language }: HeroProps) {
         </h1>
 
         <p
-          className="text-xl sm:text-2xl text-foreground/80 max-w-3xl mx-auto mb-6 leading-relaxed animate-slide-up opacity-0"
-          style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}
+          className="text-lg sm:text-xl font-semibold tracking-widest text-accent uppercase mb-6 animate-slide-up opacity-0"
+          style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
         >
           {copy.subheadline}
         </p>
 
         <p
-          className="text-base sm:text-lg text-foreground/60 max-w-2xl mx-auto mb-12 leading-relaxed animate-slide-up opacity-0"
-          style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
+          className="text-base sm:text-lg text-foreground/70 max-w-2xl mx-auto mb-12 leading-relaxed animate-slide-up opacity-0"
+          style={{ animationDelay: "0.35s", animationFillMode: "forwards" }}
         >
           {copy.description}
         </p>
@@ -61,7 +61,7 @@ export default function Hero({ language }: HeroProps) {
         {/* CTA Buttons */}
         <div
           className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up opacity-0"
-          style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}
+          style={{ animationDelay: "0.55s", animationFillMode: "forwards" }}
         >
           <a
             href="#showcase"

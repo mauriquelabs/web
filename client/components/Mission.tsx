@@ -26,11 +26,19 @@ export default function Mission({ language }: MissionProps) {
   }, []);
 
   const content = {
-    en: "Maurique Labs creates experiences that connect people, ideas, and disciplines. We believe the most powerful innovation happens when creativity and technology meet.",
-    es: "Maurique Labs crea experiencias que conectan personas, ideas y disciplinas. Creemos que la innovación más poderosa ocurre cuando la creatividad y la tecnología se encuentran.",
+    en: {
+      label: "Our Mission",
+      headline: "Where technology meets culture.",
+      body: "There's a real gap between traditional digital agencies — expensive and inflexible — and conventional event promoters with no digital strategy. Maurique Labs fills that space with an integrated, accessible proposal built around continuity and community, not one-off deliverables.",
+    },
+    es: {
+      label: "Nuestra Misión",
+      headline: "Donde la tecnología se encuentra con la cultura.",
+      body: "Existe un hueco real entre las agencias digitales tradicionales — caras y poco flexibles — y las promotoras de eventos convencionales sin enfoque digital ni visión estratégica. Maurique Labs ocupa ese espacio con una propuesta integrada, accesible y orientada a generar comunidad y continuidad, no solo entregas puntuales.",
+    },
   };
 
-  const text = content[language];
+  const copy = content[language];
 
   return (
     <section id="mission" className="section bg-card/30">
@@ -40,11 +48,14 @@ export default function Mission({ language }: MissionProps) {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
+          <p className="text-accent font-semibold uppercase tracking-widest text-sm mb-4">
+            {copy.label}
+          </p>
           <h2 className="text-4xl sm:text-5xl font-bold mb-8 leading-tight">
-            Our <span className="text-accent">Mission</span>
+            {copy.headline}
           </h2>
           <p className="text-lg sm:text-xl text-foreground/70 leading-relaxed">
-            {text}
+            {copy.body}
           </p>
         </div>
       </div>

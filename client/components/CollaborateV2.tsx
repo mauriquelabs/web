@@ -29,17 +29,17 @@ export default function Collaborate({ language }: CollaborateProps) {
 
   const content = {
     en: {
-      sectionTitle: "Let's Collaborate",
+      sectionTitle: "Let's Build Something Real",
       sectionDesc:
-        "We work with brands, artists, and communities that want to create meaningful experiences. Let's build something that connects people.",
+        "Whether you're an independent creative who needs a digital presence, a venue wanting to build community through events, or a brand looking for a hybrid experience — we're your single partner for technology and culture.",
       contactTitle: "Get in Touch",
       location: "Barcelona",
       email: "hello@mauriquelabs.com",
     },
     es: {
-      sectionTitle: "Colaboremos",
+      sectionTitle: "Construyamos Algo Real",
       sectionDesc:
-        "Trabajamos con marcas, artistas y comunidades que desean crear experiencias significativas. Vamos a construir algo que conecte a las personas.",
+        "Seas un creativo independiente que necesita presencia digital, un espacio que quiere construir comunidad con eventos, o una marca que busca una experiencia híbrida — somos tu partner único para tecnología y cultura.",
       contactTitle: "Ponte en Contacto",
       location: "Barcelona",
       email: "hello@mauriquelabs.com",

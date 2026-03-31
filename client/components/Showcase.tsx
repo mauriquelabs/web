@@ -31,58 +31,58 @@ export default function Showcase({ language }: ShowcaseProps) {
       {
         title: "Bejaus Sessions",
         description:
-          "Live music and creative sessions showcasing emerging artists and the intersection of culture and community.",
+          "Live music sessions showcasing emerging artists at the intersection of culture and community. The live laboratory where Maurique Labs tests formats and builds real audiences.",
         icon: Music,
         link: "https://www.youtube.com/@bejaussessions",
         image:
-          "linear-gradient(135deg, rgba(15, 106, 79, 0.3) 0%, rgba(200, 107, 74, 0.3) 100%)",
+          "linear-gradient(135deg, rgba(255, 87, 20, 0.25) 0%, rgba(43, 201, 163, 0.2) 100%)",
       },
       {
         title: "Moonamour x Bejaus",
         description:
-          "Collaborative experiences bringing together music, visual art, and community storytelling.",
+          "Collaborative experiences bringing together music, visual art, and community storytelling — a showcase of what the digital + events integration looks like in practice.",
         icon: Zap,
         link: "https://www.youtube.com/channel/UCdil_RtSsa7P9Il6hMU4-eA",
         image:
-          "linear-gradient(135deg, rgba(200, 107, 74, 0.2) 0%, rgba(15, 106, 79, 0.2) 100%)",
+          "linear-gradient(135deg, rgba(43, 201, 163, 0.2) 0%, rgba(185, 240, 31, 0.15) 100%)",
       },
       {
-        title: "Upcoming Collaborations",
+        title: "Upcoming Projects",
         description:
-          "Placeholder for future projects blending art, technology, and community.",
+          "New collaborations in the works — blending digital presence, brand activations, and cultural experiences for creators and businesses in Barcelona.",
         icon: Sparkles,
-        link: "#",
+        link: "#collaborate",
         image:
-          "linear-gradient(135deg, rgba(15, 106, 79, 0.2) 0%, rgba(200, 107, 74, 0.2) 100%)",
+          "linear-gradient(135deg, rgba(199, 185, 240, 0.15) 0%, rgba(255, 87, 20, 0.15) 100%)",
       },
     ],
     es: [
       {
         title: "Bejaus Sessions",
         description:
-          "Sesiones de música en vivo y experiencias creativas que muestran artistas emergentes y la intersección de la cultura y comunidad.",
+          "Sesiones de música en vivo que muestran artistas emergentes en la intersección de la cultura y la comunidad. El laboratorio en vivo donde Maurique Labs prueba formatos y construye audiencias reales.",
         icon: Music,
         link: "https://www.youtube.com/@bejaussessions",
         image:
-          "linear-gradient(135deg, rgba(15, 106, 79, 0.3) 0%, rgba(200, 107, 74, 0.3) 100%)",
+          "linear-gradient(135deg, rgba(255, 87, 20, 0.25) 0%, rgba(43, 201, 163, 0.2) 100%)",
       },
       {
         title: "Moonamour x Bejaus",
         description:
-          "Experiencias colaborativas que reúnen música, arte visual y narrativa comunitaria.",
+          "Experiencias colaborativas que reúnen música, arte visual y narrativa comunitaria — una muestra de cómo se ve la integración digital + eventos en la práctica.",
         icon: Zap,
         link: "https://www.youtube.com/channel/UCdil_RtSsa7P9Il6hMU4-eA",
         image:
-          "linear-gradient(135deg, rgba(200, 107, 74, 0.2) 0%, rgba(15, 106, 79, 0.2) 100%)",
+          "linear-gradient(135deg, rgba(43, 201, 163, 0.2) 0%, rgba(185, 240, 31, 0.15) 100%)",
       },
       {
-        title: "Colaboraciones Futuras",
+        title: "Proyectos en Curso",
         description:
-          "Futuro de proyectos que mezclen arte, tecnología y comunidad.",
+          "Nuevas colaboraciones en marcha — combinando presencia digital, activaciones de marca y experiencias culturales para creadores y empresas en Barcelona.",
         icon: Sparkles,
-        link: "#",
+        link: "#collaborate",
         image:
-          "linear-gradient(135deg, rgba(15, 106, 79, 0.2) 0%, rgba(200, 107, 74, 0.2) 100%)",
+          "linear-gradient(135deg, rgba(199, 185, 240, 0.15) 0%, rgba(255, 87, 20, 0.15) 100%)",
       },
     ],
   };
@@ -114,7 +114,7 @@ export default function Showcase({ language }: ShowcaseProps) {
                     ? "noopener noreferrer"
                     : undefined
                 }
-                className={`card-base card-hover group transition-all duration-700 overflow-hidden ${
+                className={`card-base card-hover group transition-all duration-700 overflow-hidden relative ${
                   isVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-10"
@@ -123,9 +123,9 @@ export default function Showcase({ language }: ShowcaseProps) {
                   transitionDelay: isVisible ? `${(index + 1) * 150}ms` : "0ms",
                 }}
               >
-                {/* Background image/gradient */}
+                {/* Background gradient */}
                 <div
-                  className="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity"
+                  className="absolute inset-0 opacity-40 group-hover:opacity-70 transition-opacity"
                   style={{ background: item.image }}
                 ></div>
 
