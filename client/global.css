@@ -1,5 +1,5 @@
 /** @import must precede all other statements */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Urbanist:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -12,94 +12,95 @@ html {
 @layer base {
   /**
    * Maurique Labs Brand Theme
-   * Dark mode (primary) with warm beige alternative
-   * Colors in HSL format for Tailwind CSS integration
+   * Colors from official brandbook (Manual de Marca)
+   * Electric Orange #FF5714 | Deep Pine #0D2626 | Bright Teal #2BC9A3
+   * Acid Lime #B9F01F | Pale Iris #C7B9F0 | Rich Black #000000 | Pure White #FFFFFF
    */
   :root {
-    /* Dark theme (default) */
-    --background: 0 0% 5.5%; /* #0E0E0E */
-    --foreground: 0 0% 100%; /* #FFFFFF */
+    /* Dark theme (default) — base: Deep Pine */
+    --background: 180 49% 10%; /* Deep Pine #0D2626 */
+    --foreground: 0 0% 100%; /* Pure White #FFFFFF */
 
-    --card: 0 0% 8%;
+    --card: 180 40% 13%;
     --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 8%;
+    --popover: 180 40% 13%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 0 0% 5.5%; /* Dark background */
+    --primary: 180 49% 10%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 162 42% 35%; /* Forest green #0F6A4F */
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 166 65% 48%; /* Bright Teal #2BC9A3 */
+    --secondary-foreground: 180 49% 10%;
 
-    --muted: 0 0% 25%;
+    --muted: 180 30% 20%;
     --muted-foreground: 0 0% 70%;
 
-    --accent: 162 42% 35%; /* Forest green #0F6A4F */
+    --accent: 17 100% 54%; /* Electric Orange #FF5714 */
     --accent-foreground: 0 0% 100%;
 
-    --accent2: 16 59% 55%; /* Soft terracotta #C86B4A */
-    --accent2-foreground: 0 0% 100%;
+    --accent2: 166 65% 48%; /* Bright Teal #2BC9A3 */
+    --accent2-foreground: 180 49% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 162 42% 35%;
+    --border: 180 30% 20%;
+    --input: 180 30% 20%;
+    --ring: 17 100% 54%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 5.5%;
+    --sidebar-background: 180 49% 10%;
     --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 162 42% 35%;
+    --sidebar-primary: 17 100% 54%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent: 180 30% 20%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 0 0% 15%;
-    --sidebar-ring: 162 42% 35%;
+    --sidebar-border: 180 30% 20%;
+    --sidebar-ring: 17 100% 54%;
   }
 
   .light {
-    --background: 30 20% 95%; /* #F5EFE7 warm beige */
-    --foreground: 0 0% 5.5%; /* #0E0E0E dark text */
+    --background: 180 49% 10%;
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 5.5%;
+    --card: 180 40% 13%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 5.5%;
+    --popover: 180 40% 13%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 30 20% 95%;
-    --primary-foreground: 0 0% 5.5%;
+    --primary: 180 49% 10%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 162 42% 35%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 166 65% 48%;
+    --secondary-foreground: 180 49% 10%;
 
-    --muted: 30 10% 85%;
-    --muted-foreground: 0 0% 30%;
+    --muted: 180 30% 20%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 162 42% 35%;
+    --accent: 17 100% 54%;
     --accent-foreground: 0 0% 100%;
 
-    --accent2: 16 59% 55%;
-    --accent2-foreground: 0 0% 100%;
+    --accent2: 166 65% 48%;
+    --accent2-foreground: 180 49% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 30 10% 85%;
-    --input: 30 10% 85%;
-    --ring: 162 42% 35%;
+    --border: 180 30% 20%;
+    --input: 180 30% 20%;
+    --ring: 17 100% 54%;
 
-    --sidebar-background: 30 20% 95%;
-    --sidebar-foreground: 0 0% 5.5%;
-    --sidebar-primary: 162 42% 35%;
+    --sidebar-background: 180 49% 10%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 17 100% 54%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 30 10% 85%;
-    --sidebar-accent-foreground: 0 0% 5.5%;
-    --sidebar-border: 30 10% 85%;
-    --sidebar-ring: 162 42% 35%;
+    --sidebar-accent: 180 30% 20%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 180 30% 20%;
+    --sidebar-ring: 17 100% 54%;
   }
 }
 
@@ -110,6 +111,7 @@ html {
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Urbanist", sans-serif;
     font-feature-settings:
       "rlig" 1,
       "calt" 1;
@@ -128,6 +130,7 @@ html {
   h4,
   h5,
   h6 {
+    font-family: "Bricolage Grotesque", sans-serif;
     @apply font-bold leading-tight;
   }
 

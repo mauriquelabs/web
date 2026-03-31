@@ -28,9 +28,13 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
       <div className="section-container flex items-center justify-between h-16">
         {/* Logo */}
-        <div className="font-bold text-xl tracking-tight">
-          <span className="text-accent">Maurique</span> Labs
-        </div>
+        <a href="#home" className="flex items-center">
+          <img
+            src="/logo-maurique-labs.png"
+            alt="Maurique Labs"
+            className="h-8 w-auto"
+          />
+        </a>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">

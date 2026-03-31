@@ -61,11 +61,24 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        brand: {
+          orange: "#FF5714",
+          pine: "#0D2626",
+          teal: "#2BC9A3",
+          lime: "#B9F01F",
+          iris: "#C7B9F0",
+          black: "#000000",
+          white: "#FFFFFF",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: {
+        sans: ["Urbanist", "sans-serif"],
+        heading: ["Bricolage Grotesque", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
@@ -108,9 +121,6 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.6s ease-out",
         "slide-up": "slide-up 0.6s ease-out",
-      },
-      fontFamily: {
-        sans: ["Inter", "sans-serif"],
       },
     },
   },
