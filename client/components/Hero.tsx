@@ -33,10 +33,14 @@ export default function Hero({ language }: HeroProps) {
       id="home"
       className="section min-h-screen flex flex-col items-center justify-center relative overflow-hidden"
     >
-      {/* Subtle background gradient */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent2 rounded-full blur-3xl opacity-50"></div>
+      {/* Background gradient glows — matching brand visual identity */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Acid Lime — top center */}
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full blur-3xl opacity-25" style={{ backgroundColor: "#B9F01F" }}></div>
+        {/* Bright Teal — top right */}
+        <div className="absolute -top-16 right-0 w-[500px] h-[400px] rounded-full blur-3xl opacity-30" style={{ backgroundColor: "#2BC9A3" }}></div>
+        {/* Electric Orange — bottom center */}
+        <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full blur-3xl opacity-35" style={{ backgroundColor: "#FF5714" }}></div>
       </div>
 
       <div className="section-container relative z-10 text-center">
