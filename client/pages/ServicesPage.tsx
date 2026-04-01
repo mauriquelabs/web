@@ -6,7 +6,6 @@ import {
   Wrench,
   BarChart3,
   Check,
-  AlertCircle,
   Rocket,
   Users,
   TrendingUp,
@@ -14,6 +13,7 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useToast } from "@/hooks/use-toast";
 
 type Language = "en" | "es";
 
@@ -41,6 +41,7 @@ interface QuoteFormState {
 }
 
 function QuoteForm({ language }: { language: Language }) {
+  const { toast } = useToast();
   const [form, setForm] = useState<QuoteFormState>({
     name: "",
     email: "",
@@ -48,7 +49,7 @@ function QuoteForm({ language }: { language: Language }) {
     description: "",
     budgetRange: "",
   });
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [loading, setLoading] = useState(false);
 
   const content = {
     en: {
@@ -66,8 +67,6 @@ function QuoteForm({ language }: { language: Language }) {
       budgetPh: "Select a range...",
       submit: "Send Request",
       loading: "Sending...",
-      success: "Request received! We'll be in touch within 48 hours.",
-      error: "Something went wrong. Please try again.",
       services: [
         "Web / Landing Page",
         "Portfolio / Press Kit Digital",
@@ -105,8 +104,6 @@ function QuoteForm({ language }: { language: Language }) {
       budgetPh: "Selecciona un rango...",
       submit: "Enviar Solicitud",
       loading: "Enviando...",
-      success: "¡Solicitud recibida! Te contactamos en menos de 48 horas.",
-      error: "Algo salió mal. Por favor intenta de nuevo.",
       services: [
         "Web / Landing Page",
         "Portfolio / Press Kit Digital",
@@ -142,7 +139,7 @@ function QuoteForm({ language }: { language: Language }) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("loading");
+    setLoading(true);
     try {
       const response = await fetch("/api/quote", {
         method: "POST",
@@ -150,16 +147,35 @@ function QuoteForm({ language }: { language: Language }) {
         body: JSON.stringify(form),
       });
       if (response.ok) {
-        setStatus("success");
         setForm({ name: "", email: "", serviceType: "", description: "", budgetRange: "" });
-        setTimeout(() => setStatus("idle"), 5000);
+        toast({
+          title: language === "en" ? "Request received!" : "¡Solicitud recibida!",
+          description:
+            language === "en"
+              ? "We'll get back to you within 48 hours."
+              : "Te contactamos en menos de 48 horas.",
+        });
       } else {
-        setStatus("error");
-        setTimeout(() => setStatus("idle"), 4000);
+        toast({
+          title: language === "en" ? "Something went wrong" : "Algo salió mal",
+          description:
+            language === "en"
+              ? "Please try again or email us directly."
+              : "Por favor intenta de nuevo o escríbenos directamente.",
+          variant: "destructive",
+        });
       }
     } catch {
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 4000);
+      toast({
+        title: language === "en" ? "Something went wrong" : "Algo salió mal",
+        description:
+          language === "en"
+            ? "Please try again or email us directly."
+            : "Por favor intenta de nuevo o escríbenos directamente.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -251,25 +267,11 @@ function QuoteForm({ language }: { language: Language }) {
 
             <button
               type="submit"
-              disabled={status === "loading"}
+              disabled={loading}
               className="w-full btn-primary text-base py-4 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              {status === "loading" ? copy.loading : copy.submit}
+              {loading ? copy.loading : copy.submit}
             </button>
-
-            {status === "success" && (
-              <div className="flex items-center gap-3 text-accent bg-accent/10 p-4 rounded-lg">
-                <Check className="w-5 h-5 flex-shrink-0" />
-                <p className="text-sm">{copy.success}</p>
-              </div>
-            )}
-
-            {status === "error" && (
-              <div className="flex items-center gap-3 text-destructive bg-destructive/10 p-4 rounded-lg">
-                <AlertCircle className="w-5 h-5 flex-shrink-0" />
-                <p className="text-sm">{copy.error}</p>
-              </div>
-            )}
           </form>
         </div>
       </div>
