@@ -170,6 +170,10 @@ html {
     @apply px-6 py-3 border border-accent text-accent rounded-lg font-semibold transition-all duration-300 hover:bg-accent hover:text-accent-foreground;
   }
 
+  .btn-outline {
+    @apply px-6 py-3 border border-white/30 text-white rounded-lg font-semibold transition-all duration-300 hover:border-white hover:bg-white/10;
+  }
+
   .btn-ghost {
     @apply px-6 py-3 text-foreground font-semibold transition-all duration-300 hover:text-accent;
   }

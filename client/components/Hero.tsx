@@ -91,7 +91,7 @@ export default function Hero({ language }: HeroProps) {
           </a>
           <a
             href="#collaborate"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold border border-white/30 text-white transition-all duration-300 hover:border-white hover:bg-white/10"
+            className="btn-outline inline-flex items-center justify-center gap-2"
           >
             {copy.ctaSecondary}
             <ArrowRight className="w-4 h-4" />
@@ -100,7 +100,7 @@ export default function Hero({ language }: HeroProps) {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
+      <div aria-hidden="true" className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
         <ChevronDown className="w-6 h-6 text-white" />
       </div>
     </section>
