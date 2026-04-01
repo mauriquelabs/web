@@ -27,3 +27,22 @@ export interface ContactFormResponse {
   success: boolean;
   message: string;
 }
+
+/**
+ * Quote request form submission type
+ */
+export interface QuoteFormData {
+  name: string;
+  email: string;
+  serviceType: string;
+  description: string;
+  budgetRange: string;
+}
+
+/**
+ * Quote request form response type
+ */
+export interface QuoteFormResponse {
+  success: boolean;
+  message: string;
+}

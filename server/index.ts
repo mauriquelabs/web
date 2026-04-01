@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { handleContact } from "./routes/contact";
+import { handleQuote } from "./routes/quote";
 
 export function createServer() {
   const app = express();
@@ -22,6 +23,9 @@ export function createServer() {
 
   // Contact form endpoint
   app.post("/api/contact", handleContact);
+
+  // Quote request endpoint
+  app.post("/api/quote", handleQuote);
 
   return app;
 }

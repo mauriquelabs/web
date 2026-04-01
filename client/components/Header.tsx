@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 interface HeaderProps {
@@ -8,33 +9,38 @@ interface HeaderProps {
 
 export default function Header({ language, onLanguageChange }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  const prefix = isHome ? "" : "/";
 
   const navLinks = {
     en: [
-      { label: "What We Do", href: "#services" },
-      { label: "Our Work", href: "#showcase" },
-      { label: "Collaborate", href: "#collaborate" },
+      { label: "What We Do", href: `${prefix}#services` },
+      { label: "Our Work", href: `${prefix}#showcase` },
+      { label: "Collaborate", href: `${prefix}#collaborate` },
     ],
     es: [
-      { label: "Qué Hacemos", href: "#services" },
-      { label: "Nuestro Trabajo", href: "#showcase" },
-      { label: "Colabora", href: "#collaborate" },
+      { label: "Qué Hacemos", href: `${prefix}#services` },
+      { label: "Nuestro Trabajo", href: `${prefix}#showcase` },
+      { label: "Colabora", href: `${prefix}#collaborate` },
     ],
   };
 
+  const servicesLink = { label: language === "en" ? "Services" : "Servicios", href: "/services" };
   const ctaLabel = language === "en" ? "Let's Talk" : "Hablemos";
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
       <div className="section-container flex items-center justify-between h-16">
         {/* Logo */}
-        <a href="#home" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <img
             src="/logo-maurique-labs.png"
             alt="Maurique Labs"
             className="h-8 w-auto"
           />
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
@@ -47,6 +53,16 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
               {link.label}
             </a>
           ))}
+          <Link
+            to={servicesLink.href}
+            className={`text-sm font-medium transition-colors duration-300 ${
+              location.pathname === "/services"
+                ? "text-accent"
+                : "text-foreground/70 hover:text-accent"
+            }`}
+          >
+            {servicesLink.label}
+          </Link>
         </nav>
 
         {/* CTA and Language Toggle */}
@@ -111,6 +127,17 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
                 {link.label}
               </a>
             ))}
+            <Link
+              to={servicesLink.href}
+              className={`text-sm font-medium transition-colors ${
+                location.pathname === "/services"
+                  ? "text-accent"
+                  : "text-foreground/70 hover:text-accent"
+              }`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {servicesLink.label}
+            </Link>
             <a
               href="https://calendly.com/hello-mauriquelabs/30min"
               className="btn-primary text-sm text-center"

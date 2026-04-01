@@ -29,7 +29,12 @@ Run `pnpm dev` to start the development server on port 5000.
 - `pnpm build` - Builds both client and server
 - `pnpm start` - Runs the production server
 
+## Pages
+- `/` - Homepage (Hero, Mission, Services, Showcase, Collaborate sections)
+- `/services` - Services & Pricing page (entry paths, service pillars, Lanzamiento Completo pack, pricing table, quote form)
+
 ## API Routes
 - `GET /api/ping` - Health check endpoint
 - `GET /api/demo` - Demo endpoint
 - `POST /api/contact` - Contact form submission
+- `POST /api/quote` - Quote request form submission (name, email, serviceType, description, budgetRange)
