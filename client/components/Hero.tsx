@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 
 interface HeroProps {
   language: "en" | "es";
@@ -8,19 +8,19 @@ export default function Hero({ language }: HeroProps) {
   const content = {
     en: {
       h1: "Maurique Labs",
-      subheadline:
-        "Technology · Creativity · Culture",
+      subheadline: "Technology · Creativity · Culture",
       description:
-        "A hybrid agency combining digital projects and event production. We help entrepreneurs, artists, brands, and small businesses transform ideas into real projects and build active communities around them — with flexible, accessible solutions that bridge technology and the cultural ecosystem.",
+        "From digital products to live events — we help entrepreneurs, artists, and brands turn ideas into real projects and build active communities around them.",
+      tags: ["Digital Products", "Event Production", "Brand Strategy", "Community Building"],
       ctaPrimary: "See Our Work",
       ctaSecondary: "Let's Collaborate",
     },
     es: {
       h1: "Maurique Labs",
-      subheadline:
-        "Tecnología · Creatividad · Cultura",
+      subheadline: "Tecnología · Creatividad · Cultura",
       description:
-        "Una agencia híbrida de proyectos digitales y organización de eventos. Ayudamos a emprendedores, artistas, marcas y pequeñas empresas a transformar ideas en proyectos reales y construir comunidades activas alrededor de sus marcas — con soluciones flexibles y accesibles que actúan como puente entre la tecnología y el ecosistema cultural.",
+        "De productos digitales a eventos en vivo — ayudamos a emprendedores, artistas y marcas a convertir ideas en proyectos reales y construir comunidades activas a su alrededor.",
+      tags: ["Productos Digitales", "Producción de Eventos", "Estrategia de Marca", "Comunidad"],
       ctaPrimary: "Ver Nuestro Trabajo",
       ctaSecondary: "Colaboremos",
     },
@@ -49,14 +49,29 @@ export default function Hero({ language }: HeroProps) {
         </h1>
 
         <p
-          className="text-lg sm:text-xl font-semibold tracking-widest text-accent uppercase mb-6 animate-slide-up opacity-0"
+          className="text-lg sm:text-xl font-semibold tracking-widest text-accent uppercase mb-8 animate-slide-up opacity-0"
           style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
         >
           {copy.subheadline}
         </p>
 
+        {/* Service tags */}
+        <div
+          className="flex flex-wrap gap-2 justify-center mb-8 animate-slide-up opacity-0"
+          style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
+        >
+          {copy.tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-3 py-1 rounded-full text-sm font-medium border border-white/20 text-white/70 bg-white/5 backdrop-blur-sm"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
         <p
-          className="text-base sm:text-lg text-foreground/70 max-w-2xl mx-auto mb-12 leading-relaxed animate-slide-up opacity-0"
+          className="text-base sm:text-lg text-foreground/70 max-w-xl mx-auto mb-12 leading-relaxed animate-slide-up opacity-0"
           style={{ animationDelay: "0.35s", animationFillMode: "forwards" }}
         >
           {copy.description}
@@ -76,12 +91,17 @@ export default function Hero({ language }: HeroProps) {
           </a>
           <a
             href="#collaborate"
-            className="btn-secondary inline-flex items-center justify-center gap-2"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold border border-white/30 text-white transition-all duration-300 hover:border-white hover:bg-white/10"
           >
             {copy.ctaSecondary}
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
+        <ChevronDown className="w-6 h-6 text-white" />
       </div>
     </section>
   );
