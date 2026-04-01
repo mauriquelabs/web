@@ -146,22 +146,25 @@ function QuoteForm({ language }: { language: Language }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
+      const data = await response.json().catch(() => ({}));
       if (response.ok) {
         setForm({ name: "", email: "", serviceType: "", description: "", budgetRange: "" });
         toast({
           title: language === "en" ? "Request received!" : "¡Solicitud recibida!",
           description:
-            language === "en"
+            data.message ??
+            (language === "en"
               ? "We'll get back to you within 48 hours."
-              : "Te contactamos en menos de 48 horas.",
+              : "Te contactamos en menos de 48 horas."),
         });
       } else {
         toast({
           title: language === "en" ? "Something went wrong" : "Algo salió mal",
           description:
-            language === "en"
+            data.message ??
+            (language === "en"
               ? "Please try again or email us directly."
-              : "Por favor intenta de nuevo o escríbenos directamente.",
+              : "Por favor intenta de nuevo o escríbenos directamente."),
           variant: "destructive",
         });
       }
