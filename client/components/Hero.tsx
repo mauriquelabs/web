@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 
 interface HeroProps {
@@ -9,18 +10,14 @@ export default function Hero({ language }: HeroProps) {
     en: {
       h1: "Maurique Labs",
       subheadline: "Technology · Creativity · Culture",
-      description:
-        "From digital products to live events — we help entrepreneurs, artists, and brands turn ideas into real projects and build active communities around them.",
-      tags: ["Digital Products", "Event Production", "Brand Strategy", "Community Building"],
+      slogan: "A unique partner bridging technology and culture — built for the long run.",
       ctaPrimary: "See Our Work",
       ctaSecondary: "Let's Collaborate",
     },
     es: {
       h1: "Maurique Labs",
       subheadline: "Tecnología · Creatividad · Cultura",
-      description:
-        "De productos digitales a eventos en vivo — ayudamos a emprendedores, artistas y marcas a convertir ideas en proyectos reales y construir comunidades activas a su alrededor.",
-      tags: ["Productos Digitales", "Producción de Eventos", "Estrategia de Marca", "Comunidad"],
+      slogan: "Un partner único que une tecnología y cultura, con visión de continuidad.",
       ctaPrimary: "Ver Nuestro Trabajo",
       ctaSecondary: "Colaboremos",
     },
@@ -33,14 +30,29 @@ export default function Hero({ language }: HeroProps) {
       id="home"
       className="section min-h-screen flex flex-col items-center justify-center relative overflow-hidden"
     >
-      {/* Background gradient glows — matching brand visual identity */}
+      {/* Animated background gradient orbs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Acid Lime — top center */}
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full blur-3xl opacity-25" style={{ backgroundColor: "#B9F01F" }}></div>
+        <motion.div
+          className="absolute rounded-full blur-3xl opacity-25"
+          style={{ backgroundColor: "#B9F01F", width: 600, height: 400, top: -128, left: "calc(50% - 300px)" }}
+          animate={{ x: [0, 50, -35, 0], y: [0, 30, -20, 0], scale: [1, 1.08, 0.94, 1] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
         {/* Bright Teal — top right */}
-        <div className="absolute -top-16 right-0 w-[500px] h-[400px] rounded-full blur-3xl opacity-30" style={{ backgroundColor: "#2BC9A3" }}></div>
+        <motion.div
+          className="absolute rounded-full blur-3xl opacity-30"
+          style={{ backgroundColor: "#2BC9A3", width: 500, height: 400, top: -64, right: 0 }}
+          animate={{ x: [0, -50, 25, 0], y: [0, 45, -30, 0], scale: [1, 0.91, 1.07, 1] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
         {/* Electric Orange — bottom center */}
-        <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full blur-3xl opacity-35" style={{ backgroundColor: "#FF5714" }}></div>
+        <motion.div
+          className="absolute rounded-full blur-3xl opacity-35"
+          style={{ backgroundColor: "#FF5714", width: 700, height: 400, bottom: -128, left: "calc(50% - 350px)" }}
+          animate={{ x: [0, -45, 40, 0], y: [0, -35, 20, 0], scale: [1, 1.1, 0.92, 1] }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        />
       </div>
 
       <div className="section-container relative z-10 text-center">
@@ -55,32 +67,17 @@ export default function Hero({ language }: HeroProps) {
           {copy.subheadline}
         </p>
 
-        {/* Service tags */}
-        <div
-          className="flex flex-wrap gap-2 justify-center mb-8 animate-slide-up opacity-0"
-          style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
-        >
-          {copy.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-3 py-1 rounded-full text-sm font-medium border border-white/20 text-white/70 bg-white/5 backdrop-blur-sm"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
         <p
-          className="text-base sm:text-lg text-foreground/70 max-w-xl mx-auto mb-12 leading-relaxed animate-slide-up opacity-0"
-          style={{ animationDelay: "0.35s", animationFillMode: "forwards" }}
+          className="text-base sm:text-lg text-foreground/60 max-w-lg mx-auto mb-12 leading-relaxed animate-slide-up opacity-0"
+          style={{ animationDelay: "0.30s", animationFillMode: "forwards" }}
         >
-          {copy.description}
+          {copy.slogan}
         </p>
 
         {/* CTA Buttons */}
         <div
           className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up opacity-0"
-          style={{ animationDelay: "0.55s", animationFillMode: "forwards" }}
+          style={{ animationDelay: "0.45s", animationFillMode: "forwards" }}
         >
           <a
             href="#showcase"
