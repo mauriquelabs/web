@@ -29,7 +29,8 @@ export default function Services({ language }: ServicesProps) {
   const content = {
     en: {
       title: "What We Do",
-      integration: "A digital client may need a launch event. An event space may need a website. This integration is our real competitive advantage.",
+      integration:
+        "A digital client may need a launch event. An event space may need a website. This integration is our real competitive advantage.",
       pillars: [
         {
           icon: Monitor,
@@ -61,26 +62,25 @@ export default function Services({ language }: ServicesProps) {
             "Recurring event formats",
           ],
         },
-        {
-          icon: Camera,
-          color: "text-foreground/60",
-          dotColor: "text-foreground/50",
-          border: "hover:border-foreground/30",
-          title: "Audiovisual",
-          description:
-            "Content that captures the story of every project — executed with trusted collaborators.",
-          services: [
-            "Aftermovies & event documentation",
-            "Social content & product demos",
-            "Photography",
-            "Content strategy",
-          ],
-        },
       ],
+      audiovisual: {
+        icon: Camera,
+        label: "And we document it all —",
+        title: "Audiovisual",
+        description:
+          "Content that captures the story of every project — executed with trusted collaborators.",
+        services: [
+          "Aftermovies & event documentation",
+          "Social content & product demos",
+          "Photography",
+          "Content strategy",
+        ],
+      },
     },
     es: {
       title: "Qué Hacemos",
-      integration: "Un cliente digital puede necesitar un evento de lanzamiento. Un espacio de eventos puede necesitar una web. Esta integración es nuestra ventaja competitiva real.",
+      integration:
+        "Un cliente digital puede necesitar un evento de lanzamiento. Un espacio de eventos puede necesitar una web. Esta integración es nuestra ventaja competitiva real.",
       pillars: [
         {
           icon: Monitor,
@@ -112,26 +112,26 @@ export default function Services({ language }: ServicesProps) {
             "Formatos de eventos recurrentes",
           ],
         },
-        {
-          icon: Camera,
-          color: "text-foreground/60",
-          dotColor: "text-foreground/50",
-          border: "hover:border-foreground/30",
-          title: "Audiovisual",
-          description:
-            "Contenido que captura la historia de cada proyecto — ejecutado con colaboradores de confianza.",
-          services: [
-            "Aftermovies y documentación de eventos",
-            "Contenido para redes y product demos",
-            "Fotografía",
-            "Estrategia de contenido",
-          ],
-        },
       ],
+      audiovisual: {
+        icon: Camera,
+        label: "Y lo documentamos todo —",
+        title: "Audiovisual",
+        description:
+          "Contenido que captura la historia de cada proyecto — ejecutado con colaboradores de confianza.",
+        services: [
+          "Aftermovies y documentación de eventos",
+          "Contenido para redes y product demos",
+          "Fotografía",
+          "Estrategia de contenido",
+        ],
+      },
     },
   };
 
   const copy = content[language];
+  const av = copy.audiovisual;
+  const AvIcon = av.icon;
 
   return (
     <section id="services" className="section">
@@ -153,7 +153,7 @@ export default function Services({ language }: ServicesProps) {
           {copy.integration}
         </p>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 mb-6">
           {copy.pillars.map((pillar, index) => {
             const Icon = pillar.icon;
             return (
@@ -164,7 +164,9 @@ export default function Services({ language }: ServicesProps) {
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-10"
                 }`}
-                style={{ transitionDelay: isVisible ? `${(index + 1) * 150}ms` : "0ms" }}
+                style={{
+                  transitionDelay: isVisible ? `${(index + 1) * 150}ms` : "0ms",
+                }}
               >
                 <div className={`card-base card-hover h-full ${pillar.border}`}>
                   <div className="flex items-center gap-3 mb-6">
@@ -180,7 +182,9 @@ export default function Services({ language }: ServicesProps) {
                         key={idx}
                         className="flex items-start gap-3 text-foreground/80 text-sm"
                       >
-                        <span className={`${pillar.dotColor} font-bold mt-1`}>•</span>
+                        <span className={`${pillar.dotColor} font-bold mt-1`}>
+                          •
+                        </span>
                         <span>{service}</span>
                       </li>
                     ))}
@@ -189,6 +193,43 @@ export default function Services({ language }: ServicesProps) {
               </div>
             );
           })}
+        </div>
+
+        <div
+          className={`transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ transitionDelay: isVisible ? "450ms" : "0ms" }}
+        >
+          <div className="border border-foreground/10 rounded-xl px-6 py-5 bg-foreground/[0.03] hover:border-foreground/20 transition-colors duration-300">
+            <div className="flex flex-col sm:flex-row sm:items-start gap-6">
+              <div className="flex items-center gap-3 sm:min-w-fit">
+                <AvIcon className="w-5 h-5 text-foreground/40 flex-shrink-0" />
+                <span className="text-foreground/40 text-sm italic">
+                  {av.label}
+                </span>
+                <span className="text-foreground/50 text-sm font-semibold">
+                  {av.title}
+                </span>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 flex-1">
+                <p className="text-foreground/40 text-sm leading-relaxed sm:max-w-xs">
+                  {av.description}
+                </p>
+                <ul className="flex flex-wrap gap-x-6 gap-y-1.5 sm:flex-col sm:gap-y-1.5">
+                  {av.services.map((service, idx) => (
+                    <li
+                      key={idx}
+                      className="flex items-center gap-2 text-foreground/40 text-xs"
+                    >
+                      <span className="text-foreground/30 font-bold">•</span>
+                      <span>{service}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
