@@ -52,7 +52,7 @@ export default function Services({ language }: ServicesProps) {
           color: "text-accent2",
           dotColor: "text-accent2",
           border: "hover:border-accent2",
-          title: "Events & Experiences",
+          title: "Events",
           description:
             "Cultural, musical, and corporate experiences that activate communities and create lasting connections.",
           services: [
@@ -89,7 +89,7 @@ export default function Services({ language }: ServicesProps) {
           color: "text-accent2",
           dotColor: "text-accent2",
           border: "hover:border-accent2",
-          title: "Eventos y Experiencias",
+          title: "Eventos",
           description:
             "Experiencias culturales, musicales y corporativas que activan comunidades y crean conexiones duraderas.",
           services: [
