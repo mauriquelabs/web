@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Mission from "@/components/Mission";
-import Services from "@/components/Services";
-import Showcase from "@/components/Showcase";
-import CollaborateV2 from "@/components/CollaborateV2";
+import Methodology from "@/components/Methodology";
+import Portfolio from "@/components/Portfolio";
+import Manifesto from "@/components/Manifesto";
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 type Language = "en" | "es";
@@ -32,10 +32,10 @@ export default function Index() {
       <Header language={language} onLanguageChange={handleLanguageChange} />
       <main>
         <Hero language={language} />
-        <Mission language={language} />
-        <Services language={language} />
-        <Showcase language={language} />
-        <CollaborateV2 language={language} />
+        <Methodology language={language} />
+        <Portfolio language={language} />
+        <Manifesto language={language} />
+        <Contact language={language} />
       </main>
       <Footer language={language} />
     </div>

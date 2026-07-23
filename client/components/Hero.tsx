@@ -8,18 +8,18 @@ interface HeroProps {
 export default function Hero({ language }: HeroProps) {
   const content = {
     en: {
-      h1: "Maurique Labs",
-      subheadline: "Technology · Creativity · Culture",
-      slogan: "A unique partner bridging technology and culture — built for the long run.",
-      ctaPrimary: "See Our Work",
-      ctaSecondary: "Let's Collaborate",
+      h1: "Software for the music industry.",
+      slogan:
+        "We partner with artists, promoters and music tech companies to discover real problems and build software that strengthens the music ecosystem.",
+      ctaPrimary: "Explore our work",
+      ctaSecondary: "Let's talk",
     },
     es: {
-      h1: "Maurique Labs",
-      subheadline: "Tecnología · Creatividad · Cultura",
-      slogan: "Un partner único que une tecnología y cultura, con visión de continuidad.",
-      ctaPrimary: "Ver Nuestro Trabajo",
-      ctaSecondary: "Colaboremos",
+      h1: "Software para la industria musical.",
+      slogan:
+        "Colaboramos con artistas, promotores y empresas de tecnología musical para descubrir problemas reales y construir software que fortalece el ecosistema musical.",
+      ctaPrimary: "Explora nuestro trabajo",
+      ctaSecondary: "Hablemos",
     },
   };
 
@@ -93,7 +93,7 @@ export default function Hero({ language }: HeroProps) {
       <div className="section-container relative z-10 text-center">
         {/* Layer 1 — least movement */}
         <div ref={layer1Ref}>
-          <h1 className="animate-slide-up mb-4 text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight">
+          <h1 className="animate-slide-up mb-8 text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight">
             {copy.h1}
           </h1>
         </div>
@@ -101,36 +101,29 @@ export default function Hero({ language }: HeroProps) {
         {/* Layer 2 — medium movement */}
         <div ref={layer2Ref}>
           <p
-            className="text-lg sm:text-xl font-semibold tracking-widest text-accent uppercase mb-8 animate-slide-up opacity-0"
+            className="text-lg sm:text-xl text-foreground/60 max-w-xl mx-auto mb-12 leading-relaxed animate-slide-up opacity-0"
             style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
           >
-            {copy.subheadline}
+            {copy.slogan}
           </p>
         </div>
 
         {/* Layer 3 — most movement */}
         <div ref={layer3Ref}>
-          <p
-            className="text-base sm:text-lg text-foreground/60 max-w-lg mx-auto mb-12 leading-relaxed animate-slide-up opacity-0"
-            style={{ animationDelay: "0.30s", animationFillMode: "forwards" }}
-          >
-            {copy.slogan}
-          </p>
-
           {/* CTA Buttons */}
           <div
             className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up opacity-0"
-            style={{ animationDelay: "0.45s", animationFillMode: "forwards" }}
+            style={{ animationDelay: "0.30s", animationFillMode: "forwards" }}
           >
             <a
-              href="#showcase"
+              href="#portfolio"
               className="btn-primary inline-flex items-center justify-center gap-2"
             >
               {copy.ctaPrimary}
               <ArrowRight className="w-4 h-4" />
             </a>
             <a
-              href="#collaborate"
+              href="#contact"
               className="btn-outline inline-flex items-center justify-center gap-2"
             >
               {copy.ctaSecondary}
