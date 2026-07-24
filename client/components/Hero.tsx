@@ -90,19 +90,25 @@ export default function Hero({ language }: HeroProps) {
       id="home"
       className="section bg-brand-black text-foreground min-h-[100svh] flex flex-col items-center justify-center relative overflow-hidden"
     >
-      {/* Stage atmosphere — intentional hero gradient (not a photo stand-in) */}
+      {/* Outer: ambient breath. Inner: mouse parallax (separate transforms). */}
       <div
-        ref={washRef}
         aria-hidden="true"
-        className="absolute inset-[-10%] pointer-events-none will-change-transform"
-        style={{
-          background: `
-            radial-gradient(ellipse 55% 45% at 18% 78%, rgba(43, 201, 163, 0.28) 0%, transparent 70%),
-            radial-gradient(ellipse 50% 40% at 88% 18%, rgba(255, 87, 20, 0.2) 0%, transparent 65%),
-            radial-gradient(ellipse 70% 50% at 50% 100%, rgba(13, 38, 38, 0.9) 0%, transparent 60%)
-          `,
-        }}
-      />
+        className={`absolute inset-[-12%] pointer-events-none ${
+          reduceMotion ? "" : "animate-stage-breathe"
+        }`}
+      >
+        <div
+          ref={washRef}
+          className="absolute inset-0 will-change-transform"
+          style={{
+            background: `
+              radial-gradient(ellipse 55% 45% at 18% 78%, rgba(43, 201, 163, 0.28) 0%, transparent 70%),
+              radial-gradient(ellipse 50% 40% at 88% 18%, rgba(255, 87, 20, 0.2) 0%, transparent 65%),
+              radial-gradient(ellipse 70% 50% at 50% 100%, rgba(13, 38, 38, 0.9) 0%, transparent 60%)
+            `,
+          }}
+        />
+      </div>
 
       <div className="section-container relative z-10 text-center">
         <img
@@ -123,7 +129,7 @@ export default function Hero({ language }: HeroProps) {
           style={
             reduceMotion
               ? undefined
-              : { animationDelay: "0.1s", animationFillMode: "forwards" }
+              : { animationDelay: "0.08s", animationFillMode: "forwards" }
           }
         >
           {copy.brand}
@@ -136,7 +142,7 @@ export default function Hero({ language }: HeroProps) {
           style={
             reduceMotion
               ? undefined
-              : { animationDelay: "0.2s", animationFillMode: "forwards" }
+              : { animationDelay: "0.16s", animationFillMode: "forwards" }
           }
         >
           {copy.h1}
@@ -149,7 +155,7 @@ export default function Hero({ language }: HeroProps) {
           style={
             reduceMotion
               ? undefined
-              : { animationDelay: "0.28s", animationFillMode: "forwards" }
+              : { animationDelay: "0.24s", animationFillMode: "forwards" }
           }
         >
           {copy.slogan}
@@ -162,7 +168,7 @@ export default function Hero({ language }: HeroProps) {
           style={
             reduceMotion
               ? undefined
-              : { animationDelay: "0.36s", animationFillMode: "forwards" }
+              : { animationDelay: "0.32s", animationFillMode: "forwards" }
           }
         >
           <a

@@ -122,6 +122,11 @@ export default {
           "0%, 100%": { transform: "translateY(0)", opacity: "0.4" },
           "50%": { transform: "translateY(6px)", opacity: "0.8" },
         },
+        "stage-breathe": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "40%": { transform: "translate(2.5%, -1.5%) scale(1.04)" },
+          "70%": { transform: "translate(-2%, 2%) scale(1.02)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -129,6 +134,7 @@ export default {
         "fade-in": "fade-in 0.3s ease-out",
         "slide-up": "slide-up 0.4s ease-out",
         drift: "drift 2s ease-in-out infinite",
+        "stage-breathe": "stage-breathe 16s ease-in-out infinite",
       },
     },
   },

@@ -16,7 +16,8 @@ html {
 
   .animate-slide-up,
   .animate-drift,
-  .animate-fade-in {
+  .animate-fade-in,
+  .animate-stage-breathe {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
