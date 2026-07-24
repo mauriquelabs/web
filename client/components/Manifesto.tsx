@@ -2,10 +2,23 @@ import { useEffect, useState } from "react";
 
 interface ManifestoProps {
   language: "en" | "es";
+  theme?: "dark" | "light";
 }
 
-export default function Manifesto({ language }: ManifestoProps) {
+export default function Manifesto({
+  language,
+  theme = "dark",
+}: ManifestoProps) {
   const [isVisible, setIsVisible] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduceMotion(mq.matches);
+    const onChange = () => setReduceMotion(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -14,7 +27,7 @@ export default function Manifesto({ language }: ManifestoProps) {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 },
+      { threshold: 0.35 },
     );
 
     const element = document.getElementById("manifesto");
@@ -31,20 +44,41 @@ export default function Manifesto({ language }: ManifestoProps) {
   };
 
   const text = content[language];
+  const words = text.split(" ");
+  // Keep the whole reveal inside ~450ms (design-system ceiling for manifesto)
+  const staggerMs = reduceMotion
+    ? 0
+    : Math.min(28, Math.floor(420 / Math.max(words.length - 1, 1)));
 
   return (
     <section
       id="manifesto"
-      className="section bg-card/30 border-y border-border"
+      className={`section bg-background text-foreground border-y border-border ${
+        theme === "light" ? "light" : ""
+      }`}
     >
       <div className="section-container">
         <p
-          className={`max-w-4xl mx-auto text-center text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-          style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+          className="max-w-4xl mx-auto text-center text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight font-heading"
+          aria-label={text}
         >
-          {text}
+          {words.map((word, index) => (
+            <span
+              key={`${word}-${index}`}
+              className={`inline-block mr-[0.28em] last:mr-0 transition-all duration-500 ease-out ${
+                isVisible || reduceMotion
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-5"
+              }`}
+              style={{
+                transitionDelay:
+                  isVisible && !reduceMotion ? `${index * staggerMs}ms` : "0ms",
+              }}
+              aria-hidden="true"
+            >
+              {word}
+            </span>
+          ))}
         </p>
       </div>
     </section>

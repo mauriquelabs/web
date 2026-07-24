@@ -9,11 +9,9 @@ export default function Footer({ language }: FooterProps) {
 
   const content = {
     en: {
-      name: "Maurique Labs",
       copyright: `© ${year} Maurique Labs. All rights reserved.`,
     },
     es: {
-      name: "Maurique Labs",
       copyright: `© ${year} Maurique Labs. Todos los derechos reservados.`,
     },
   };
@@ -24,9 +22,11 @@ export default function Footer({ language }: FooterProps) {
     <footer className="bg-card border-t border-border">
       <div className="section-container py-12">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-8">
-          <p className="text-foreground/60 text-sm font-semibold">
-            {copy.name}
-          </p>
+          <img
+            src="/logo-maurique-labs.png"
+            alt="Maurique Labs"
+            className="h-8 w-auto"
+          />
 
           {/* Social Links */}
           <div className="flex gap-4">

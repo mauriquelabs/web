@@ -3,10 +3,20 @@ import ContactForm from "./ContactForm";
 
 interface ContactProps {
   language: "en" | "es";
+  theme?: "dark" | "light";
 }
 
-export default function Contact({ language }: ContactProps) {
+export default function Contact({ language, theme = "dark" }: ContactProps) {
   const [isVisible, setIsVisible] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduceMotion(mq.matches);
+    const onChange = () => setReduceMotion(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -40,34 +50,58 @@ export default function Contact({ language }: ContactProps) {
   };
 
   const copy = content[language];
+  const show = isVisible || reduceMotion;
 
   return (
-    <section id="contact" className="section">
-      <div className="section-container">
-        <div className="max-w-2xl mx-auto text-center">
+    <section
+      id="contact"
+      className={`section relative overflow-hidden bg-background text-foreground ${
+        theme === "light" ? "light" : ""
+      }`}
+    >
+      {/* CTA gradient — intentional conversion-surface treatment */}
+      {theme === "dark" && (
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: `
+              radial-gradient(ellipse 80% 55% at 50% -10%, rgba(255, 87, 20, 0.22) 0%, transparent 55%),
+              radial-gradient(ellipse 60% 45% at 100% 100%, rgba(43, 201, 163, 0.14) 0%, transparent 50%)
+            `,
+          }}
+        />
+      )}
+
+      <div className="section-container relative z-10">
+        <div className="content-narrow text-center">
           <h2
-            className={`mb-6 transition-all duration-700 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            className={`mb-6 transition-opacity duration-300 ${
+              show ? "opacity-100" : "opacity-0"
             }`}
           >
             {copy.sectionTitle}
           </h2>
 
           <p
-            className={`text-lg sm:text-xl text-foreground/70 mb-4 leading-relaxed transition-all duration-700 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            className={`text-lg sm:text-xl text-foreground/70 mb-4 leading-relaxed transition-opacity duration-300 ${
+              show ? "opacity-100" : "opacity-0"
             }`}
-            style={{ transitionDelay: isVisible ? "150ms" : "0ms" }}
+            style={{
+              transitionDelay: show && !reduceMotion ? "80ms" : "0ms",
+            }}
           >
             {copy.sectionDesc}
           </p>
         </div>
 
         <div
-          className={`max-w-xl mx-auto mt-12 transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          className={`max-w-xl mx-auto mt-12 transition-opacity duration-300 ${
+            show ? "opacity-100" : "opacity-0"
           }`}
-          style={{ transitionDelay: isVisible ? "350ms" : "0ms" }}
+          style={{
+            transitionDelay: show && !reduceMotion ? "140ms" : "0ms",
+          }}
         >
           <ContactForm language={language} />
         </div>

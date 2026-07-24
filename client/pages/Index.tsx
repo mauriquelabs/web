@@ -9,11 +9,23 @@ import Footer from "@/components/Footer";
 
 type Language = "en" | "es";
 
+/**
+ * Section rhythm — white → dark → white → gradient-CTA.
+ * Each section accepts `theme` ("dark" | "light") that toggles the `.light`
+ * class; Contact adds an intentional gradient wash on the dark CTA surface.
+ * Header/Footer stay dark (light logo asset only).
+ */
+const SECTION_THEME = {
+  methodology: "light",
+  portfolio: "dark",
+  manifesto: "light",
+  contact: "dark",
+} as const;
+
 export default function Index() {
   const [language, setLanguage] = useState<Language>("en");
 
   useEffect(() => {
-    // Persist language preference
     const savedLanguage = localStorage.getItem(
       "maurique-language",
     ) as Language | null;
@@ -32,10 +44,10 @@ export default function Index() {
       <Header language={language} onLanguageChange={handleLanguageChange} />
       <main>
         <Hero language={language} />
-        <Methodology language={language} />
-        <Portfolio language={language} />
-        <Manifesto language={language} />
-        <Contact language={language} />
+        <Methodology language={language} theme={SECTION_THEME.methodology} />
+        <Portfolio language={language} theme={SECTION_THEME.portfolio} />
+        <Manifesto language={language} theme={SECTION_THEME.manifesto} />
+        <Contact language={language} theme={SECTION_THEME.contact} />
       </main>
       <Footer language={language} />
     </div>
