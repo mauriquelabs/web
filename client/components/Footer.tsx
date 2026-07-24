@@ -31,7 +31,7 @@ export default function Footer({ language }: FooterProps) {
           {/* Social Links */}
           <div className="flex gap-4">
             <a
-              href="https://www.instagram.com/mauriqueLabs"
+              href="https://www.instagram.com/maurique_labs"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 flex items-center justify-center rounded-lg border border-border hover:border-accent text-foreground/60 hover:text-accent transition-all duration-300 hover:bg-accent/10"

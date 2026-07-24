@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Mail } from "lucide-react";
 import ContactForm from "./ContactForm";
 
 interface ContactProps {
@@ -32,13 +31,11 @@ export default function Contact({ language }: ContactProps) {
       sectionTitle: "Let's build together",
       sectionDesc:
         "Whether you're an artist, promoter or music tech company, we'd love to hear what you're building.",
-      email: "hello@mauriquelabs.com",
     },
     es: {
       sectionTitle: "Construyamos juntos",
       sectionDesc:
         "Seas artista, promotor o una empresa de tecnología musical, nos encantaría saber qué estás construyendo.",
-      email: "hello@mauriquelabs.com",
     },
   };
 
@@ -64,17 +61,6 @@ export default function Contact({ language }: ContactProps) {
           >
             {copy.sectionDesc}
           </p>
-
-          <a
-            href={`mailto:${copy.email}`}
-            className={`inline-flex items-center gap-2 text-sm font-semibold text-accent hover:underline transition-all duration-700 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
-            style={{ transitionDelay: isVisible ? "250ms" : "0ms" }}
-          >
-            <Mail className="w-4 h-4" />
-            {copy.email}
-          </a>
         </div>
 
         <div
