@@ -70,7 +70,7 @@ Interfaces should feel clean, calm, premium, and minimal.
 - Users should understand the purpose of every screen in less than 10 seconds.
 - Whitespace is preferred over density.
 
-For colors, typography, buttons, section theming, motion, and brand tokens, follow [`.cursor/rules/brand-design-system.mdc`](.cursor/rules/brand-design-system.mdc). Do not invent parallel visual systems.
+For colors, typography, buttons, section theming, motion, and brand tokens, follow [`docs/brand-design-system.md`](docs/brand-design-system.md). Do not invent parallel visual systems.
 
 ---
 
