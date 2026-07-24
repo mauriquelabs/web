@@ -1,164 +1,205 @@
-# Fusion Starter
+# Maurique Labs Engineering Guide
 
-A production-ready full-stack React application template with integrated Express server, featuring React Router 6 SPA mode, TypeScript, Vitest, Zod and modern tooling.
+This repository belongs to Maurique Labs.
 
-While the starter comes with a express server, only create endpoint when strictly neccesary, for example to encapsulate logic that must leave in the server, such as private keys handling, or certain DB operations, db...
+Maurique Labs builds software for the Music Tech industry. Every decision in this repository should reinforce that mission.
 
-## Tech Stack
+Our goal is not simply to ship features, but to build software that empowers artists, promoters, communities and music organizations.
 
-- **PNPM**: Prefer pnpm
-- **Frontend**: React 18 + React Router 6 (spa) + TypeScript + Vite + TailwindCSS 3
-- **Backend**: Express server integrated with Vite dev server
-- **Testing**: Vitest
-- **UI**: Radix UI + TailwindCSS 3 + Lucide React icons
+---
 
-## Project Structure
+# Core Principles
+
+## Solve real problems first
+
+Never build features because they are technically interesting.
+
+Every feature must answer:
+
+- Who is this helping?
+- What problem does it solve?
+- Why is this better than existing workflows?
+
+If a feature cannot answer those questions, challenge the implementation before writing code.
+
+## Product before technology
+
+Technology is a tool. Avoid unnecessary complexity.
+
+Prefer:
+
+- simple architecture
+- maintainable code
+- boring technologies
+- iterative improvements
+
+over clever implementations.
+
+## Build for validation
+
+Maurique Labs validates ideas through real users.
+
+Always optimize for:
+
+- shipping quickly
+- measuring usage
+- learning
+- iterating
+
+Do not prematurely optimize.
+
+---
+
+# Product Context
+
+Maurique Labs creates products that connect technology, music, and communities. Every product should strengthen at least one of those dimensions.
+
+**Current flagship product:** Mind the Beat — the discovery and community platform for purpose-driven electronic music experiences.
+
+Future products may integrate with Mind the Beat but should remain independently scalable.
+
+**This repository today:** the Maurique Labs company marketing website (landing page, services, contact), not the Mind the Beat product app.
+
+---
+
+# Design Principles
+
+Interfaces should feel clean, calm, premium, and minimal.
+
+- Avoid dashboards full of unnecessary information.
+- Users should understand the purpose of every screen in less than 10 seconds.
+- Whitespace is preferred over density.
+
+For colors, typography, buttons, section theming, motion, and brand tokens, follow [`.cursor/rules/brand-design-system.mdc`](.cursor/rules/brand-design-system.mdc). Do not invent parallel visual systems.
+
+---
+
+# This Repository
+
+## Stack
+
+- **Package manager:** pnpm (prefer over npm/yarn)
+- **Frontend:** React 18 + React Router 6 (SPA) + TypeScript + Vite + TailwindCSS 3
+- **Backend:** Express integrated with the Vite dev server (single port `8080`)
+- **UI:** Radix UI + Lucide React icons
+- **Testing:** Vitest
+- **Validation:** Zod
+
+## Project structure
 
 ```
-client/                   # React SPA frontend
-├── pages/                # Route components (Index.tsx = home)
-├── components/ui/        # Pre-built UI component library
-├── App.tsx                # App entry point and with SPA routing setup
-└── global.css            # TailwindCSS 3 theming and global styles
+client/                 # React SPA frontend
+├── pages/              # Route components (Index.tsx = home)
+├── components/         # Section and shared UI components
+│   └── ui/             # Pre-built Radix/shadcn-style primitives
+├── App.tsx             # SPA routing entry
+└── global.css          # Theme tokens and global styles
 
-server/                   # Express API backend
-├── index.ts              # Main server setup (express config + routes)
-└── routes/               # API handlers
+server/                 # Express API backend
+├── index.ts            # Server setup + route registration
+└── routes/             # API handlers
 
-shared/                   # Types used by both client & server
-└── api.ts                # Example of how to share api interfaces
+shared/                 # Types shared by client and server
+└── api.ts
 ```
 
-## Key Features
+Keep this marketing-site layout. When product features land later, prefer organizing by feature (e.g. `client/features/...`) rather than large type-based folders — do not invent that tree for this site today.
 
-## SPA Routing System
+## Path aliases
 
-The routing system is powered by React Router 6:
+- `@/*` → `client/`
+- `@shared/*` → `shared/`
 
-- `client/pages/Index.tsx` represents the home page.
-- Routes are defined in `client/App.tsx` using the `react-router-dom` import
-- Route files are located in the `client/pages/` directory
+## Routing
 
-For example, routes can be defined with:
+Routes live in `client/App.tsx` via React Router 6. Add custom routes above the catch-all `*` route. Page components live in `client/pages/`.
 
-```typescript
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+## API
 
-<Routes>
-  <Route path="/" element={<Index />} />
-  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-  <Route path="*" element={<NotFound />} />
-</Routes>;
-```
+- Endpoints are prefixed with `/api/`
+- Shared response/request types belong in `shared/`
+- Only create backend endpoints when necessary (database writes, auth, secrets, integrations, payments, webhooks). Do not proxy requests without a reason.
 
-### Styling System
+## Theme and styling
 
-- **Primary**: TailwindCSS 3 utility classes
-- **Theme and design tokens**: Configure in `client/global.css` 
-- **UI components**: Pre-built library in `client/components/ui/`
-- **Utility**: `cn()` function combines `clsx` + `tailwind-merge` for conditional classes
+- Primary styling: Tailwind utility classes
+- Design tokens: `client/global.css` and `tailwind.config.ts`
+- Prefer semantic tokens (`bg-background`, `text-foreground`, `border-border`, etc.) and existing component classes (`.btn-primary`, `.card-base`, `.section`, `.section-container`)
+- Use `cn()` (`clsx` + `tailwind-merge`) for conditional classes
+- Avoid inline styles
 
-```typescript
-// cn utility usage
-className={cn(
-  "base-classes",
-  { "conditional-class": condition },
-  props.className  // User overrides
-)}
-```
-
-### Express Server Integration
-
-- **Development**: Single port (8080) for both frontend/backend
-- **Hot reload**: Both client and server code
-- **API endpoints**: Prefixed with `/api/`
-
-#### Example API Routes
-- `GET /api/ping` - Simple ping api
-- `GET /api/demo` - Demo endpoint  
-
-### Shared Types
-Import consistent types in both client and server:
-```typescript
-import { DemoResponse } from '@shared/api';
-```
-
-Path aliases:
-- `@shared/*` - Shared folder
-- `@/*` - Client folder
-
-## Development Commands
+## Development commands
 
 ```bash
 pnpm dev        # Start dev server (client + server)
 pnpm build      # Production build
 pnpm start      # Start production server
 pnpm typecheck  # TypeScript validation
-pnpm test          # Run Vitest tests
+pnpm test       # Run Vitest tests
 ```
 
-## Adding Features
+---
 
-### Add new colors to the theme
+# Engineering Principles
 
-Open `client/global.css` and `tailwind.config.ts` and add new tailwind colors.
+## TypeScript
 
-### New API Route
-1. **Optional**: Create a shared interface in `shared/api.ts`:
-```typescript
-export interface MyRouteResponse {
-  message: string;
-  // Add other response properties here
-}
-```
+Avoid `any`. Prefer strict types, inferred types, and reusable interfaces. Rare exceptions at external boundaries must be justified.
 
-2. Create a new route handler in `server/routes/my-route.ts`:
-```typescript
-import { RequestHandler } from "express";
-import { MyRouteResponse } from "@shared/api"; // Optional: for type safety
+## Components
 
-export const handleMyRoute: RequestHandler = (req, res) => {
-  const response: MyRouteResponse = {
-    message: 'Hello from my endpoint!'
-  };
-  res.json(response);
-};
-```
+Keep components small. Split UI and business logic whenever practical. Aim to stay under ~250 lines; split sooner when a file mixes unrelated concerns.
 
-3. Register the route in `server/index.ts`:
-```typescript
-import { handleMyRoute } from "./routes/my-route";
+Prefer composing existing UI components in `client/components/ui/` before creating new primitives.
 
-// Add to the createServer function:
-app.get("/api/my-endpoint", handleMyRoute);
-```
+## State
 
-4. Use in React components with type safety:
-```typescript
-import { MyRouteResponse } from '@shared/api'; // Optional: for type safety
+Prefer local state, context, and server state. Avoid global state unless justified.
 
-const response = await fetch('/api/my-endpoint');
-const data: MyRouteResponse = await response.json();
-```
+## Dependencies
 
-### New Page Route
-1. Create component in `client/pages/MyPage.tsx`
-2. Add route in `client/App.tsx`:
-```typescript
-<Route path="/my-page" element={<MyPage />} />
-```
+Before introducing a new dependency ask:
 
-## Production Deployment
+1. Can this be implemented with existing code?
+2. Is this dependency actively maintained?
+3. Does it significantly reduce complexity?
 
-- **Standard**: `pnpm build`
-- **Binary**: Self-contained executables (Linux, macOS, Windows)
-- **Cloud Deployment**: Use either Netlify or Vercel via their MCP integrations for easy deployment. Both providers work well with this starter template.
+Prefer fewer dependencies.
 
-## Architecture Notes
+## Accessibility
 
-- Single-port development with Vite + Express integration
-- TypeScript throughout (client, server, shared)
-- Full hot reload for rapid development
-- Production-ready with multiple deployment options
-- Comprehensive UI component library included
-- Type-safe API communication via shared interfaces
+Every UI should support keyboard navigation, semantic HTML, screen readers, and sufficient contrast.
+
+## Performance
+
+Prioritize lazy loading, code splitting, and image optimization. Avoid unnecessary renders.
+
+## Testing
+
+Write tests for business logic, utilities, and critical flows. UI snapshots are lower priority.
+
+## Git
+
+Small commits. Clear commit messages. One logical change per commit.
+
+---
+
+# AI Assistant Guidelines
+
+When contributing to this repository:
+
+- challenge unclear requirements
+- suggest simpler alternatives
+- explain architectural tradeoffs
+- preserve consistency with existing code
+- never introduce unnecessary abstractions
+
+If a proposed implementation conflicts with Maurique Labs principles, explain why before implementing it.
+
+---
+
+# Current Mission
+
+Maurique Labs is building the infrastructure that empowers the next generation of electronic music communities.
+
+Every line of code should contribute to that vision.
