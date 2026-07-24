@@ -1,12 +1,25 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Radio, Cpu } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 interface PortfolioProps {
   language: "en" | "es";
   theme?: "dark" | "light";
 }
 
-export default function Portfolio({ language, theme = "dark" }: PortfolioProps) {
+type Product = {
+  title: string;
+  label: string;
+  description: string;
+  href: string;
+  host: string;
+  /** Brand accent for the row rule — teal or orange only, one per product */
+  accent: "teal" | "orange";
+};
+
+export default function Portfolio({
+  language,
+  theme = "dark",
+}: PortfolioProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
 
@@ -25,7 +38,7 @@ export default function Portfolio({ language, theme = "dark" }: PortfolioProps) 
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 },
+      { threshold: 0.12 },
     );
 
     const element = document.getElementById("portfolio");
@@ -38,117 +51,134 @@ export default function Portfolio({ language, theme = "dark" }: PortfolioProps) 
 
   const show = isVisible || reduceMotion;
 
-  const content = {
-    en: {
-      sectionTitle: "What we've built",
-      items: [
-        {
-          title: "Mind the Beat",
-          description:
-            "Helping artists, promoters and communities create purpose-driven electronic music experiences.",
-          icon: Radio,
-          link: "https://mindthebeat.live/",
-          image:
-            "linear-gradient(135deg, rgba(255, 87, 20, 0.25) 0%, rgba(43, 201, 163, 0.2) 100%)",
-        },
-        {
-          title: "AI Sound Labs",
-          description:
-            "Bringing together music professionals and technology companies to explore the future of creativity.",
-          icon: Cpu,
-          link: "https://aisoundlabs.com/",
-          image:
-            "linear-gradient(135deg, rgba(43, 201, 163, 0.2) 0%, rgba(199, 185, 240, 0.2) 100%)",
-        },
-      ],
-    },
-    es: {
-      sectionTitle: "Lo que hemos construido",
-      items: [
-        {
-          title: "Mind the Beat",
-          description:
-            "Ayudamos a artistas, promotores y comunidades a crear experiencias de música electrónica con propósito.",
-          icon: Radio,
-          link: "https://mindthebeat.live/",
-          image:
-            "linear-gradient(135deg, rgba(255, 87, 20, 0.25) 0%, rgba(43, 201, 163, 0.2) 100%)",
-        },
-        {
-          title: "AI Sound Labs",
-          description:
-            "Reunimos a profesionales de la música y empresas de tecnología para explorar el futuro de la creatividad.",
-          icon: Cpu,
-          link: "https://aisoundlabs.com/",
-          image:
-            "linear-gradient(135deg, rgba(43, 201, 163, 0.2) 0%, rgba(199, 185, 240, 0.2) 100%)",
-        },
-      ],
-    },
-  };
+  const content: Record<"en" | "es", { sectionTitle: string; items: Product[] }> =
+    {
+      en: {
+        sectionTitle: "What we've built",
+        items: [
+          {
+            title: "Mind the Beat",
+            label: "Live experiences",
+            description:
+              "Tools and community for artists and promoters creating purpose-driven electronic music experiences — from idea to tickets.",
+            href: "https://mindthebeat.live/",
+            host: "mindthebeat.live",
+            accent: "orange",
+          },
+          {
+            title: "AI Sound Labs",
+            label: "Music × technology",
+            description:
+              "A space where music professionals and technology companies meet to explore how AI changes creative practice.",
+            href: "https://aisoundlabs.com/",
+            host: "aisoundlabs.com",
+            accent: "teal",
+          },
+        ],
+      },
+      es: {
+        sectionTitle: "Lo que hemos construido",
+        items: [
+          {
+            title: "Mind the Beat",
+            label: "Experiencias en vivo",
+            description:
+              "Herramientas y comunidad para artistas y promotores que crean experiencias de música electrónica con propósito — de la idea a la entrada.",
+            href: "https://mindthebeat.live/",
+            host: "mindthebeat.live",
+            accent: "orange",
+          },
+          {
+            title: "AI Sound Labs",
+            label: "Música × tecnología",
+            description:
+              "Un espacio donde profesionales de la música y empresas de tecnología exploran cómo la IA cambia la práctica creativa.",
+            href: "https://aisoundlabs.com/",
+            host: "aisoundlabs.com",
+            accent: "teal",
+          },
+        ],
+      },
+    };
 
   const copy = content[language];
 
   return (
     <section
       id="portfolio"
-      className={`section bg-background text-foreground ${theme === "light" ? "light" : ""}`}
+      className={`section bg-background text-foreground ${
+        theme === "light" ? "light" : ""
+      }`}
     >
       <div className="section-container">
         <h2
-          className={`mb-16 transition-opacity duration-300 ${
+          className={`mb-12 sm:mb-16 transition-opacity duration-300 ${
             show ? "opacity-100" : "opacity-0"
           }`}
         >
           {copy.sectionTitle}
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {copy.items.map((item, index) => {
-            const Icon = item.icon;
-            return (
+        <ul className="border-t border-border">
+          {copy.items.map((item, index) => (
+            <li
+              key={item.title}
+              className={`transition-opacity duration-300 ${
+                show ? "opacity-100" : "opacity-0"
+              }`}
+              style={{
+                transitionDelay:
+                  show && !reduceMotion ? `${index * 120 + 80}ms` : "0ms",
+              }}
+            >
               <a
-                key={item.title}
-                href={item.link}
+                href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`card-base card-hover group transition-opacity duration-300 overflow-hidden relative ${
-                  show ? "opacity-100" : "opacity-0"
-                }`}
-                style={{
-                  transitionDelay:
-                    show && !reduceMotion ? `${(index + 1) * 100}ms` : "0ms",
-                }}
+                className="group relative block border-b border-border py-10 sm:py-12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                {/*
-                  Gradient stands in for real product photography (see brand
-                  design system rule: "missing assets" — replace with an
-                  artist/promoter/product photo when available).
-                */}
-                <div
-                  className="absolute inset-0 opacity-[0.08] group-hover:opacity-[0.16] transition-opacity"
-                  style={{ background: item.image }}
-                ></div>
+                {/* Accent rule — encodes product character, not decoration */}
+                <span
+                  aria-hidden="true"
+                  className={`absolute left-0 top-0 h-full w-0.5 origin-top scale-y-0 transition-transform duration-300 group-hover:scale-y-100 group-focus-visible:scale-y-100 ${
+                    item.accent === "orange" ? "bg-brand-orange" : "bg-brand-teal"
+                  }`}
+                />
 
-                <div className="relative z-10">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-btn bg-accent2/10 mb-6">
-                    <Icon className="w-6 h-6 text-accent2" />
+                <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between sm:gap-12 pl-0 group-hover:pl-4 group-focus-visible:pl-4 transition-[padding] duration-300">
+                  <div className="min-w-0 max-w-2xl">
+                    <p
+                      className={`mb-3 text-xs font-semibold uppercase tracking-[0.18em] ${
+                        item.accent === "orange"
+                          ? "text-brand-orange"
+                          : "text-brand-teal"
+                      }`}
+                    >
+                      {item.label}
+                    </p>
+                    <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground transition-colors duration-200 group-hover:text-foreground">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 text-base sm:text-lg text-foreground/65 leading-relaxed max-w-xl">
+                      {item.description}
+                    </p>
                   </div>
-                  <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-accent2 transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-foreground/70 leading-relaxed mb-6">
-                    {item.description}
-                  </p>
-                  <span className="inline-flex items-center gap-1 text-sm font-semibold text-accent2">
-                    {item.link.replace(/^https?:\/\//, "").replace(/\/$/, "")}
-                    <ArrowUpRight className="w-4 h-4" />
+
+                  <span className="inline-flex shrink-0 items-center gap-2 self-start text-sm font-semibold text-foreground/70 transition-colors duration-200 group-hover:text-accent2 sm:mt-10">
+                    {item.host}
+                    <ArrowUpRight
+                      className={`h-4 w-4 transition-transform duration-200 ${
+                        reduceMotion
+                          ? ""
+                          : "group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      }`}
+                    />
                   </span>
                 </div>
               </a>
-            );
-          })}
-        </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
