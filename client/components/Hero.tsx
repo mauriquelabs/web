@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight, ChevronDown } from "lucide-react";
 
 interface HeroProps {
@@ -8,35 +8,48 @@ interface HeroProps {
 export default function Hero({ language }: HeroProps) {
   const content = {
     en: {
-      h1: "Maurique Labs",
-      subheadline: "Technology · Creativity · Culture",
-      slogan: "A unique partner bridging technology and culture — built for the long run.",
-      ctaPrimary: "See Our Work",
-      ctaSecondary: "Let's Collaborate",
+      brand: "Maurique Labs",
+      h1: "Software for the music industry.",
+      slogan:
+        "We partner with artists, promoters and music tech companies to discover real problems and build software that strengthens the music ecosystem.",
+      ctaPrimary: "Explore our work",
+      ctaSecondary: "Let's talk",
     },
     es: {
-      h1: "Maurique Labs",
-      subheadline: "Tecnología · Creatividad · Cultura",
-      slogan: "Un partner único que une tecnología y cultura, con visión de continuidad.",
-      ctaPrimary: "Ver Nuestro Trabajo",
-      ctaSecondary: "Colaboremos",
+      brand: "Maurique Labs",
+      h1: "Software para la industria musical.",
+      slogan:
+        "Colaboramos con artistas, promotores y empresas de tecnología musical para descubrir problemas reales y construir software que fortalece el ecosistema musical.",
+      ctaPrimary: "Explora nuestro trabajo",
+      ctaSecondary: "Hablemos",
     },
   };
 
   const copy = content[language];
 
   const sectionRef = useRef<HTMLElement>(null);
-  const layer1Ref = useRef<HTMLDivElement>(null);
-  const layer2Ref = useRef<HTMLDivElement>(null);
-  const layer3Ref = useRef<HTMLDivElement>(null);
+  const washRef = useRef<HTMLDivElement>(null);
+  const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduceMotion(mq.matches);
+    const onChange = () => setReduceMotion(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
+  useEffect(() => {
+    if (reduceMotion) return;
+
     const section = sectionRef.current;
     if (!section) return;
 
     let rafId: number;
-    let targetX = 0, targetY = 0;
-    let currentX = 0, currentY = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
 
     const onMouseMove = (e: MouseEvent) => {
       const rect = section.getBoundingClientRect();
@@ -50,15 +63,12 @@ export default function Hero({ language }: HeroProps) {
     };
 
     const tick = () => {
-      currentX += (targetX - currentX) * 0.07;
-      currentY += (targetY - currentY) * 0.07;
+      currentX += (targetX - currentX) * 0.06;
+      currentY += (targetY - currentY) * 0.06;
 
-      if (layer1Ref.current)
-        layer1Ref.current.style.transform = `translate(${currentX * 6}px, ${currentY * 6}px)`;
-      if (layer2Ref.current)
-        layer2Ref.current.style.transform = `translate(${currentX * 13}px, ${currentY * 13}px)`;
-      if (layer3Ref.current)
-        layer3Ref.current.style.transform = `translate(${currentX * 20}px, ${currentY * 20}px)`;
+      if (washRef.current) {
+        washRef.current.style.transform = `translate(${currentX * 18}px, ${currentY * 12}px)`;
+      }
 
       rafId = requestAnimationFrame(tick);
     };
@@ -72,77 +82,119 @@ export default function Hero({ language }: HeroProps) {
       section.removeEventListener("mouseleave", onMouseLeave);
       cancelAnimationFrame(rafId);
     };
-  }, []);
+  }, [reduceMotion]);
 
   return (
     <section
       ref={sectionRef}
       id="home"
-      className="section min-h-screen flex flex-col items-center justify-center relative overflow-hidden"
+      className="section bg-brand-black text-foreground min-h-[100svh] flex flex-col items-center justify-center relative overflow-hidden"
     >
-      {/* Dot grid background */}
+      {/* Outer: ambient breath. Inner: mouse parallax (separate transforms). */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.09) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-        }}
-      />
+        className={`absolute inset-[-12%] pointer-events-none ${
+          reduceMotion ? "" : "animate-stage-breathe"
+        }`}
+      >
+        <div
+          ref={washRef}
+          className="absolute inset-0 will-change-transform"
+          style={{
+            background: `
+              radial-gradient(ellipse 55% 45% at 18% 78%, rgba(43, 201, 163, 0.28) 0%, transparent 70%),
+              radial-gradient(ellipse 50% 40% at 88% 18%, rgba(255, 87, 20, 0.2) 0%, transparent 65%),
+              radial-gradient(ellipse 70% 50% at 50% 100%, rgba(13, 38, 38, 0.9) 0%, transparent 60%)
+            `,
+          }}
+        />
+      </div>
 
       <div className="section-container relative z-10 text-center">
-        {/* Layer 1 — least movement */}
-        <div ref={layer1Ref}>
-          <h1 className="animate-slide-up mb-4 text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight">
-            {copy.h1}
-          </h1>
-        </div>
+        <img
+          src="/logo-mark.png"
+          alt=""
+          width={96}
+          height={93}
+          className={`mx-auto mb-8 h-20 w-auto sm:h-24 ${
+            reduceMotion ? "" : "animate-slide-up"
+          }`}
+          aria-hidden="true"
+        />
 
-        {/* Layer 2 — medium movement */}
-        <div ref={layer2Ref}>
-          <p
-            className="text-lg sm:text-xl font-semibold tracking-widest text-accent uppercase mb-8 animate-slide-up opacity-0"
-            style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
-          >
-            {copy.subheadline}
-          </p>
-        </div>
+        <p
+          className={`font-heading text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground mb-6 ${
+            reduceMotion ? "" : "animate-slide-up opacity-0"
+          }`}
+          style={
+            reduceMotion
+              ? undefined
+              : { animationDelay: "0.08s", animationFillMode: "forwards" }
+          }
+        >
+          {copy.brand}
+        </p>
 
-        {/* Layer 3 — most movement */}
-        <div ref={layer3Ref}>
-          <p
-            className="text-base sm:text-lg text-foreground/60 max-w-lg mx-auto mb-12 leading-relaxed animate-slide-up opacity-0"
-            style={{ animationDelay: "0.30s", animationFillMode: "forwards" }}
-          >
-            {copy.slogan}
-          </p>
+        <h1
+          className={`text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight text-foreground/75 mb-8 max-w-2xl mx-auto ${
+            reduceMotion ? "" : "animate-slide-up opacity-0"
+          }`}
+          style={
+            reduceMotion
+              ? undefined
+              : { animationDelay: "0.16s", animationFillMode: "forwards" }
+          }
+        >
+          {copy.h1}
+        </h1>
 
-          {/* CTA Buttons */}
-          <div
-            className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up opacity-0"
-            style={{ animationDelay: "0.45s", animationFillMode: "forwards" }}
+        <p
+          className={`text-base sm:text-lg text-foreground/55 max-w-xl mx-auto mb-12 leading-relaxed ${
+            reduceMotion ? "" : "animate-slide-up opacity-0"
+          }`}
+          style={
+            reduceMotion
+              ? undefined
+              : { animationDelay: "0.24s", animationFillMode: "forwards" }
+          }
+        >
+          {copy.slogan}
+        </p>
+
+        <div
+          className={`flex flex-col sm:flex-row gap-4 justify-center ${
+            reduceMotion ? "" : "animate-slide-up opacity-0"
+          }`}
+          style={
+            reduceMotion
+              ? undefined
+              : { animationDelay: "0.32s", animationFillMode: "forwards" }
+          }
+        >
+          <a
+            href="#portfolio"
+            className="btn-primary inline-flex items-center justify-center gap-2"
           >
-            <a
-              href="#showcase"
-              className="btn-primary inline-flex items-center justify-center gap-2"
-            >
-              {copy.ctaPrimary}
-              <ArrowRight className="w-4 h-4" />
-            </a>
-            <a
-              href="#collaborate"
-              className="btn-outline inline-flex items-center justify-center gap-2"
-            >
-              {copy.ctaSecondary}
-              <ArrowRight className="w-4 h-4" />
-            </a>
-          </div>
+            {copy.ctaPrimary}
+            <ArrowRight className="w-4 h-4" />
+          </a>
+          <a
+            href="#contact"
+            className="btn-outline inline-flex items-center justify-center gap-2"
+          >
+            {copy.ctaSecondary}
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div aria-hidden="true" className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
-        <ChevronDown className="w-6 h-6 text-white" />
+      <div
+        aria-hidden="true"
+        className={`absolute bottom-8 left-1/2 -translate-x-1/2 ${
+          reduceMotion ? "opacity-40" : "animate-drift"
+        }`}
+      >
+        <ChevronDown className="w-6 h-6 text-foreground/70" />
       </div>
     </section>
   );

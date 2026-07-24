@@ -1,0 +1,13 @@
+---
+description: Maurique Labs brand visual identity / website design system — colors, typography, spacing, components, motion
+alwaysApply: true
+---
+
+# Brand design system
+
+Before UI or styling work, read and follow
+[`docs/brand-design-system.md`](docs/brand-design-system.md).
+
+Do not invent parallel visual systems (colors, typefaces, button styles, or section theming).
+Use semantic tokens (`bg-background`, `text-foreground`, …) and existing classes
+(`.btn-primary`, `.card-base`, `.section`, `.section-container`).

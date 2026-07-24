@@ -9,6 +9,21 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-slide-up,
+  .animate-drift,
+  .animate-fade-in,
+  .animate-stage-breathe {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 @layer base {
   /**
    * Maurique Labs Brand Theme
@@ -50,6 +65,10 @@ html {
     --ring: 17 100% 54%;
 
     --radius: 0.5rem;
+    /* Design-system radius scale (buttons 12px, cards 16px, pills 999px) */
+    --radius-btn: 0.75rem;
+    --radius-card: 1rem;
+    --radius-pill: 999px;
 
     --sidebar-background: 180 49% 10%;
     --sidebar-foreground: 0 0% 100%;
@@ -61,45 +80,55 @@ html {
     --sidebar-ring: 17 100% 54%;
   }
 
+  /**
+   * Light surface — White background, Deep Pine text.
+   * Applied per-section (not globally) by adding className="light" to a
+   * <section>. Every component already styles itself with semantic tokens
+   * (bg-background, text-foreground, bg-card, border-border, etc.), so
+   * wrapping a section in `.light` re-themes it automatically with no
+   * per-component overrides needed. This is what makes the section rhythm
+   * (white → dark → white → gradient) easy to try and change — see
+   * `SECTION_THEME` in client/pages/Index.tsx.
+   */
   .light {
-    --background: 180 49% 10%;
-    --foreground: 0 0% 100%;
+    --background: 168 25% 97%; /* Warm off-white, pine-tinted rather than stark white */
+    --foreground: 180 49% 10%; /* Deep Pine #0D2626 */
 
-    --card: 180 40% 13%;
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 100%;
+    --card-foreground: 180 49% 10%;
 
-    --popover: 180 40% 13%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 180 49% 10%;
 
     --primary: 180 49% 10%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 166 65% 48%;
-    --secondary-foreground: 180 49% 10%;
+    --secondary: 166 65% 48%; /* Bright Teal #2BC9A3 */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 180 30% 20%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 168 25% 93%;
+    --muted-foreground: 180 15% 40%;
 
-    --accent: 17 100% 54%;
+    --accent: 17 100% 54%; /* Electric Orange #FF5714 */
     --accent-foreground: 0 0% 100%;
 
-    --accent2: 166 65% 48%;
-    --accent2-foreground: 180 49% 10%;
+    --accent2: 166 65% 40%; /* Bright Teal, darkened for AA contrast on white */
+    --accent2-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 180 30% 20%;
-    --input: 180 30% 20%;
+    --border: 180 15% 88%;
+    --input: 180 15% 88%;
     --ring: 17 100% 54%;
 
-    --sidebar-background: 180 49% 10%;
-    --sidebar-foreground: 0 0% 100%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 180 49% 10%;
     --sidebar-primary: 17 100% 54%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 180 30% 20%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 180 30% 20%;
+    --sidebar-accent: 180 15% 95%;
+    --sidebar-accent-foreground: 180 49% 10%;
+    --sidebar-border: 180 15% 88%;
     --sidebar-ring: 17 100% 54%;
   }
 }
@@ -155,34 +184,55 @@ html {
 
 @layer components {
   .section-container {
-    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Narrow editorial column for body copy (~720–820px / ~75 characters) */
+  .content-narrow {
+    @apply max-w-[760px] mx-auto;
   }
 
   .section {
     @apply py-16 sm:py-24 lg:py-32;
   }
 
+  /*
+   * Button color mapping (see .cursor/rules/brand-design-system.mdc):
+   * - .btn-primary  → Electric Orange. The brand's "Primary CTA" color;
+   *   used for the main conversion action (Explore our work, Let's talk, Send).
+   * - .btn-secondary → Deep Pine background / white text / hover Bright Teal.
+   *   Implements the design system's literal "Primary button" rule; use for
+   *   neutral/secondary actions that shouldn't compete with the main CTA.
+   * - .btn-outline  → Transparent, adaptive border, hover fills Deep Pine.
+   *   Implements the design system's "Secondary button" rule.
+   */
   .btn-primary {
-    @apply px-6 py-3 bg-accent text-accent-foreground rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg;
+    @apply px-6 py-3 bg-accent text-accent-foreground rounded-btn font-semibold transition-all duration-200 hover:bg-accent2 hover:scale-[1.02];
   }
 
   .btn-secondary {
-    @apply px-6 py-3 border border-accent text-accent rounded-lg font-semibold transition-all duration-300 hover:bg-accent hover:text-accent-foreground;
+    @apply px-6 py-3 bg-brand-pine text-white rounded-btn font-semibold transition-all duration-200 hover:bg-accent2 hover:scale-[1.02];
   }
 
   .btn-outline {
-    @apply px-6 py-3 border border-white/30 text-white rounded-lg font-semibold transition-all duration-300 hover:border-white hover:bg-white/10;
+    @apply px-6 py-3 border border-foreground/30 text-foreground rounded-btn font-semibold transition-colors duration-200 hover:border-brand-pine hover:bg-brand-pine hover:text-white;
   }
 
   .btn-ghost {
-    @apply px-6 py-3 text-foreground font-semibold transition-all duration-300 hover:text-accent;
+    @apply px-6 py-3 text-foreground font-semibold transition-colors duration-200 hover:text-accent;
   }
 
   .card-base {
-    @apply bg-card border border-border rounded-lg p-6 transition-all duration-300;
+    @apply bg-card border border-border rounded-card p-6 sm:p-8 transition-all duration-200;
   }
 
+  /* Shadows used sparingly per brand guidance — border + lift signal interactivity, not elevation */
   .card-hover {
-    @apply hover:shadow-lg hover:border-accent hover:translate-y-[-4px];
+    @apply hover:shadow-sm hover:border-accent hover:translate-y-[-4px];
+  }
+
+  /* Small, sparing accent per "use sparingly" guidance (badges, decorative marks) */
+  .badge-pill {
+    @apply inline-flex items-center gap-1.5 rounded-pill px-3 py-1 text-xs font-semibold;
   }
 }

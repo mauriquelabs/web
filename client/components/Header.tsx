@@ -16,19 +16,17 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
 
   const navLinks = {
     en: [
-      { label: "What We Do", href: `${prefix}#services` },
-      { label: "Our Work", href: `${prefix}#showcase` },
-      { label: "Collaborate", href: `${prefix}#collaborate` },
+      { label: "How We're Different", href: `${prefix}#methodology` },
+      { label: "What We've Built", href: `${prefix}#portfolio` },
     ],
     es: [
-      { label: "Qué Hacemos", href: `${prefix}#services` },
-      { label: "Nuestro Trabajo", href: `${prefix}#showcase` },
-      { label: "Colabora", href: `${prefix}#collaborate` },
+      { label: "Cómo Somos Diferentes", href: `${prefix}#methodology` },
+      { label: "Lo Que Hemos Construido", href: `${prefix}#portfolio` },
     ],
   };
 
-  const servicesLink = { label: language === "en" ? "Services" : "Servicios", href: "/services" };
   const ctaLabel = language === "en" ? "Let's Talk" : "Hablemos";
+  const ctaHref = `${prefix}#contact`;
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
@@ -53,16 +51,6 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
               {link.label}
             </a>
           ))}
-          <Link
-            to={servicesLink.href}
-            className={`text-sm font-medium transition-colors duration-300 ${
-              location.pathname === "/services"
-                ? "text-accent"
-                : "text-foreground/70 hover:text-accent"
-            }`}
-          >
-            {servicesLink.label}
-          </Link>
         </nav>
 
         {/* CTA and Language Toggle */}
@@ -93,7 +81,7 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
 
           {/* CTA Button */}
           <a
-            href="https://calendly.com/hello-mauriquelabs/30min"
+            href={ctaHref}
             className="hidden sm:inline-block btn-primary text-sm"
           >
             {ctaLabel}
@@ -127,20 +115,10 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
                 {link.label}
               </a>
             ))}
-            <Link
-              to={servicesLink.href}
-              className={`text-sm font-medium transition-colors ${
-                location.pathname === "/services"
-                  ? "text-accent"
-                  : "text-foreground/70 hover:text-accent"
-              }`}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {servicesLink.label}
-            </Link>
             <a
-              href="https://calendly.com/hello-mauriquelabs/30min"
+              href={ctaHref}
               className="btn-primary text-sm text-center"
+              onClick={() => setMobileMenuOpen(false)}
             >
               {ctaLabel}
             </a>
