@@ -61,10 +61,13 @@ Admin auth uses [Supabase Auth](https://supabase.com/docs/guides/auth). To set i
 
 1. Create a Supabase project at [supabase.com](https://supabase.com).
 2. Copy `.env.example` values into `.env` and fill in your project URL and anon key from **Project Settings → API**.
-3. In Supabase **Authentication → Providers**, enable Email and create an admin user under **Users**.
-4. Run `pnpm dev` and open [`/admin/login`](http://localhost:5000/admin/login).
+3. In Supabase **Authentication → Providers**, enable Email and **disable public signups** unless you intend to open registration.
+4. Create an admin user under **Authentication → Users**, then grant access using **either**:
+   - set `app_metadata.role` to `"admin"` on the user in Supabase, **or**
+   - add the user's email to `ADMIN_EMAILS` / `VITE_ADMIN_EMAILS` in `.env`.
+5. Run `pnpm dev` and open [`/admin/login`](http://localhost:5000/admin/login).
 
-Protected routes live under `/admin`. The server verifies JWTs on `GET /api/auth/me` — the same pattern will protect future CMS write endpoints.
+Protected routes live under `/admin`. The server verifies JWTs and admin access on `GET /api/auth/me` — the same pattern will protect future CMS write endpoints.
 
 
 | Variable       | Description                          | Default |
@@ -75,6 +78,8 @@ Protected routes live under `/admin`. The server verifies JWTs on `GET /api/auth
 | `VITE_SUPABASE_ANON_KEY` | Supabase anon/public key (client) | — |
 | `SUPABASE_URL` | Supabase project URL (server JWT verification) | same as `VITE_SUPABASE_URL` |
 | `SUPABASE_ANON_KEY` | Supabase anon/public key (server) | same as `VITE_SUPABASE_ANON_KEY` |
+| `ADMIN_EMAILS` | Comma-separated emails allowed to access `/admin` (server) | — |
+| `VITE_ADMIN_EMAILS` | Same allowlist for the client route guard | same as `ADMIN_EMAILS` |
 
 
 

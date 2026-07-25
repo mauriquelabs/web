@@ -1,5 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
+import { isAdminUser } from "@shared/auth";
 import { useAuth } from "@/contexts/AuthProvider";
+import { getClientAdminEmails } from "@/lib/admin";
 
 export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { session, loading } = useAuth();
@@ -15,6 +17,16 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
   if (!session) {
     return <Navigate to="/admin/login" state={{ from: location }} replace />;
+  }
+
+  if (!isAdminUser(session.user, getClientAdminEmails())) {
+    return (
+      <Navigate
+        to="/admin/login"
+        state={{ error: "You do not have admin access." }}
+        replace
+      />
+    );
   }
 
   return children;

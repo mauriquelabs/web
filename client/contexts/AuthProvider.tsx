@@ -8,7 +8,9 @@ import {
   type ReactNode,
 } from "react";
 import type { Session, User } from "@supabase/supabase-js";
+import { isAdminUser } from "@shared/auth";
 import { getSupabase, isSupabaseConfigured } from "@/lib/supabase";
+import { getClientAdminEmails } from "@/lib/admin";
 
 interface AuthContextValue {
   session: Session | null;
@@ -55,11 +57,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       };
     }
 
-    const { error } = await getSupabase().auth.signInWithPassword({
+    const { data, error } = await getSupabase().auth.signInWithPassword({
       email,
       password,
     });
-    return { error: error?.message ?? null };
+
+    if (error) {
+      return { error: error.message };
+    }
+
+    if (data.session && !isAdminUser(data.session.user, getClientAdminEmails())) {
+      await getSupabase().auth.signOut();
+      return { error: "You do not have admin access." };
+    }
+
+    return { error: null };
   }, []);
 
   const signOut = useCallback(async () => {

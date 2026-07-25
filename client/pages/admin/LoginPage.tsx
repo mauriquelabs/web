@@ -1,22 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, Navigate, useLocation } from "react-router-dom";
 import { AlertCircle } from "lucide-react";
+import { isAdminUser } from "@shared/auth";
 import { useAuth } from "@/contexts/AuthProvider";
+import { getClientAdminEmails } from "@/lib/admin";
 import { isSupabaseConfigured } from "@/lib/supabase";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 
 export default function LoginPage() {
-  const { session, loading, signIn } = useAuth();
+  const { session, loading, signIn, signOut } = useAuth();
   const location = useLocation();
   const from =
     (location.state as { from?: { pathname: string } } | null)?.from
       ?.pathname ?? "/admin";
+  const redirectError =
+    (location.state as { error?: string } | null)?.error ?? null;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(redirectError);
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (!loading && session && !isAdminUser(session.user, getClientAdminEmails())) {
+      void signOut();
+      setError("You do not have admin access.");
+    }
+  }, [loading, session, signOut]);
 
   if (loading) {
     return (
@@ -26,7 +37,7 @@ export default function LoginPage() {
     );
   }
 
-  if (session) {
+  if (session && isAdminUser(session.user, getClientAdminEmails())) {
     return <Navigate to={from} replace />;
   }
 
