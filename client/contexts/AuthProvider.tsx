@@ -34,10 +34,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const supabase = getSupabase();
 
-    supabase.auth.getSession().then(({ data: { session: currentSession } }) => {
-      setSession(currentSession);
-      setLoading(false);
-    });
+    supabase.auth
+      .getSession()
+      .then(({ data: { session: currentSession } }) => {
+        setSession(currentSession);
+      })
+      .catch(() => {
+        setSession(null);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
 
     const {
       data: { subscription },

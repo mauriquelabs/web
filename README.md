@@ -69,6 +69,8 @@ Admin auth uses [Supabase Auth](https://supabase.com/docs/guides/auth). To set i
 
 Protected routes live under `/admin`. The server verifies JWTs and admin access on `GET /api/auth/me` — the same pattern will protect future CMS write endpoints.
 
+For hosted deployments (e.g. Vercel), set the same Supabase and admin variables in the project environment settings. Both `ADMIN_EMAILS` (server) and `VITE_ADMIN_EMAILS` (client build) are required for admin access to work in production.
+
 
 | Variable       | Description                          | Default |
 | -------------- | ------------------------------------ | ------- |
