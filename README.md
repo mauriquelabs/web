@@ -81,7 +81,7 @@ Create a `.env` file in the project root if you need to override defaults:
 
 ## Project structure
 
-```
+```text
 client/                 # React SPA
 ├── pages/              # Route components (Index, ServicesPage, NotFound)
 ├── components/         # Section and shared UI components
