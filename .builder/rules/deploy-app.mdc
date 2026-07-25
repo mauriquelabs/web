@@ -1,22 +1,15 @@
 ---
-description: Deploy the app to production using Netlify or Vercel to make the site live
+description: Deploy the app to production to make the site live
 globs:
 alwaysApply: true
 ---
 
-Deploying the app to production is powered by either Netlify or Vercel through MCP (Model Context Protocol) integrations:
+Production deployment uses the combined Node server (`pnpm build` then `pnpm start`):
 
-**For Netlify:**
+- The server serves static assets from `dist/spa` and handles `/api/*` routes via Express.
+- Verify the build locally with `pnpm build` before deploying.
+- Do not ask the user to run commands in the terminal; use the Bash tool when needed.
 
-- If the Netlify tools are not available, tell the user to [Connect Netlify MCP](#open-mcp-popover).
-- If the user asks to deploy the app, use the appropriate Netlify MCP tools to deploy the app.
-- Note: Netlify builds the source code on their servers, so while it's good to check if `npm run build` works locally, it's not required.
-- Do not ask user to your any command in the terminal, use the Bash tool when needed.
-
-**For Vercel:**
-
-- If the Vercel tools are not available, tell the user to [Connect Vercel MCP](#open-mcp-popover).
-- Vercel deployment should work automatically once connected - simply use the appropriate Vercel MCP tools.
-- Do not ask user to your any command in the terminal, use the Bash tool when needed.
+For hosted deployments (Vercel, Railway, etc.), use the appropriate MCP integration if available. Otherwise, deploy the built `dist/` output with a Node runtime.
 
 You can also suggest sharing the [Open Preview](#open-preview), but explain that it won't be a production-ready link.

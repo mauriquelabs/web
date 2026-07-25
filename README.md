@@ -136,15 +136,6 @@ pnpm start
 
 The production server serves static assets from `dist/spa` and falls back to `index.html` for client-side routing.
 
-## Deployment
-
-The site is configured for [Netlify](https://www.netlify.com/):
-
-- **Static assets** are published from `dist/spa`
-- **API routes** are proxied to a serverless function at `netlify/functions/api.ts`, which wraps the same Express app used in development
-
-See `netlify.toml` for build and redirect configuration.
-
 ## Design system
 
 Before changing UI or styling, read `[docs/brand-design-system.md](docs/brand-design-system.md)`. Use semantic tokens (`bg-background`, `text-foreground`, …) and existing utility classes (`.btn-primary`, `.card-base`, `.section`, `.section-container`) rather than inventing parallel visual patterns.
