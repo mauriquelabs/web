@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from "express";
 import type { User } from "@supabase/supabase-js";
-import { isAdminUser, parseAdminEmails } from "@shared/auth";
+import { isAdminUser, parseAdminEmails } from "../../shared/auth";
 import { getSupabaseAdmin } from "../lib/supabase";
 
 declare global {
