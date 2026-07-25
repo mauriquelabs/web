@@ -53,13 +53,28 @@ Open [http://localhost:5000](http://localhost:5000). The Vite dev server serves 
 
 ### Environment variables
 
-Create a `.env` file in the project root if you need to override defaults:
+Create a `.env` file in the project root if you need to override defaults. See `.env.example` for all variables.
+
+### Supabase authentication (CMS admin)
+
+Admin auth uses [Supabase Auth](https://supabase.com/docs/guides/auth). To set it up:
+
+1. Create a Supabase project at [supabase.com](https://supabase.com).
+2. Copy `.env.example` values into `.env` and fill in your project URL and anon key from **Project Settings → API**.
+3. In Supabase **Authentication → Providers**, enable Email and create an admin user under **Users**.
+4. Run `pnpm dev` and open [`/admin/login`](http://localhost:5000/admin/login).
+
+Protected routes live under `/admin`. The server verifies JWTs on `GET /api/auth/me` — the same pattern will protect future CMS write endpoints.
 
 
 | Variable       | Description                          | Default |
 | -------------- | ------------------------------------ | ------- |
 | `PORT`         | Production server port               | `5000`  |
 | `PING_MESSAGE` | Response message for `GET /api/ping` | `ping`  |
+| `VITE_SUPABASE_URL` | Supabase project URL (client) | — |
+| `VITE_SUPABASE_ANON_KEY` | Supabase anon/public key (client) | — |
+| `SUPABASE_URL` | Supabase project URL (server JWT verification) | same as `VITE_SUPABASE_URL` |
+| `SUPABASE_ANON_KEY` | Supabase anon/public key (server) | same as `VITE_SUPABASE_ANON_KEY` |
 
 
 
@@ -119,6 +134,7 @@ All endpoints are prefixed with `/api/`.
 | ------ | -------------- | ------------------------ |
 | `GET`  | `/api/ping`    | Health check             |
 | `GET`  | `/api/demo`    | Demo endpoint            |
+| `GET`  | `/api/auth/me` | Current user (Bearer JWT) |
 | `POST` | `/api/contact` | Contact form submission  |
 | `POST` | `/api/quote`   | Quote request submission |
 
