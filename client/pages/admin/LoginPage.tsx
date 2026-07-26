@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, Navigate, useLocation } from "react-router-dom";
 import { AlertCircle } from "lucide-react";
-import { isAdminUser } from "@shared/auth";
 import { useAuth } from "@/contexts/AuthProvider";
-import { getClientAdminEmails } from "@/lib/admin";
 import { isSupabaseConfigured } from "@/lib/supabase";
+import { verifyAdminAccess } from "@/lib/verifyAdmin";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 
@@ -21,15 +20,54 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(redirectError);
   const [submitting, setSubmitting] = useState(false);
+  const [adminVerified, setAdminVerified] = useState<boolean | null>(null);
 
   useEffect(() => {
-    if (!loading && session && !isAdminUser(session.user, getClientAdminEmails())) {
-      void signOut();
-      setError("You do not have admin access.");
+    if (loading) {
+      return;
     }
-  }, [loading, session, signOut]);
 
-  if (loading) {
+    if (!session?.access_token) {
+      setAdminVerified(false);
+      return;
+    }
+
+    let cancelled = false;
+    const controller = new AbortController();
+
+    verifyAdminAccess(session.access_token, controller.signal)
+      .then(async (result) => {
+        if (cancelled) {
+          return;
+        }
+
+        if (!result.ok) {
+          await signOut();
+          setError("You do not have admin access.");
+          setAdminVerified(false);
+          return;
+        }
+
+        setAdminVerified(true);
+      })
+      .catch((verifyError: unknown) => {
+        if (
+          cancelled ||
+          (verifyError instanceof DOMException && verifyError.name === "AbortError")
+        ) {
+          return;
+        }
+
+        setAdminVerified(false);
+      });
+
+    return () => {
+      cancelled = true;
+      controller.abort();
+    };
+  }, [loading, session?.access_token, signOut]);
+
+  if (loading || (session && adminVerified === null)) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <p className="text-foreground/70">Loading…</p>
@@ -37,7 +75,7 @@ export default function LoginPage() {
     );
   }
 
-  if (session && isAdminUser(session.user, getClientAdminEmails())) {
+  if (session && adminVerified) {
     return <Navigate to={from} replace />;
   }
 

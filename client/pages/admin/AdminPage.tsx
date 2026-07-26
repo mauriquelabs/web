@@ -1,80 +1,8 @@
-import { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthProvider";
-import { getSupabase, isSupabaseConfigured } from "@/lib/supabase";
-import type { AuthMeResponse } from "@shared/auth";
-
-type VerificationStatus = "checking" | "verified" | "failed";
 
 export default function AdminPage() {
   const { user, signOut } = useAuth();
-  const [verificationStatus, setVerificationStatus] =
-    useState<VerificationStatus>("checking");
-
-  useEffect(() => {
-    async function verifySession() {
-      if (!isSupabaseConfigured()) {
-        setVerificationStatus("failed");
-        return;
-      }
-
-      try {
-        const {
-          data: { session },
-        } = await getSupabase().auth.getSession();
-
-        if (!session?.access_token) {
-          setVerificationStatus("failed");
-          return;
-        }
-
-        const response = await fetch("/api/auth/me", {
-          headers: {
-            Authorization: `Bearer ${session.access_token}`,
-          },
-        });
-
-        if (!response.ok) {
-          await signOut();
-          setVerificationStatus("failed");
-          return;
-        }
-
-        const data = (await response.json()) as AuthMeResponse;
-
-        if (data.user.id !== user?.id) {
-          await signOut();
-          setVerificationStatus("failed");
-          return;
-        }
-
-        setVerificationStatus("verified");
-      } catch {
-        await signOut();
-        setVerificationStatus("failed");
-      }
-    }
-
-    void verifySession();
-  }, [user?.id, signOut]);
-
-  if (verificationStatus === "checking") {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <p className="text-foreground/70">Verifying admin access…</p>
-      </div>
-    );
-  }
-
-  if (verificationStatus === "failed") {
-    return (
-      <Navigate
-        to="/admin/login"
-        state={{ error: "Server could not verify admin access." }}
-        replace
-      />
-    );
-  }
 
   return (
     <div className="min-h-screen bg-background">
