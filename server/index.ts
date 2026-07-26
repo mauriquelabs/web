@@ -4,6 +4,8 @@ import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { handleContact } from "./routes/contact";
 import { handleQuote } from "./routes/quote";
+import { handleAuthMe } from "./routes/auth";
+import { requireAdmin } from "./middleware/requireAuth";
 
 export function createServer() {
   const app = express();
@@ -26,6 +28,9 @@ export function createServer() {
 
   // Quote request endpoint
   app.post("/api/quote", handleQuote);
+
+  // Auth — verify Supabase JWT for protected CMS routes
+  app.get("/api/auth/me", requireAdmin, handleAuthMe);
 
   return app;
 }

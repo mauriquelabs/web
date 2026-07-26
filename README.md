@@ -53,13 +53,34 @@ Open [http://localhost:5000](http://localhost:5000). The Vite dev server serves 
 
 ### Environment variables
 
-Create a `.env` file in the project root if you need to override defaults:
+Create a `.env` file in the project root if you need to override defaults. See `.env.example` for all variables.
+
+### Supabase authentication (CMS admin)
+
+Admin auth uses [Supabase Auth](https://supabase.com/docs/guides/auth). To set it up:
+
+1. Create a Supabase project at [supabase.com](https://supabase.com).
+2. Copy `.env.example` values into `.env` and fill in your project URL and anon key from **Project Settings → API**.
+3. In Supabase **Authentication → Providers**, enable Email and **disable public signups** unless you intend to open registration.
+4. Create an admin user under **Authentication → Users**, then grant access using **either**:
+   - set `app_metadata.role` to `"admin"` on the user in Supabase, **or**
+   - add the user's email to `ADMIN_EMAILS` in `.env`.
+5. Run `pnpm dev` and open [`/admin/login`](http://localhost:5000/admin/login).
+
+Protected routes live under `/admin`. The client calls `GET /api/auth/me` to verify admin access; the server enforces JWT validation and the `ADMIN_EMAILS` allowlist — the same pattern will protect future CMS write endpoints.
+
+For hosted deployments (e.g. Vercel), set the Supabase and `ADMIN_EMAILS` variables in the project environment settings.
 
 
 | Variable       | Description                          | Default |
 | -------------- | ------------------------------------ | ------- |
 | `PORT`         | Production server port               | `5000`  |
 | `PING_MESSAGE` | Response message for `GET /api/ping` | `ping`  |
+| `VITE_SUPABASE_URL` | Supabase project URL (client) | — |
+| `VITE_SUPABASE_ANON_KEY` | Supabase anon/public key (client) | — |
+| `SUPABASE_URL` | Supabase project URL (server JWT verification) | same as `VITE_SUPABASE_URL` |
+| `SUPABASE_ANON_KEY` | Supabase anon/public key (server) | same as `VITE_SUPABASE_ANON_KEY` |
+| `ADMIN_EMAILS` | Comma-separated emails allowed to access `/admin` (server) | — |
 
 
 
@@ -119,6 +140,7 @@ All endpoints are prefixed with `/api/`.
 | ------ | -------------- | ------------------------ |
 | `GET`  | `/api/ping`    | Health check             |
 | `GET`  | `/api/demo`    | Demo endpoint            |
+| `GET`  | `/api/auth/me` | Current user (Bearer JWT) |
 | `POST` | `/api/contact` | Contact form submission  |
 | `POST` | `/api/quote`   | Quote request submission |
 
