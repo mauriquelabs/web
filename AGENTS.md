@@ -2,9 +2,9 @@
 
 This repository belongs to Maurique Labs.
 
-Maurique Labs builds software for the Music Tech industry. Every decision in this repository should reinforce that mission.
+Maurique Labs brings people together through hackathons, creative labs and hands-on workshops — and builds portfolio products from those communities. Every decision in this repository should reinforce that mission.
 
-Our goal is not simply to ship features, but to build software that empowers artists, promoters, communities and music organizations.
+Our goal is not simply to ship features, but to create environments where communities and organisations can explore technology, tackle challenges and turn ideas into something real.
 
 ---
 
@@ -52,13 +52,13 @@ Do not prematurely optimize.
 
 # Product Context
 
-Maurique Labs creates products that connect technology, music, and communities. Every product should strengthen at least one of those dimensions.
+Maurique Labs is an events-and-experiences company with a product portfolio. Music and creative technology are central; the same approach extends to local businesses, wellness communities, educational organisations and teams with challenges to explore.
 
-**Current flagship product:** Mind the Beat — the discovery and community platform for purpose-driven electronic music experiences.
+We do not sell custom software development as a service. We design and facilitate hackathons, creative technology labs and practical workshops — creating the space, structure and technical support for communities to learn, experiment and build. Where useful, we can support further testing, prototyping and product development after an experience.
 
-Future products may integrate with Mind the Beat but should remain independently scalable.
+**Portfolio today:** Mind the Beat (purpose-driven electronic music experiences) and Brew & Move (coffee × movement community experiences).
 
-**This repository today:** the Maurique Labs company marketing website (landing page, services, contact), not the Mind the Beat product app.
+**This repository today:** the Maurique Labs company marketing website (landing page and contact), not the product apps.
 
 ---
 
@@ -200,6 +200,6 @@ If a proposed implementation conflicts with Maurique Labs principles, explain wh
 
 # Current Mission
 
-Maurique Labs is building the infrastructure that empowers the next generation of electronic music communities.
+Maurique Labs creates the environments where technology, culture and community meet — and the portfolio products that grow from them.
 
 Every line of code should contribute to that vision.

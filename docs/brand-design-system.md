@@ -1,8 +1,9 @@
 # Maurique Labs — Website Design System
 
-Maurique Labs is a **software company** (not a creative agency). Every UI decision should
-favor clarity over decoration, products over marketing, and confidence without arrogance.
-Think "software company first, creative industry second."
+Maurique Labs is an **events and experiences company** with a product portfolio — not a
+creative agency and not a client software shop. Every UI decision should favor clarity
+over decoration, real experiences over marketing noise, and confidence without arrogance.
+Think "bring people together first; products grow from that."
 
 ## Typography
 
@@ -45,8 +46,9 @@ combinations**:
   `text-foreground`, `bg-card`, `border-border`, `text-foreground/70`...) — never hardcoded
   colors like `text-white` or `bg-[#0D2626]`. Because of that, wrapping a `<section>` in the
   `.light` class re-themes everything inside it automatically.
-- Section components that support theming (`Methodology`, `Portfolio`, `Manifesto`,
-  `Contact`) accept a `theme?: "dark" | "light"` prop that toggles this class.
+- Section components that support theming (`IdeasSpace`, `Offerings`, `Methodology`,
+  `Portfolio`, `Manifesto`, `Contact`) accept a `theme?: "dark" | "light"` prop that
+  toggles this class.
 - The active rhythm is a single config object, `SECTION_THEME`, at the top of
   `client/pages/Index.tsx`. Change it there to try a different look.
 - `Header` and `Footer` intentionally stay on the dark surface always — see "Known asset
@@ -78,7 +80,7 @@ shadcn/ui component library in `client/components/ui/`).
 Defined in `client/global.css` `@layer components`:
 
 - `.btn-primary` — Electric Orange fill. The **only** button style for primary CTAs /
-  main conversion actions (e.g. "Explore our work", "Let's talk", form submit).
+  main conversion actions (e.g. "Let's create an experience", "Let's talk", form submit).
 - `.btn-secondary` — Deep Pine fill / white text / hover Bright Teal. Use for
   neutral/secondary actions that shouldn't compete with the primary CTA.
 - `.btn-outline` — transparent, adaptive border (`border-foreground/30`), hover fills Deep

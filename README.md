@@ -1,17 +1,16 @@
 # Maurique Labs
 
-**Software for the music industry.**
+**Bring people together. Turn ideas into something real.**
 
-Maurique Labs builds software for the music tech industry. We partner with artists, promoters, and music tech companies to discover real problems and build software that strengthens the music ecosystem.
+Maurique Labs designs hackathons, creative labs and hands-on workshops that help communities and organisations explore technology, tackle challenges and build ideas together. We also grow our own portfolio products from those communities.
 
-This repository is the Maurique Labs company marketing website — landing page, services, and contact flows.
+This repository is the Maurique Labs company marketing website — landing page and contact flows.
 
 ## Features
 
 - Bilingual landing page (English / Spanish) with persisted language preference
-- Homepage sections: Hero, Methodology, Portfolio, Manifesto, and Contact
-- Dedicated `/services` page with quote request flow
-- Contact and quote forms backed by Express API routes
+- Homepage sections: Hero, Ideas, Offerings, Process, Portfolio, Manifesto, and Contact
+- Contact form backed by Formspree / Express API routes
 - Responsive, accessible UI built on Radix primitives and Tailwind CSS
 - Shared TypeScript types between client and server
 
@@ -104,7 +103,7 @@ For hosted deployments (e.g. Vercel), set the Supabase and `ADMIN_EMAILS` variab
 
 ```text
 client/                 # React SPA
-├── pages/              # Route components (Index, ServicesPage, NotFound)
+├── pages/              # Route components (Index, NotFound, admin)
 ├── components/         # Section and shared UI components
 │   └── ui/             # Radix/shadcn-style primitives
 ├── App.tsx             # Router entry

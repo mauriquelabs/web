@@ -1,7 +1,7 @@
-# Fusion Starter - Maurique Labs
+# Maurique Labs
 
 ## Overview
-A React + Express full-stack application for a creative agency website connecting music, technology, and culture. Built with Vite, TypeScript, and Tailwind CSS.
+A React + Express full-stack application for the Maurique Labs marketing website — an events and experiences company with a product portfolio. Built with Vite, TypeScript, and Tailwind CSS.
 
 ## Project Architecture
 
@@ -30,11 +30,12 @@ Run `pnpm dev` to start the development server on port 5000.
 - `pnpm start` - Runs the production server
 
 ## Pages
-- `/` - Homepage (Hero, Mission, Services, Showcase, Collaborate sections)
-- `/services` - Services & Pricing page (entry paths, service pillars, Lanzamiento Completo pack, pricing table, quote form)
+- `/` - Homepage (Hero, Ideas, Offerings, Process, Portfolio, Manifesto, Contact)
+- `/services` - Redirects to homepage (legacy URL)
+- `/admin` - Admin (auth-protected)
 
 ## API Routes
 - `GET /api/ping` - Health check endpoint
 - `GET /api/demo` - Demo endpoint
 - `POST /api/contact` - Contact form submission
-- `POST /api/quote` - Quote request form submission (name, email, serviceType, description, budgetRange)
+- `POST /api/quote` - Legacy quote endpoint (homepage contact uses Formspree)
