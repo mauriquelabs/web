@@ -16,16 +16,18 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
 
   const navLinks = {
     en: [
-      { label: "How We're Different", href: `${prefix}#methodology` },
-      { label: "What We've Built", href: `${prefix}#portfolio` },
+      { label: "Experiences", href: `${prefix}#offerings` },
+      { label: "How it works", href: `${prefix}#process` },
+      { label: "Portfolio", href: `${prefix}#portfolio` },
     ],
     es: [
-      { label: "Cómo Somos Diferentes", href: `${prefix}#methodology` },
-      { label: "Lo Que Hemos Construido", href: `${prefix}#portfolio` },
+      { label: "Experiencias", href: `${prefix}#offerings` },
+      { label: "Cómo funciona", href: `${prefix}#process` },
+      { label: "Portfolio", href: `${prefix}#portfolio` },
     ],
   };
 
-  const ctaLabel = language === "en" ? "Let's Talk" : "Hablemos";
+  const ctaLabel = language === "en" ? "Let's talk" : "Hablemos";
   const ctaHref = `${prefix}#contact`;
 
   return (

@@ -30,7 +30,7 @@ export default function Methodology({
       { threshold: 0.15 },
     );
 
-    const element = document.getElementById("methodology");
+    const element = document.getElementById("process");
     if (element) observer.observe(element);
 
     return () => {
@@ -40,52 +40,42 @@ export default function Methodology({
 
   const content = {
     en: {
-      sectionTitle: "How are we different?",
+      sectionTitle: "From a shared question to a practical next step",
       steps: [
         {
-          title: "We work with the industry.",
+          title: "Shape the challenge.",
           description:
-            "We collaborate directly with artists, promoters and music organizations to understand how they actually work.",
+            "Together, we define who the experience is for, what they want to explore and what a useful outcome looks like.",
         },
         {
-          title: "We validate ideas.",
+          title: "Learn and build together.",
           description:
-            "Through our own communities, events and collaborations we test ideas before building products.",
+            "We design and facilitate the experience, combining collaboration with practical guidance and technical support.",
         },
         {
-          title: "We build software.",
+          title: "Take the ideas forward.",
           description:
-            "We transform those insights into software that solves real operational problems.",
-        },
-        {
-          title: "We scale what works.",
-          description:
-            "The best solutions become products that can benefit the wider music industry.",
+            "We close with tangible outcomes and clear next steps. Where useful, we can support further testing, prototyping and product development.",
         },
       ],
     },
     es: {
-      sectionTitle: "¿En qué somos diferentes?",
+      sectionTitle: "De una pregunta compartida a un siguiente paso práctico",
       steps: [
         {
-          title: "Trabajamos con la industria.",
+          title: "Damos forma al reto.",
           description:
-            "Colaboramos directamente con artistas, promotores y organizaciones musicales para entender cómo funcionan realmente.",
+            "Juntos definimos para quién es la experiencia, qué quieren explorar y cómo se ve un resultado útil.",
         },
         {
-          title: "Validamos ideas.",
+          title: "Aprendemos y construimos juntas.",
           description:
-            "A través de nuestras propias comunidades, eventos y colaboraciones, probamos ideas antes de construir productos.",
+            "Diseñamos y facilitamos la experiencia, combinando colaboración con guía práctica y apoyo técnico.",
         },
         {
-          title: "Construimos software.",
+          title: "Llevamos las ideas más lejos.",
           description:
-            "Transformamos esos aprendizajes en software que resuelve problemas operativos reales.",
-        },
-        {
-          title: "Escalamos lo que funciona.",
-          description:
-            "Las mejores soluciones se convierten en productos que benefician a toda la industria musical.",
+            "Cerramos con resultados tangibles y siguientes pasos claros. Cuando tiene sentido, podemos apoyar más pruebas, prototipado y desarrollo de producto.",
         },
       ],
     },
@@ -96,14 +86,14 @@ export default function Methodology({
 
   return (
     <section
-      id="methodology"
+      id="process"
       className={`section bg-background text-foreground ${
         theme === "light" ? "light" : ""
       }`}
     >
       <div className="section-container">
         <h2
-          className={`mb-16 text-center transition-opacity duration-300 ${
+          className={`mb-16 text-center max-w-3xl mx-auto transition-opacity duration-300 ${
             show ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -132,7 +122,8 @@ export default function Methodology({
                   show ? "opacity-100" : "opacity-0"
                 }`}
                 style={{
-                  transitionDelay: show && !reduceMotion ? `${index * 100 + 120}ms` : "0ms",
+                  transitionDelay:
+                    show && !reduceMotion ? `${index * 100 + 120}ms` : "0ms",
                 }}
               >
                 <span

@@ -9,19 +9,19 @@ export default function Hero({ language }: HeroProps) {
   const content = {
     en: {
       brand: "Maurique Labs",
-      h1: "Software for the music industry.",
+      h1: "Bring people together. Turn ideas into something real.",
       slogan:
-        "We partner with artists, promoters and music tech companies to discover real problems and build software that strengthens the music ecosystem.",
-      ctaPrimary: "Explore our work",
-      ctaSecondary: "Let's talk",
+        "Hackathons, creative labs and hands-on workshops that help communities and organisations explore technology, tackle challenges and build ideas together.",
+      ctaPrimary: "Let's create an experience",
+      ctaSecondary: "See what we create",
     },
     es: {
       brand: "Maurique Labs",
-      h1: "Software para la industria musical.",
+      h1: "Reúne a las personas. Convierte las ideas en algo real.",
       slogan:
-        "Colaboramos con artistas, promotores y empresas de tecnología musical para descubrir problemas reales y construir software que fortalece el ecosistema musical.",
-      ctaPrimary: "Explora nuestro trabajo",
-      ctaSecondary: "Hablemos",
+        "Hackathons, labs creativos y workshops prácticos que ayudan a comunidades y organizaciones a explorar la tecnología, afrontar retos y construir ideas juntas.",
+      ctaPrimary: "Creemos una experiencia",
+      ctaSecondary: "Mira lo que creamos",
     },
   };
 
@@ -136,7 +136,7 @@ export default function Hero({ language }: HeroProps) {
         </p>
 
         <h1
-          className={`text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight text-foreground/75 mb-8 max-w-2xl mx-auto ${
+          className={`text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight text-foreground/75 mb-8 max-w-3xl mx-auto ${
             reduceMotion ? "" : "animate-slide-up opacity-0"
           }`}
           style={
@@ -149,7 +149,7 @@ export default function Hero({ language }: HeroProps) {
         </h1>
 
         <p
-          className={`text-base sm:text-lg text-foreground/55 max-w-xl mx-auto mb-12 leading-relaxed ${
+          className={`text-base sm:text-lg text-foreground/55 max-w-2xl mx-auto mb-12 leading-relaxed ${
             reduceMotion ? "" : "animate-slide-up opacity-0"
           }`}
           style={
@@ -172,14 +172,14 @@ export default function Hero({ language }: HeroProps) {
           }
         >
           <a
-            href="#portfolio"
+            href="#contact"
             className="btn-primary inline-flex items-center justify-center gap-2"
           >
             {copy.ctaPrimary}
             <ArrowRight className="w-4 h-4" />
           </a>
           <a
-            href="#contact"
+            href="#offerings"
             className="btn-outline inline-flex items-center justify-center gap-2"
           >
             {copy.ctaSecondary}
