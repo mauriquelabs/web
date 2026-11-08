@@ -1,29 +1,42 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface HeaderProps {
   language: "en" | "es";
   onLanguageChange: (lang: "en" | "es") => void;
 }
 
+type NavItem = { label: string; href: string } | { label: string; to: string };
+
 export default function Header({ language, onLanguageChange }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const isBlog =
+    location.pathname === "/blog" || location.pathname.startsWith("/blog/");
 
   const prefix = isHome ? "" : "/";
 
-  const navLinks = {
+  const navLinks: Record<"en" | "es", NavItem[]> = {
     en: [
       { label: "How We're Different", href: `${prefix}#methodology` },
       { label: "What We've Built", href: `${prefix}#portfolio` },
+      { label: "Blog", to: "/blog" },
     ],
     es: [
       { label: "Cómo Somos Diferentes", href: `${prefix}#methodology` },
       { label: "Lo Que Hemos Construido", href: `${prefix}#portfolio` },
+      { label: "Blog", to: "/blog" },
     ],
   };
+
+  const navClassName = (active: boolean) =>
+    cn(
+      "text-sm font-medium transition-colors duration-300",
+      active ? "text-foreground" : "text-foreground/70 hover:text-accent",
+    );
 
   const ctaLabel = language === "en" ? "Let's Talk" : "Hablemos";
   const ctaHref = `${prefix}#contact`;
@@ -42,15 +55,26 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks[language].map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-foreground/70 hover:text-accent transition-colors duration-300"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks[language].map((link) =>
+            "to" in link ? (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={navClassName(isBlog)}
+                aria-current={isBlog ? "page" : undefined}
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                className={navClassName(false)}
+              >
+                {link.label}
+              </a>
+            ),
+          )}
         </nav>
 
         {/* CTA and Language Toggle */}
@@ -105,16 +129,28 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-border bg-background/95">
           <nav className="section-container py-4 flex flex-col gap-4">
-            {navLinks[language].map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-foreground/70 hover:text-accent transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks[language].map((link) =>
+              "to" in link ? (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className={navClassName(isBlog)}
+                  aria-current={isBlog ? "page" : undefined}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={navClassName(false)}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ),
+            )}
             <a
               href={ctaHref}
               className="btn-primary text-sm text-center"
