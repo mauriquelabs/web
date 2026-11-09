@@ -46,9 +46,9 @@ combinations**:
   `text-foreground`, `bg-card`, `border-border`, `text-foreground/70`...) — never hardcoded
   colors like `text-white` or `bg-[#0D2626]`. Because of that, wrapping a `<section>` in the
   `.light` class re-themes everything inside it automatically.
-- Section components that support theming (`IdeasSpace`, `Offerings`, `Methodology`,
-  `Portfolio`, `Manifesto`, `Contact`) accept a `theme?: "dark" | "light"` prop that
-  toggles this class.
+- Section components that support theming (`IdeasSpace`, `Offerings`, `Methodology`
+  for the Process section, `Portfolio`, `Manifesto`, `Contact`) accept a
+  `theme?: "dark" | "light"` prop that toggles this class.
 - The active rhythm is a single config object, `SECTION_THEME`, at the top of
   `client/pages/Index.tsx`. Change it there to try a different look.
 - `Header` and `Footer` intentionally stay on the dark surface always — see "Known asset
@@ -103,10 +103,10 @@ swap hue on hover.
 ## Motion
 
 - Transitions: 150–250ms for interactive/UI elements (hover, toggle, tap) — use Tailwind
-  `duration-200`/`duration-300`. One-time large "hero statement" reveals (e.g. `Manifesto`)
-  may run a bit longer (~400–500ms) for dramatic effect, but never beyond that. Staggered
-  scroll reveals (e.g. `Methodology` steps, `Portfolio` cards) can delay each item's start,
-  but each item's own transition duration should still stay short.
+  `duration-200`/`duration-300`. One-time section reveals (e.g. `Manifesto` title and
+  paragraphs) may run a bit longer (~400–500ms), but never beyond that. Staggered scroll
+  reveals (e.g. Process steps in `Methodology.tsx`, Offerings items, Portfolio rows) can
+  delay each item's start, but each item's own transition duration should still stay short.
 - Allowed: fade, slide, scale (e.g. `.btn-primary`'s `hover:scale-[1.02]`).
 - Never use bounce/overshoot easing (e.g. avoid Tailwind's `animate-bounce`) — the drifting
   scroll indicator in `Hero.tsx` uses a custom `animate-drift` keyframe instead, which is
@@ -117,17 +117,17 @@ swap hue on hover.
 - Gradients are on-brand but should be intentional: hero/CTA sections/cover images only.
   Most sections should stay flat white or flat Deep Pine — don't add a gradient background
   to every section.
-- Prefer real photography (artists, promoters, workshops, events, product demos) over
-  stock/generic imagery. See "Known asset gaps" — none exist in the repo yet, so
-  `Portfolio.tsx` cards currently use a very subtle (8–16% opacity) brand-color gradient
-  wash as a placeholder. Replace with real photography before shipping if it becomes
-  available, and lower/remove the gradient once a photo is in place.
+- Prefer real photography (workshops, events, community gatherings, product demos) over
+  stock/generic imagery. See "Known asset gaps" — none exist in the repo yet. Portfolio is
+  a text list with accent rules (not image cards); Hero and Contact use intentional brand
+  gradient washes. When photography lands, use it as a full-bleed or section visual and
+  keep gradients secondary.
 - Illustrations (if ever added) should stay abstract/geometric — no cartoon style.
 
 ## Known asset gaps (flag, don't assume these exist)
 
-- **No real photography** anywhere in the repo — every visual is a gradient/icon
-  placeholder.
+- **No real photography** anywhere in the repo — atmosphere comes from brand gradients
+  and typography, not photos.
 - **No abstract/geometric illustration assets.**
 - **Only one logo file**, `public/logo-maurique-labs.png`, and it's a light/white
   logotype meant for dark backgrounds — there is no dark/Deep-Pine variant for use on

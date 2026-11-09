@@ -37,5 +37,8 @@ Run `pnpm dev` to start the development server on port 5000.
 ## API Routes
 - `GET /api/ping` - Health check endpoint
 - `GET /api/demo` - Demo endpoint
-- `POST /api/contact` - Contact form submission
-- `POST /api/quote` - Legacy quote endpoint (homepage contact uses Formspree)
+- `GET /api/auth/me` - Current admin user (Bearer JWT)
+- `POST /api/contact` - Unused legacy contact endpoint
+- `POST /api/quote` - Unused legacy quote endpoint
+
+Homepage contact submits to Formspree, not the Express contact/quote routes.

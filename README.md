@@ -10,7 +10,7 @@ This repository is the Maurique Labs company marketing website: landing page and
 
 - Bilingual landing page (English / Spanish) with persisted language preference
 - Homepage sections: Hero, Ideas, Offerings, Process, Portfolio, Manifesto, and Contact
-- Contact form backed by Formspree / Express API routes
+- Contact form submitted via Formspree
 - Responsive, accessible UI built on Radix primitives and Tailwind CSS
 - Shared TypeScript types between client and server
 
@@ -22,7 +22,7 @@ This repository is the Maurique Labs company marketing website: landing page and
 | Layer           | Tools                                                    |
 | --------------- | -------------------------------------------------------- |
 | Frontend        | React 18, React Router 6, TypeScript, Vite, Tailwind CSS |
-| UI              | Radix UI, Lucide icons, Framer Motion                    |
+| UI              | Radix UI, Lucide icons                                   |
 | Backend         | Express 5 (integrated with Vite in development)          |
 | Validation      | Zod                                                      |
 | Testing         | Vitest                                                   |
@@ -132,7 +132,8 @@ Add new routes in `client/App.tsx` above the catch-all `*` route.
 
 ## API
 
-All endpoints are prefixed with `/api/`.
+All endpoints are prefixed with `/api/`. The homepage contact form posts to Formspree
+directly; it does not use the Express contact/quote routes below.
 
 
 | Method | Path           | Description              |
@@ -140,8 +141,8 @@ All endpoints are prefixed with `/api/`.
 | `GET`  | `/api/ping`    | Health check             |
 | `GET`  | `/api/demo`    | Demo endpoint            |
 | `GET`  | `/api/auth/me` | Current user (Bearer JWT) |
-| `POST` | `/api/contact` | Contact form submission  |
-| `POST` | `/api/quote`   | Quote request submission |
+| `POST` | `/api/contact` | Unused legacy contact endpoint |
+| `POST` | `/api/quote`   | Unused legacy quote endpoint |
 
 
 Request and response types live in `shared/api.ts`.
