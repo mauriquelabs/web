@@ -1,5 +1,5 @@
 import type { RequestHandler } from "express";
-import type { AuthMeResponse } from "@shared/auth";
+import type { AuthMeResponse } from "../../shared/auth";
 
 export const handleAuthMe: RequestHandler = (req, res) => {
   const user = req.authUser;

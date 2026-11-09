@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { QuoteFormData, QuoteFormResponse } from "@shared/api";
+import { QuoteFormData, QuoteFormResponse } from "../../shared/api";
 
 export const handleQuote: RequestHandler = async (req, res) => {
   try {
