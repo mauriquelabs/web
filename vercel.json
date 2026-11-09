@@ -1,0 +1,14 @@
+{
+  "framework": "vite",
+  "buildCommand": "pnpm run build:client && pnpm run build:api",
+  "outputDirectory": "dist/spa",
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "dist/api/**"
+    }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
