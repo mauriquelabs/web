@@ -58,7 +58,7 @@ export default function Portfolio({
     en: {
       sectionTitle: "Our portfolio",
       intro:
-        "We also build products of our own — platforms and experiences that grow from the same communities and experiments.",
+        "We also build products of our own: platforms and experiences that grow from the same communities and experiments.",
       items: [
         {
           title: "Mind the Beat",
@@ -73,7 +73,7 @@ export default function Portfolio({
           title: "Brew & Move",
           label: "Community experiences",
           description:
-            "A gathering place where specialty coffee and movement meet — helping people connect, reset and build habits together.",
+            "A gathering place where specialty coffee and movement meet, helping people connect, reset and build habits together.",
           accent: "teal",
         },
       ],

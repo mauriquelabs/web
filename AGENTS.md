@@ -2,7 +2,7 @@
 
 This repository belongs to Maurique Labs.
 
-Maurique Labs brings people together through hackathons, creative labs and hands-on workshops — and builds portfolio products from those communities. Every decision in this repository should reinforce that mission.
+Maurique Labs brings people together through hackathons, creative labs and hands-on workshops, and builds portfolio products from those communities. Every decision in this repository should reinforce that mission.
 
 Our goal is not simply to ship features, but to create environments where communities and organisations can explore technology, tackle challenges and turn ideas into something real.
 
@@ -54,7 +54,7 @@ Do not prematurely optimize.
 
 Maurique Labs is an events-and-experiences company with a product portfolio. Music and creative technology are central; the same approach extends to local businesses, wellness communities, educational organisations and teams with challenges to explore.
 
-We do not sell custom software development as a service. We design and facilitate hackathons, creative technology labs and practical workshops — creating the space, structure and technical support for communities to learn, experiment and build. Where useful, we can support further testing, prototyping and product development after an experience.
+We do not sell custom software development as a service. We design and facilitate hackathons, creative technology labs and practical workshops, creating the space, structure and technical support for communities to learn, experiment and build. Where useful, we can support further testing, prototyping and product development after an experience.
 
 **Portfolio today:** Mind the Beat (purpose-driven electronic music experiences) and Brew & Move (coffee × movement community experiences).
 
@@ -103,7 +103,7 @@ shared/                 # Types shared by client and server
 └── api.ts
 ```
 
-Keep this marketing-site layout. When product features land later, prefer organizing by feature (e.g. `client/features/...`) rather than large type-based folders — do not invent that tree for this site today.
+Keep this marketing-site layout. When product features land later, prefer organizing by feature (e.g. `client/features/...`) rather than large type-based folders. Do not invent that tree for this site today.
 
 ## Path aliases
 
@@ -200,6 +200,6 @@ If a proposed implementation conflicts with Maurique Labs principles, explain wh
 
 # Current Mission
 
-Maurique Labs creates the environments where technology, culture and community meet — and the portfolio products that grow from them.
+Maurique Labs creates the environments where technology, culture and community meet, and the portfolio products that grow from them.
 
 Every line of code should contribute to that vision.

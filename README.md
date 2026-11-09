@@ -4,7 +4,7 @@
 
 Maurique Labs designs hackathons, creative labs and hands-on workshops that help communities and organisations explore technology, tackle challenges and build ideas together. We also grow our own portfolio products from those communities.
 
-This repository is the Maurique Labs company marketing website — landing page and contact flows.
+This repository is the Maurique Labs company marketing website: landing page and contact flows.
 
 ## Features
 
@@ -66,7 +66,7 @@ Admin auth uses [Supabase Auth](https://supabase.com/docs/guides/auth). To set i
    - add the user's email to `ADMIN_EMAILS` in `.env`.
 5. Run `pnpm dev` and open [`/admin/login`](http://localhost:5000/admin/login).
 
-Protected routes live under `/admin`. The client calls `GET /api/auth/me` to verify admin access; the server enforces JWT validation and the `ADMIN_EMAILS` allowlist — the same pattern will protect future CMS write endpoints.
+Protected routes live under `/admin`. The client calls `GET /api/auth/me` to verify admin access; the server enforces JWT validation and the `ADMIN_EMAILS` allowlist. The same pattern will protect future CMS write endpoints.
 
 For hosted deployments (e.g. Vercel), set the Supabase and `ADMIN_EMAILS` variables in the project environment settings.
 
@@ -167,4 +167,4 @@ Engineering conventions, product context, and development guidelines are documen
 
 ## License
 
-Private — © Maurique Labs. All rights reserved.
+Private. © Maurique Labs. All rights reserved.

@@ -1,7 +1,7 @@
 # Maurique Labs
 
 ## Overview
-A React + Express full-stack application for the Maurique Labs marketing website — an events and experiences company with a product portfolio. Built with Vite, TypeScript, and Tailwind CSS.
+A React + Express full-stack application for the Maurique Labs marketing website: an events and experiences company with a product portfolio. Built with Vite, TypeScript, and Tailwind CSS.
 
 ## Project Architecture
 

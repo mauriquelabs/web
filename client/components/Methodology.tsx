@@ -68,7 +68,7 @@ export default function Methodology({
             "Juntos definimos para quién es la experiencia, qué quieren explorar y cómo se ve un resultado útil.",
         },
         {
-          title: "Aprendemos y construimos juntas.",
+          title: "Aprendemos y construimos juntos.",
           description:
             "Diseñamos y facilitamos la experiencia, combinando colaboración con guía práctica y apoyo técnico.",
         },

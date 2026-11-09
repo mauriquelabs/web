@@ -19,7 +19,7 @@ export default function Hero({ language }: HeroProps) {
       brand: "Maurique Labs",
       h1: "Reúne a las personas. Convierte las ideas en algo real.",
       slogan:
-        "Hackathons, labs creativos y workshops prácticos que ayudan a comunidades y organizaciones a explorar la tecnología, afrontar retos y construir ideas juntas.",
+        "Hackathons, labs creativos y workshops prácticos que ayudan a comunidades y organizaciones a explorar la tecnología, afrontar retos y construir ideas juntos.",
       ctaPrimary: "Creemos una experiencia",
       ctaSecondary: "Mira lo que creamos",
     },

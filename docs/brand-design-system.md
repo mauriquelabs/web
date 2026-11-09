@@ -1,6 +1,6 @@
-# Maurique Labs — Website Design System
+# Maurique Labs: Website Design System
 
-Maurique Labs is an **events and experiences company** with a product portfolio — not a
+Maurique Labs is an **events and experiences company** with a product portfolio, not a
 creative agency and not a client software shop. Every UI decision should favor clarity
 over decoration, real experiences over marketing noise, and confidence without arrogance.
 Think "bring people together first; products grow from that."

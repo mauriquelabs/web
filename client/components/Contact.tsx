@@ -41,13 +41,11 @@ export default function Contact({ language, theme = "dark" }: ContactProps) {
       sectionTitle: "What could we create together?",
       sectionDesc:
         "Bring a challenge, an idea or a community you’d like to engage. Together, we can shape a hackathon, lab or workshop around it.",
-      ctaHint: "Let’s talk about your idea",
     },
     es: {
       sectionTitle: "¿Qué podríamos crear juntos?",
       sectionDesc:
         "Trae un reto, una idea o una comunidad con la que quieras conectar. Juntos podemos dar forma a un hackathon, lab o workshop a su alrededor.",
-      ctaHint: "Hablemos de tu idea",
     },
   };
 
@@ -86,7 +84,7 @@ export default function Contact({ language, theme = "dark" }: ContactProps) {
           </h2>
 
           <p
-            className={`text-lg sm:text-xl text-foreground/70 mb-4 leading-relaxed transition-opacity duration-300 ${
+            className={`text-lg sm:text-xl text-foreground/70 leading-relaxed transition-opacity duration-300 ${
               show ? "opacity-100" : "opacity-0"
             }`}
             style={{
@@ -95,17 +93,6 @@ export default function Contact({ language, theme = "dark" }: ContactProps) {
           >
             {copy.sectionDesc}
           </p>
-
-          <p
-            className={`text-base font-semibold text-accent2 transition-opacity duration-300 ${
-              show ? "opacity-100" : "opacity-0"
-            }`}
-            style={{
-              transitionDelay: show && !reduceMotion ? "120ms" : "0ms",
-            }}
-          >
-            {copy.ctaHint}
-          </p>
         </div>
 
         <div
@@ -113,7 +100,7 @@ export default function Contact({ language, theme = "dark" }: ContactProps) {
             show ? "opacity-100" : "opacity-0"
           }`}
           style={{
-            transitionDelay: show && !reduceMotion ? "160ms" : "0ms",
+            transitionDelay: show && !reduceMotion ? "140ms" : "0ms",
           }}
         >
           <ContactForm language={language} />
