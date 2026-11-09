@@ -10,16 +10,12 @@ export default function Hero({ language }: HeroProps) {
     en: {
       brand: "Maurique Labs",
       h1: "Bring people together. Turn ideas into something real.",
-      slogan:
-        "Hackathons, creative labs and workshops are how we create value. From those same communities, we spot opportunities in the sectors we care about and build portfolio products that solve them.",
       ctaPrimary: "Let's create an experience",
       ctaSecondary: "See our portfolio",
     },
     es: {
       brand: "Maurique Labs",
       h1: "Reúne a las personas. Convierte las ideas en algo real.",
-      slogan:
-        "Los hackathons, labs creativos y workshops son cómo creamos valor. Desde esas mismas comunidades, detectamos oportunidades en los sectores que nos importan y construimos productos de portfolio que las resuelven.",
       ctaPrimary: "Creemos una experiencia",
       ctaSecondary: "Ver nuestro portfolio",
     },
@@ -136,7 +132,7 @@ export default function Hero({ language }: HeroProps) {
         </p>
 
         <h1
-          className={`text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight text-foreground/75 mb-8 max-w-3xl mx-auto ${
+          className={`text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight text-foreground/75 mb-12 max-w-3xl mx-auto ${
             reduceMotion ? "" : "animate-slide-up opacity-0"
           }`}
           style={
@@ -148,19 +144,6 @@ export default function Hero({ language }: HeroProps) {
           {copy.h1}
         </h1>
 
-        <p
-          className={`text-base sm:text-lg text-foreground/55 max-w-2xl mx-auto mb-12 leading-relaxed ${
-            reduceMotion ? "" : "animate-slide-up opacity-0"
-          }`}
-          style={
-            reduceMotion
-              ? undefined
-              : { animationDelay: "0.24s", animationFillMode: "forwards" }
-          }
-        >
-          {copy.slogan}
-        </p>
-
         <div
           className={`flex flex-col sm:flex-row gap-4 justify-center ${
             reduceMotion ? "" : "animate-slide-up opacity-0"
@@ -168,7 +151,7 @@ export default function Hero({ language }: HeroProps) {
           style={
             reduceMotion
               ? undefined
-              : { animationDelay: "0.32s", animationFillMode: "forwards" }
+              : { animationDelay: "0.24s", animationFillMode: "forwards" }
           }
         >
           <a
