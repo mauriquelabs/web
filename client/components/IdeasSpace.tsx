@@ -42,12 +42,12 @@ export default function IdeasSpace({
     en: {
       sectionTitle: "Give your ideas space to grow",
       lead: "An idea you keep coming back to. A challenge your team has been putting off. A community with talent, curiosity and nowhere to experiment together.",
-      body: "Maurique Labs creates the space, structure and technical support to take that first step: bringing people with different perspectives together to learn, explore and make something tangible.",
+      body: "Maurique Labs creates the space, structure and technical support to take that first step: bringing people together to learn, explore and make something tangible. The strongest opportunities can grow into lasting products.",
     },
     es: {
       sectionTitle: "Dale a tus ideas espacio para crecer",
       lead: "Una idea a la que vuelves una y otra vez. Un reto que tu equipo lleva aplazando. Una comunidad con talento, curiosidad y sin un lugar donde experimentar juntos.",
-      body: "Maurique Labs crea el espacio, la estructura y el apoyo técnico para dar ese primer paso: reunir a personas con perspectivas distintas para aprender, explorar y hacer algo tangible.",
+      body: "Maurique Labs crea el espacio, la estructura y el apoyo técnico para dar ese primer paso: reunir a personas para aprender, explorar y hacer algo tangible. Las oportunidades más fuertes pueden convertirse en productos duraderos.",
     },
   };
 

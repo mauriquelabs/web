@@ -55,7 +55,7 @@ export default function Methodology({
         {
           title: "Take the ideas forward.",
           description:
-            "We close with tangible outcomes and clear next steps. Where useful, we can support further testing, prototyping and product development.",
+            "We close with tangible outcomes and clear next steps. When an opportunity is strong enough, it can move into prototyping or become part of our portfolio.",
         },
       ],
     },
@@ -75,7 +75,7 @@ export default function Methodology({
         {
           title: "Llevamos las ideas más lejos.",
           description:
-            "Cerramos con resultados tangibles y siguientes pasos claros. Cuando tiene sentido, podemos apoyar más pruebas, prototipado y desarrollo de producto.",
+            "Cerramos con resultados tangibles y siguientes pasos claros. Cuando una oportunidad es lo bastante fuerte, puede pasar a prototipo o formar parte de nuestro portfolio.",
         },
       ],
     },

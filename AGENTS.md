@@ -2,9 +2,9 @@
 
 This repository belongs to Maurique Labs.
 
-Maurique Labs brings people together through hackathons, creative labs and hands-on workshops, and builds portfolio products from those communities. Every decision in this repository should reinforce that mission.
+Maurique Labs creates value through hackathons, creative labs and hands-on workshops, and builds a product portfolio by detecting opportunities in the sectors we care about and solving them. Every decision in this repository should reinforce that mission.
 
-Our goal is not simply to ship features, but to create environments where communities and organisations can explore technology, tackle challenges and turn ideas into something real.
+Our goal is not simply to ship features, but to bring people together around real challenges and grow the strongest opportunities into lasting products.
 
 ---
 
@@ -52,11 +52,11 @@ Do not prematurely optimize.
 
 # Product Context
 
-Maurique Labs is an events-and-experiences company with a product portfolio. Music and creative technology are central; the same approach extends to local businesses, wellness communities, educational organisations and teams with challenges to explore.
+Maurique Labs is an experiences company and a portfolio company. Events are the core of the value proposition: we design and facilitate hackathons, creative technology labs and practical workshops. We are not only an events company. From those communities and the sectors we care about, we detect opportunities and build products that solve them.
 
-We do not sell custom software development as a service. We design and facilitate hackathons, creative technology labs and practical workshops, creating the space, structure and technical support for communities to learn, experiment and build. Where useful, we can support further testing, prototyping and product development after an experience.
+Music and creative technology are central; the same approach extends to wellness, local business, education and other communities with challenges to explore. We do not sell custom software development as a service. Our product work is our own portfolio.
 
-**Portfolio today:** Mind the Beat (purpose-driven electronic music experiences) and Brew & Move (coffee × movement community experiences).
+**Portfolio today:** Mind the Beat and Brew & Move, our first two portfolio products (purpose-driven electronic music experiences; coffee × movement community experiences).
 
 **This repository today:** the Maurique Labs company marketing website (landing page and contact), not the product apps.
 
@@ -200,6 +200,6 @@ If a proposed implementation conflicts with Maurique Labs principles, explain wh
 
 # Current Mission
 
-Maurique Labs creates the environments where technology, culture and community meet, and the portfolio products that grow from them.
+Maurique Labs brings people together through experiences, and builds portfolio products from the strongest opportunities that emerge.
 
 Every line of code should contribute to that vision.

@@ -11,17 +11,17 @@ export default function Hero({ language }: HeroProps) {
       brand: "Maurique Labs",
       h1: "Bring people together. Turn ideas into something real.",
       slogan:
-        "Hackathons, creative labs and hands-on workshops that help communities and organisations explore technology, tackle challenges and build ideas together.",
+        "Hackathons, creative labs and workshops are how we create value. From those same communities, we spot opportunities in the sectors we care about and build portfolio products that solve them.",
       ctaPrimary: "Let's create an experience",
-      ctaSecondary: "See what we create",
+      ctaSecondary: "See our portfolio",
     },
     es: {
       brand: "Maurique Labs",
       h1: "Reúne a las personas. Convierte las ideas en algo real.",
       slogan:
-        "Hackathons, labs creativos y workshops prácticos que ayudan a comunidades y organizaciones a explorar la tecnología, afrontar retos y construir ideas juntos.",
+        "Los hackathons, labs creativos y workshops son cómo creamos valor. Desde esas mismas comunidades, detectamos oportunidades en los sectores que nos importan y construimos productos de portfolio que las resuelven.",
       ctaPrimary: "Creemos una experiencia",
-      ctaSecondary: "Mira lo que creamos",
+      ctaSecondary: "Ver nuestro portfolio",
     },
   };
 
@@ -179,7 +179,7 @@ export default function Hero({ language }: HeroProps) {
             <ArrowRight className="w-4 h-4" />
           </a>
           <a
-            href="#offerings"
+            href="#portfolio"
             className="btn-outline inline-flex items-center justify-center gap-2"
           >
             {copy.ctaSecondary}

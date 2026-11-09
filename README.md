@@ -2,7 +2,7 @@
 
 **Bring people together. Turn ideas into something real.**
 
-Maurique Labs designs hackathons, creative labs and hands-on workshops that help communities and organisations explore technology, tackle challenges and build ideas together. We also grow our own portfolio products from those communities.
+Maurique Labs designs hackathons, creative labs and hands-on workshops that bring people together around real challenges. From those same communities and the sectors we care about, we detect opportunities and build portfolio products that solve them, starting with Mind the Beat and Brew & Move.
 
 This repository is the Maurique Labs company marketing website: landing page and contact flows.
 

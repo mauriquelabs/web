@@ -42,15 +42,15 @@ export default function Manifesto({
     en: {
       sectionTitle: "Technology, culture & community",
       paragraphs: [
-        "Music and creative technology are central to Maurique Labs. They inform how we bring people together and create space for experimentation.",
-        "That same approach extends to local businesses, wellness communities, educational organisations and teams with challenges to explore. What connects the work is curiosity, participation and a shared reason to build.",
+        "Music and creative technology are central to Maurique Labs. They shape the experiences we design and the products we choose to build.",
+        "That same approach extends to wellness, local business, education and other sectors we care about. We bring people together around real challenges, then grow the strongest opportunities into portfolio products.",
       ],
     },
     es: {
       sectionTitle: "Tecnología, cultura y comunidad",
       paragraphs: [
-        "La música y la tecnología creativa están en el centro de Maurique Labs. Informan cómo reunimos a las personas y creamos espacio para experimentar.",
-        "Ese mismo enfoque se extiende a negocios locales, comunidades de bienestar, organizaciones educativas y equipos con retos por explorar. Lo que conecta el trabajo es la curiosidad, la participación y una razón compartida para construir.",
+        "La música y la tecnología creativa están en el centro de Maurique Labs. Dan forma a las experiencias que diseñamos y a los productos que elegimos construir.",
+        "Ese mismo enfoque se extiende al bienestar, el comercio local, la educación y otros sectores que nos importan. Reunimos a las personas en torno a retos reales y hacemos crecer las oportunidades más fuertes hasta convertirlas en productos de portfolio.",
       ],
     },
   };

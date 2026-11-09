@@ -58,7 +58,7 @@ export default function Portfolio({
     en: {
       sectionTitle: "Our portfolio",
       intro:
-        "We also build products of our own: platforms and experiences that grow from the same communities and experiments.",
+        "We detect opportunities in the communities and sectors we care about, then build products that solve them. Mind the Beat and Brew & Move are our first portfolio products.",
       items: [
         {
           title: "Mind the Beat",
@@ -81,7 +81,7 @@ export default function Portfolio({
     es: {
       sectionTitle: "Nuestro portfolio",
       intro:
-        "También construimos productos propios: plataformas y experiencias que crecen desde las mismas comunidades y experimentos.",
+        "Detectamos oportunidades en las comunidades y sectores que nos importan, y construimos productos que las resuelven. Mind the Beat y Brew & Move son nuestros primeros productos de portfolio.",
       items: [
         {
           title: "Mind the Beat",
