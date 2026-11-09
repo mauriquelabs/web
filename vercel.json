@@ -1,5 +1,9 @@
 {
   "framework": "vite",
   "buildCommand": "pnpm run build:client",
-  "outputDirectory": "dist/spa"
+  "outputDirectory": "dist/spa",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
