@@ -45,10 +45,12 @@ export default function Offerings({
 
   const content: Record<
     "en" | "es",
-    { sectionTitle: string; items: Offering[] }
+    { sectionTitle: string; intro: string; items: Offering[] }
   > = {
     en: {
       sectionTitle: "What we can create together",
+      intro:
+        "Experiences are the core of how we create value. They also surface the opportunities we choose to build into portfolio products.",
       items: [
         {
           title: "Hackathons & innovation experiences",
@@ -69,6 +71,8 @@ export default function Offerings({
     },
     es: {
       sectionTitle: "Lo que podemos crear juntos",
+      intro:
+        "Las experiencias son el núcleo de cómo creamos valor. También hacen visibles las oportunidades que elegimos convertir en productos de portfolio.",
       items: [
         {
           title: "Hackathons y experiencias de innovación",
@@ -100,13 +104,25 @@ export default function Offerings({
       }`}
     >
       <div className="section-container">
-        <h2
-          className={`mb-12 sm:mb-16 max-w-3xl transition-opacity duration-300 ${
-            show ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          {copy.sectionTitle}
-        </h2>
+        <div className="mb-12 sm:mb-16 max-w-3xl">
+          <h2
+            className={`mb-4 transition-opacity duration-300 ${
+              show ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            {copy.sectionTitle}
+          </h2>
+          <p
+            className={`text-lg text-foreground/65 leading-relaxed transition-opacity duration-300 ${
+              show ? "opacity-100" : "opacity-0"
+            }`}
+            style={{
+              transitionDelay: show && !reduceMotion ? "60ms" : "0ms",
+            }}
+          >
+            {copy.intro}
+          </p>
+        </div>
 
         <ul className="grid gap-12 sm:gap-16 lg:grid-cols-3 lg:gap-10">
           {copy.items.map((item, index) => (

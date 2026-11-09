@@ -55,7 +55,7 @@ export default function Methodology({
         {
           title: "Take the ideas forward.",
           description:
-            "We close with tangible outcomes and clear next steps. When an opportunity is strong enough, it can move into prototyping or become part of our portfolio.",
+            "We close with tangible outcomes and clear next steps. When we detect a strong opportunity in a sector we care about, we can prototype it or grow it into a portfolio product.",
         },
       ],
     },
@@ -75,7 +75,7 @@ export default function Methodology({
         {
           title: "Llevamos las ideas más lejos.",
           description:
-            "Cerramos con resultados tangibles y siguientes pasos claros. Cuando una oportunidad es lo bastante fuerte, puede pasar a prototipo o formar parte de nuestro portfolio.",
+            "Cerramos con resultados tangibles y siguientes pasos claros. Cuando detectamos una oportunidad fuerte en un sector que nos importa, podemos prototiparla o convertirla en un producto de portfolio.",
         },
       ],
     },

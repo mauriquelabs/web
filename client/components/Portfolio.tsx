@@ -58,13 +58,13 @@ export default function Portfolio({
     en: {
       sectionTitle: "Our portfolio",
       intro:
-        "We detect opportunities in the communities and sectors we care about, then build products that solve them. Mind the Beat and Brew & Move are our first portfolio products.",
+        "We detect opportunities in the communities and sectors we care about, then build products that solve them. Mind the Beat and Brew & Move are proof of that loop.",
       items: [
         {
           title: "Mind the Beat",
           label: "Live experiences",
           description:
-            "The platform for discovering, creating and growing communities around purpose-driven electronic music experiences.",
+            "Born from purpose-driven electronic music communities: a platform to discover, create and grow experiences that connect people around shared values.",
           href: "https://mindthebeat.live/",
           host: "mindthebeat.live",
           accent: "orange",
@@ -73,7 +73,7 @@ export default function Portfolio({
           title: "Brew & Move",
           label: "Community experiences",
           description:
-            "A gathering place where specialty coffee and movement meet, helping people connect, reset and build habits together.",
+            "Born from the overlap of specialty coffee and movement: a place for people to connect, reset and build habits together.",
           accent: "teal",
         },
       ],
@@ -81,13 +81,13 @@ export default function Portfolio({
     es: {
       sectionTitle: "Nuestro portfolio",
       intro:
-        "Detectamos oportunidades en las comunidades y sectores que nos importan, y construimos productos que las resuelven. Mind the Beat y Brew & Move son nuestros primeros productos de portfolio.",
+        "Detectamos oportunidades en las comunidades y sectores que nos importan, y construimos productos que las resuelven. Mind the Beat y Brew & Move son la prueba de ese ciclo.",
       items: [
         {
           title: "Mind the Beat",
           label: "Experiencias en vivo",
           description:
-            "La plataforma para descubrir, crear y hacer crecer comunidades en torno a experiencias de música electrónica con propósito.",
+            "Nace de las comunidades de música electrónica con propósito: una plataforma para descubrir, crear y hacer crecer experiencias que conectan a las personas en torno a valores compartidos.",
           href: "https://mindthebeat.live/",
           host: "mindthebeat.live",
           accent: "orange",
@@ -96,7 +96,7 @@ export default function Portfolio({
           title: "Brew & Move",
           label: "Experiencias de comunidad",
           description:
-            "Un punto de encuentro donde el café de especialidad y el movimiento se cruzan: conectar, resetear y construir hábitos juntos.",
+            "Nace del cruce entre café de especialidad y movimiento: un lugar para conectar, resetear y construir hábitos juntos.",
           accent: "teal",
         },
       ],
