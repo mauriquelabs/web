@@ -38,14 +38,14 @@ export default function Contact({ language, theme = "dark" }: ContactProps) {
 
   const content = {
     en: {
-      sectionTitle: "Let's build together",
+      sectionTitle: "What could we create together?",
       sectionDesc:
-        "Whether you're an artist, promoter or music tech company, we'd love to hear what you're building.",
+        "Bring a challenge, an idea or a community you’d like to engage. We can shape a hackathon, lab, workshop or digital product around it.",
     },
     es: {
-      sectionTitle: "Construyamos juntos",
+      sectionTitle: "¿Qué podríamos crear juntos?",
       sectionDesc:
-        "Seas artista, promotor o una empresa de tecnología musical, nos encantaría saber qué estás construyendo.",
+        "Trae un reto, una idea o una comunidad con la que quieras conectar. Podemos dar forma a un hackathon, lab, workshop o producto digital a su alrededor.",
     },
   };
 
@@ -84,7 +84,7 @@ export default function Contact({ language, theme = "dark" }: ContactProps) {
           </h2>
 
           <p
-            className={`text-lg sm:text-xl text-foreground/70 mb-4 leading-relaxed transition-opacity duration-300 ${
+            className={`text-lg sm:text-xl text-foreground/70 leading-relaxed transition-opacity duration-300 ${
               show ? "opacity-100" : "opacity-0"
             }`}
             style={{

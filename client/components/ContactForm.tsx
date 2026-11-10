@@ -20,23 +20,25 @@ export default function ContactForm({ language }: ContactFormProps) {
       nameLabel: "Name",
       emailLabel: "Email",
       messageLabel: "Message",
-      sendButton: "Send Message",
       successMessage: "Thank you! We'll be in touch soon.",
       errorMessage: "Something went wrong. Please try again.",
       namePlaceholder: "Your name",
       emailPlaceholder: "your@email.com",
-      messagePlaceholder: "Tell us about your project...",
+      messagePlaceholder:
+        "Tell us about the challenge, idea or community you have in mind...",
+      sendButton: "Let's talk about your idea",
     },
     es: {
       nameLabel: "Nombre",
       emailLabel: "Email",
       messageLabel: "Mensaje",
-      sendButton: "Enviar Mensaje",
+      sendButton: "Hablemos de tu idea",
       successMessage: "¡Gracias! Nos pondremos en contacto pronto.",
       errorMessage: "Algo salió mal. Por favor intenta de nuevo.",
       namePlaceholder: "Tu nombre",
       emailPlaceholder: "tu@email.com",
-      messagePlaceholder: "Cuéntanos sobre tu proyecto...",
+      messagePlaceholder:
+        "Cuéntanos el reto, la idea o la comunidad que tienes en mente...",
     },
   };
 
