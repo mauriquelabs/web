@@ -95,7 +95,6 @@ export default function Offerings({
 
   const copy = content[language];
   const show = isVisible || reduceMotion;
-  const [lead, ...rest] = copy.items;
 
   return (
     <section
@@ -125,31 +124,8 @@ export default function Offerings({
           </p>
         </div>
 
-        {/* Lead offering: full width, larger type */}
-        <div
-          className={`mb-12 sm:mb-16 max-w-3xl transition-opacity duration-300 ${
-            show ? "opacity-100" : "opacity-0"
-          }`}
-          style={{
-            transitionDelay: show && !reduceMotion ? "80ms" : "0ms",
-          }}
-        >
-          <span
-            aria-hidden="true"
-            className="block text-sm font-bold text-accent2 mb-4"
-          >
-            01
-          </span>
-          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-foreground leading-tight">
-            {lead.title}
-          </h3>
-          <p className="text-lg text-foreground/70 leading-relaxed max-w-2xl">
-            {lead.description}
-          </p>
-        </div>
-
-        <ul className="grid gap-12 sm:gap-14 md:grid-cols-2 md:gap-10">
-          {rest.map((item, index) => (
+        <ul className="grid gap-12 sm:gap-14 lg:grid-cols-3 lg:gap-10">
+          {copy.items.map((item, index) => (
             <li
               key={item.title}
               className={`transition-opacity duration-300 ${
@@ -157,19 +133,19 @@ export default function Offerings({
               }`}
               style={{
                 transitionDelay:
-                  show && !reduceMotion ? `${(index + 1) * 100 + 80}ms` : "0ms",
+                  show && !reduceMotion ? `${index * 100 + 80}ms` : "0ms",
               }}
             >
               <span
                 aria-hidden="true"
                 className="block text-sm font-bold text-accent2 mb-4"
               >
-                {String(index + 2).padStart(2, "0")}
+                {String(index + 1).padStart(2, "0")}
               </span>
               <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-foreground leading-tight">
                 {item.title}
               </h3>
-              <p className="text-foreground/70 leading-relaxed">
+              <p className="text-base sm:text-lg text-foreground/70 leading-relaxed">
                 {item.description}
               </p>
             </li>
