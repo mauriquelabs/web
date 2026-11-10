@@ -5,6 +5,7 @@ import { handleDemo } from "./routes/demo";
 import { handleContact } from "./routes/contact";
 import { handleQuote } from "./routes/quote";
 import { handleAuthMe } from "./routes/auth";
+import { handleListCategories, handleListCompanies } from "./routes/admin/companies";
 import { requireAdmin } from "./middleware/requireAuth";
 
 export function createServer() {
@@ -31,6 +32,10 @@ export function createServer() {
 
   // Auth — verify Supabase JWT for protected CMS routes
   app.get("/api/auth/me", requireAdmin, handleAuthMe);
+
+  // Admin — Music Tech Index companies view
+  app.get("/api/admin/companies", requireAdmin, handleListCompanies);
+  app.get("/api/admin/categories", requireAdmin, handleListCategories);
 
   return app;
 }
