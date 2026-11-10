@@ -1,7 +1,7 @@
 # Maurique Labs
 
 ## Overview
-A React + Express full-stack application for the Maurique Labs marketing website: an experiences company and portfolio company. Built with Vite, TypeScript, and Tailwind CSS.
+A React + Express full-stack application for the Maurique Labs marketing website: a creative innovation studio for experiences and digital products. Built with Vite, TypeScript, and Tailwind CSS.
 
 ## Project Architecture
 
@@ -30,7 +30,7 @@ Run `pnpm dev` to start the development server on port 5000.
 - `pnpm start` - Runs the production server
 
 ## Pages
-- `/` - Homepage (Hero, Ideas, Offerings, Process, Portfolio, Manifesto, Contact)
+- `/` - Homepage (Hero, Ideas, Offerings, Process, Projects & Initiatives, Manifesto, Contact)
 - `/services` - Redirects to homepage (legacy URL)
 - `/admin` - Admin (auth-protected)
 

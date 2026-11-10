@@ -40,12 +40,12 @@ export default function Contact({ language, theme = "dark" }: ContactProps) {
     en: {
       sectionTitle: "What could we create together?",
       sectionDesc:
-        "Bring a challenge, an idea or a community you’d like to engage. We can shape an experience around it, or talk about an opportunity worth building into a product.",
+        "Bring a challenge, an idea or a community you’d like to engage. We can shape a hackathon, lab, workshop or digital product around it.",
     },
     es: {
       sectionTitle: "¿Qué podríamos crear juntos?",
       sectionDesc:
-        "Trae un reto, una idea o una comunidad con la que quieras conectar. Podemos dar forma a una experiencia a su alrededor, o hablar de una oportunidad que merezca convertirse en producto.",
+        "Trae un reto, una idea o una comunidad con la que quieras conectar. Podemos dar forma a un hackathon, lab, workshop o producto digital a su alrededor.",
     },
   };
 

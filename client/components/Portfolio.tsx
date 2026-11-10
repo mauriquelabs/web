@@ -41,7 +41,7 @@ export default function Portfolio({
       { threshold: 0.12 },
     );
 
-    const element = document.getElementById("portfolio");
+    const element = document.getElementById("projects");
     if (element) observer.observe(element);
 
     return () => {
@@ -56,48 +56,66 @@ export default function Portfolio({
     { sectionTitle: string; intro: string; items: Product[] }
   > = {
     en: {
-      sectionTitle: "Our portfolio",
+      sectionTitle: "Projects & Initiatives",
       intro:
-        "We detect opportunities in the communities and sectors we care about, then build products that solve them. Mind the Beat and Brew & Move are proof of that loop.",
+        "Examples of our interests and approach: initiatives we explore and build in the communities and sectors we care about.",
       items: [
         {
           title: "Mind the Beat",
           label: "Live experiences",
           description:
-            "Born from purpose-driven electronic music communities: a platform to discover, create and grow experiences that connect people around shared values.",
+            "Curated electronic music experiences connecting people through shared values and interests.",
           href: "https://mindthebeat.live/",
           host: "mindthebeat.live",
           accent: "orange",
         },
         {
           title: "Brew & Move",
-          label: "Community experiences",
+          label: "Movement rewards",
           description:
-            "Born from the overlap of specialty coffee and movement: a place for people to connect, reset and build habits together.",
+            "A movement-powered rewards platform connecting active lifestyles with specialty coffee.",
+          href: "https://brew-n-move.com/",
+          host: "brew-n-move.com",
           accent: "teal",
+        },
+        {
+          title: "AI Sound Labs",
+          label: "Concept in development",
+          description:
+            "A creative innovation concept exploring AI, music and creative expression through experimental showcases and collaborative experiences.",
+          accent: "orange",
         },
       ],
     },
     es: {
-      sectionTitle: "Nuestro portfolio",
+      sectionTitle: "Proyectos e iniciativas",
       intro:
-        "Detectamos oportunidades en las comunidades y sectores que nos importan, y construimos productos que las resuelven. Mind the Beat y Brew & Move son la prueba de ese ciclo.",
+        "Ejemplos de nuestros intereses y enfoque: iniciativas que exploramos y construimos en las comunidades y sectores que nos importan.",
       items: [
         {
           title: "Mind the Beat",
           label: "Experiencias en vivo",
           description:
-            "Nace de las comunidades de música electrónica con propósito: una plataforma para descubrir, crear y hacer crecer experiencias que conectan a las personas en torno a valores compartidos.",
+            "Experiencias de música electrónica curadas que conectan a las personas a través de valores e intereses compartidos.",
           href: "https://mindthebeat.live/",
           host: "mindthebeat.live",
           accent: "orange",
         },
         {
           title: "Brew & Move",
-          label: "Experiencias de comunidad",
+          label: "Recompensas por moverte",
           description:
-            "Nace del cruce entre café de especialidad y movimiento: un lugar para conectar, resetear y construir hábitos juntos.",
+            "Una plataforma de recompensas impulsada por el movimiento que conecta estilos de vida activos con café de especialidad.",
+          href: "https://brew-n-move.com/",
+          host: "brew-n-move.com",
           accent: "teal",
+        },
+        {
+          title: "AI Sound Labs",
+          label: "Concepto en desarrollo",
+          description:
+            "Un concepto de innovación creativa que explora la IA, la música y la expresión creativa a través de showcases experimentales y experiencias colaborativas.",
+          accent: "orange",
         },
       ],
     },
@@ -107,13 +125,13 @@ export default function Portfolio({
 
   return (
     <section
-      id="portfolio"
-      className={`section bg-background text-foreground ${
+      id="projects"
+      className={`section max-md:py-14 bg-background text-foreground ${
         theme === "light" ? "light" : ""
       }`}
     >
       <div className="section-container">
-        <div className="mb-12 sm:mb-16 max-w-2xl">
+        <div className="mb-10 sm:mb-16 max-w-2xl">
           <h2
             className={`mb-4 transition-opacity duration-300 ${
               show ? "opacity-100" : "opacity-0"

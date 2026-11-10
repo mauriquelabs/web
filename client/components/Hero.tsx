@@ -8,16 +8,18 @@ interface HeroProps {
 export default function Hero({ language }: HeroProps) {
   const content = {
     en: {
+      eyebrow: "Creative Innovation Studio",
       brand: "Maurique Labs",
       h1: "Bring people together. Turn ideas into something real.",
       ctaPrimary: "Let's create an experience",
-      ctaSecondary: "See our portfolio",
+      ctaSecondary: "See our projects",
     },
     es: {
+      eyebrow: "Estudio de innovación creativa",
       brand: "Maurique Labs",
       h1: "Reúne a las personas. Convierte las ideas en algo real.",
       ctaPrimary: "Creemos una experiencia",
-      ctaSecondary: "Ver nuestro portfolio",
+      ctaSecondary: "Ver nuestros proyectos",
     },
   };
 
@@ -84,7 +86,7 @@ export default function Hero({ language }: HeroProps) {
     <section
       ref={sectionRef}
       id="home"
-      className="section bg-brand-black text-foreground min-h-[100svh] flex flex-col items-center justify-center relative overflow-hidden"
+      className="section bg-brand-black text-foreground min-h-[100svh] max-md:min-h-0 max-md:py-20 flex flex-col items-center justify-center relative overflow-hidden"
     >
       {/* Outer: ambient breath. Inner: mouse parallax (separate transforms). */}
       <div
@@ -100,6 +102,7 @@ export default function Hero({ language }: HeroProps) {
             background: `
               radial-gradient(ellipse 55% 45% at 18% 78%, rgba(43, 201, 163, 0.28) 0%, transparent 70%),
               radial-gradient(ellipse 50% 40% at 88% 18%, rgba(255, 87, 20, 0.2) 0%, transparent 65%),
+              radial-gradient(ellipse 65% 55% at 50% 40%, rgba(43, 201, 163, 0.08) 0%, transparent 55%),
               radial-gradient(ellipse 70% 50% at 50% 100%, rgba(13, 38, 38, 0.9) 0%, transparent 60%)
             `,
           }}
@@ -112,14 +115,27 @@ export default function Hero({ language }: HeroProps) {
           alt=""
           width={96}
           height={93}
-          className={`mx-auto mb-8 h-20 w-auto sm:h-24 ${
+          className={`mx-auto mb-5 sm:mb-8 h-16 w-auto sm:h-24 ${
             reduceMotion ? "" : "animate-slide-up"
           }`}
           aria-hidden="true"
         />
 
         <p
-          className={`font-heading text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground mb-6 ${
+          className={`mb-3 sm:mb-4 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-foreground/50 ${
+            reduceMotion ? "" : "animate-slide-up opacity-0"
+          }`}
+          style={
+            reduceMotion
+              ? undefined
+              : { animationDelay: "0.04s", animationFillMode: "forwards" }
+          }
+        >
+          {copy.eyebrow}
+        </p>
+
+        <p
+          className={`font-heading text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground mb-4 sm:mb-6 ${
             reduceMotion ? "" : "animate-slide-up opacity-0"
           }`}
           style={
@@ -132,7 +148,7 @@ export default function Hero({ language }: HeroProps) {
         </p>
 
         <h1
-          className={`text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight text-foreground/75 mb-12 max-w-3xl mx-auto ${
+          className={`text-lg sm:text-2xl lg:text-3xl font-medium tracking-tight text-foreground/75 mb-8 sm:mb-12 max-w-3xl mx-auto ${
             reduceMotion ? "" : "animate-slide-up opacity-0"
           }`}
           style={
@@ -145,7 +161,7 @@ export default function Hero({ language }: HeroProps) {
         </h1>
 
         <div
-          className={`flex flex-col sm:flex-row gap-4 justify-center ${
+          className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center ${
             reduceMotion ? "" : "animate-slide-up opacity-0"
           }`}
           style={
@@ -162,7 +178,7 @@ export default function Hero({ language }: HeroProps) {
             <ArrowRight className="w-4 h-4" />
           </a>
           <a
-            href="#portfolio"
+            href="#projects"
             className="btn-outline inline-flex items-center justify-center gap-2"
           >
             {copy.ctaSecondary}
@@ -173,7 +189,7 @@ export default function Hero({ language }: HeroProps) {
 
       <div
         aria-hidden="true"
-        className={`absolute bottom-8 left-1/2 -translate-x-1/2 ${
+        className={`absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 max-md:hidden ${
           reduceMotion ? "opacity-40" : "animate-drift"
         }`}
       >

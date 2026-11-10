@@ -50,44 +50,44 @@ export default function Offerings({
     en: {
       sectionTitle: "What we can create together",
       intro:
-        "Experiences are the core of how we create value. They also surface the opportunities we choose to build into portfolio products.",
+        "Collaboration, community engagement, learning and experimentation that lead to tangible outcomes for your organisation.",
       items: [
         {
           title: "Hackathons & innovation experiences",
           description:
-            "Bring your team or community together around a meaningful challenge. We help shape the brief, guide collaboration and support participants as they develop concepts and prototypes worth taking further.",
+            "Design, organisation and facilitation of hackathons, ideathons and innovation challenges. From challenge definition and experience design to facilitation, technical mentoring and prototyping support.",
         },
         {
-          title: "Creative technology labs",
+          title: "Creative technology labs & workshops",
           description:
-            "Explore where music, culture and technology meet. Collaborative sessions for artists, creators and curious minds to experiment with new tools, exchange perspectives and develop ideas.",
+            "Hands-on AI workshops, creative coding sessions, music-tech labs and collaborative learning. Standalone or integrated into larger events.",
         },
         {
-          title: "Practical workshops",
+          title: "Digital product development",
           description:
-            "Help people build confidence with AI and digital tools through projects that matter to them. Accessible, guided learning with room to experiment, question results and apply what they discover.",
+            "Product discovery, validation, rapid prototyping, MVPs, web and mobile applications, and AI-powered solutions. Available independently of our events.",
         },
       ],
     },
     es: {
       sectionTitle: "Lo que podemos crear juntos",
       intro:
-        "Las experiencias son el núcleo de cómo creamos valor. También hacen visibles las oportunidades que elegimos convertir en productos de portfolio.",
+        "Colaboración, engagement comunitario, aprendizaje y experimentación que llevan a resultados tangibles para tu organización.",
       items: [
         {
           title: "Hackathons y experiencias de innovación",
           description:
-            "Reúne a tu equipo o comunidad en torno a un reto con sentido. Ayudamos a dar forma al brief, guiamos la colaboración y acompañamos a los participantes mientras desarrollan conceptos y prototipos que merecen continuar.",
+            "Diseño, organización y facilitación de hackathons, ideathons y retos de innovación. Desde la definición del reto y el diseño de la experiencia hasta la facilitación, el mentoring técnico y el apoyo al prototipado.",
         },
         {
-          title: "Labs de tecnología creativa",
+          title: "Labs y workshops de tecnología creativa",
           description:
-            "Explora donde se cruzan la música, la cultura y la tecnología. Sesiones colaborativas para artistas, creadores y mentes curiosas que quieren experimentar con nuevas herramientas, intercambiar perspectivas y desarrollar ideas.",
+            "Workshops prácticos de IA, sesiones de creative coding, labs de music-tech y aprendizaje colaborativo. Independientes o integrados en eventos más amplios.",
         },
         {
-          title: "Workshops prácticos",
+          title: "Desarrollo de producto digital",
           description:
-            "Ayuda a las personas a ganar confianza con la IA y las herramientas digitales a través de proyectos que les importan. Aprendizaje accesible y guiado, con espacio para experimentar, cuestionar resultados y aplicar lo descubierto.",
+            "Discovery de producto, validación, prototipado rápido, MVPs, aplicaciones web y mobile, y soluciones con IA. Disponible de forma independiente a nuestros eventos.",
         },
       ],
     },
@@ -95,16 +95,17 @@ export default function Offerings({
 
   const copy = content[language];
   const show = isVisible || reduceMotion;
+  const [lead, ...rest] = copy.items;
 
   return (
     <section
       id="offerings"
-      className={`section bg-background text-foreground ${
+      className={`section max-md:py-14 bg-background text-foreground ${
         theme === "light" ? "light" : ""
       }`}
     >
       <div className="section-container">
-        <div className="mb-12 sm:mb-16 max-w-3xl">
+        <div className="mb-10 sm:mb-14 max-w-3xl">
           <h2
             className={`mb-4 transition-opacity duration-300 ${
               show ? "opacity-100" : "opacity-0"
@@ -124,8 +125,31 @@ export default function Offerings({
           </p>
         </div>
 
-        <ul className="grid gap-12 sm:gap-16 lg:grid-cols-3 lg:gap-10">
-          {copy.items.map((item, index) => (
+        {/* Lead offering: full width, larger type */}
+        <div
+          className={`mb-12 sm:mb-16 max-w-3xl transition-opacity duration-300 ${
+            show ? "opacity-100" : "opacity-0"
+          }`}
+          style={{
+            transitionDelay: show && !reduceMotion ? "80ms" : "0ms",
+          }}
+        >
+          <span
+            aria-hidden="true"
+            className="block text-sm font-bold text-accent2 mb-4"
+          >
+            01
+          </span>
+          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-foreground leading-tight">
+            {lead.title}
+          </h3>
+          <p className="text-lg text-foreground/70 leading-relaxed max-w-2xl">
+            {lead.description}
+          </p>
+        </div>
+
+        <ul className="grid gap-12 sm:gap-14 md:grid-cols-2 md:gap-10">
+          {rest.map((item, index) => (
             <li
               key={item.title}
               className={`transition-opacity duration-300 ${
@@ -133,14 +157,14 @@ export default function Offerings({
               }`}
               style={{
                 transitionDelay:
-                  show && !reduceMotion ? `${index * 100 + 80}ms` : "0ms",
+                  show && !reduceMotion ? `${(index + 1) * 100 + 80}ms` : "0ms",
               }}
             >
               <span
                 aria-hidden="true"
                 className="block text-sm font-bold text-accent2 mb-4"
               >
-                {String(index + 1).padStart(2, "0")}
+                {String(index + 2).padStart(2, "0")}
               </span>
               <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-foreground leading-tight">
                 {item.title}

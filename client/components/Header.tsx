@@ -18,12 +18,12 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
     en: [
       { label: "Experiences", href: `${prefix}#offerings` },
       { label: "How it works", href: `${prefix}#process` },
-      { label: "Portfolio", href: `${prefix}#portfolio` },
+      { label: "Projects", href: `${prefix}#projects` },
     ],
     es: [
       { label: "Experiencias", href: `${prefix}#offerings` },
       { label: "Cómo funciona", href: `${prefix}#process` },
-      { label: "Portfolio", href: `${prefix}#portfolio` },
+      { label: "Proyectos", href: `${prefix}#projects` },
     ],
   };
 

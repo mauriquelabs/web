@@ -2,14 +2,14 @@
 
 **Bring people together. Turn ideas into something real.**
 
-Maurique Labs designs hackathons, creative labs and hands-on workshops that bring people together around real challenges. From those same communities and the sectors we care about, we detect opportunities and build portfolio products that solve them, starting with Mind the Beat and Brew & Move.
+Maurique Labs is a creative innovation studio: hackathons, creative labs and workshops, plus digital product development for partners. We also explore our own projects and initiatives, including Mind the Beat, Brew & Move and AI Sound Labs.
 
 This repository is the Maurique Labs company marketing website: landing page and contact flows.
 
 ## Features
 
 - Bilingual landing page (English / Spanish) with persisted language preference
-- Homepage sections: Hero, Ideas, Offerings, Process, Portfolio, Manifesto, and Contact
+- Homepage sections: Hero, Ideas, Offerings, Process, Projects & Initiatives, Manifesto, and Contact
 - Contact form submitted via Formspree
 - Responsive, accessible UI built on Radix primitives and Tailwind CSS
 - Shared TypeScript types between client and server

@@ -21,7 +21,7 @@ const SECTION_THEME = {
   ideas: "light",
   offerings: "dark",
   process: "light",
-  portfolio: "dark",
+  projects: "dark",
   manifesto: "light",
   contact: "dark",
 } as const;
@@ -51,7 +51,7 @@ export default function Index() {
         <IdeasSpace language={language} theme={SECTION_THEME.ideas} />
         <Offerings language={language} theme={SECTION_THEME.offerings} />
         <Methodology language={language} theme={SECTION_THEME.process} />
-        <Portfolio language={language} theme={SECTION_THEME.portfolio} />
+        <Portfolio language={language} theme={SECTION_THEME.projects} />
         <Manifesto language={language} theme={SECTION_THEME.manifesto} />
         <Contact language={language} theme={SECTION_THEME.contact} />
       </main>
