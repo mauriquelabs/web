@@ -86,7 +86,7 @@ export default function Hero({ language }: HeroProps) {
     <section
       ref={sectionRef}
       id="home"
-      className="section bg-brand-black text-foreground min-h-[100svh] max-md:min-h-0 max-md:py-20 flex flex-col items-center justify-center relative overflow-hidden"
+      className="section bg-brand-black text-foreground min-h-[calc(100svh-4rem)] flex flex-col items-center justify-center relative overflow-hidden"
     >
       {/* Outer: ambient breath. Inner: mouse parallax (separate transforms). */}
       <div
@@ -189,7 +189,7 @@ export default function Hero({ language }: HeroProps) {
 
       <div
         aria-hidden="true"
-        className={`absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 max-md:hidden ${
+        className={`absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 ${
           reduceMotion ? "opacity-40" : "animate-drift"
         }`}
       >
