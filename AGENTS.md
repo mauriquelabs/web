@@ -2,9 +2,9 @@
 
 This repository belongs to Maurique Labs.
 
-Maurique Labs builds software for the Music Tech industry. Every decision in this repository should reinforce that mission.
+Maurique Labs is a creative innovation studio: we design hackathons, creative labs and workshops, and we develop digital products for partners. We also run our own projects and initiatives in the sectors we care about. Every decision in this repository should reinforce that mission.
 
-Our goal is not simply to ship features, but to build software that empowers artists, promoters, communities and music organizations.
+Our goal is not simply to ship features, but to create collaboration, community engagement, learning, experimentation and tangible outcomes.
 
 ---
 
@@ -52,13 +52,13 @@ Do not prematurely optimize.
 
 # Product Context
 
-Maurique Labs creates products that connect technology, music, and communities. Every product should strengthen at least one of those dimensions.
+Maurique Labs is a creative innovation studio. Events and experiences are a core value proposition: hackathons, creative technology labs and workshops. We also offer digital product development (discovery, prototyping, MVPs, web/mobile and AI-powered solutions), available independently of our events. In parallel, we explore our own projects and initiatives in sectors we care about.
 
-**Current flagship product:** Mind the Beat — the discovery and community platform for purpose-driven electronic music experiences.
+Music and creative technology are central; the same approach extends to wellness, local business, education and other communities with challenges to explore.
 
-Future products may integrate with Mind the Beat but should remain independently scalable.
+**Projects & initiatives today:** Mind the Beat (curated electronic music experiences), Brew & Move (movement-powered rewards with specialty coffee), and AI Sound Labs (concept in development exploring AI, music and creative expression).
 
-**This repository today:** the Maurique Labs company marketing website (landing page, services, contact), not the Mind the Beat product app.
+**This repository today:** the Maurique Labs company marketing website (landing page and contact), not the product apps.
 
 ---
 
@@ -103,7 +103,7 @@ shared/                 # Types shared by client and server
 └── api.ts
 ```
 
-Keep this marketing-site layout. When product features land later, prefer organizing by feature (e.g. `client/features/...`) rather than large type-based folders — do not invent that tree for this site today.
+Keep this marketing-site layout. When product features land later, prefer organizing by feature (e.g. `client/features/...`) rather than large type-based folders. Do not invent that tree for this site today.
 
 ## Path aliases
 
@@ -200,6 +200,6 @@ If a proposed implementation conflicts with Maurique Labs principles, explain wh
 
 # Current Mission
 
-Maurique Labs is building the infrastructure that empowers the next generation of electronic music communities.
+Maurique Labs brings people together through experiences and digital products, and explores its own projects and initiatives in the sectors it cares about.
 
 Every line of code should contribute to that vision.

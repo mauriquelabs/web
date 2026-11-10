@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import IdeasSpace from "@/components/IdeasSpace";
+import Offerings from "@/components/Offerings";
 import Methodology from "@/components/Methodology";
 import Portfolio from "@/components/Portfolio";
 import Manifesto from "@/components/Manifesto";
@@ -10,14 +12,16 @@ import Footer from "@/components/Footer";
 type Language = "en" | "es";
 
 /**
- * Section rhythm — white → dark → white → gradient-CTA.
+ * Section rhythm — white → dark → white → dark → white → gradient-CTA.
  * Each section accepts `theme` ("dark" | "light") that toggles the `.light`
  * class; Contact adds an intentional gradient wash on the dark CTA surface.
  * Header/Footer stay dark (light logo asset only).
  */
 const SECTION_THEME = {
-  methodology: "light",
-  portfolio: "dark",
+  ideas: "light",
+  offerings: "dark",
+  process: "light",
+  projects: "dark",
   manifesto: "light",
   contact: "dark",
 } as const;
@@ -44,8 +48,10 @@ export default function Index() {
       <Header language={language} onLanguageChange={handleLanguageChange} />
       <main>
         <Hero language={language} />
-        <Methodology language={language} theme={SECTION_THEME.methodology} />
-        <Portfolio language={language} theme={SECTION_THEME.portfolio} />
+        <IdeasSpace language={language} theme={SECTION_THEME.ideas} />
+        <Offerings language={language} theme={SECTION_THEME.offerings} />
+        <Methodology language={language} theme={SECTION_THEME.process} />
+        <Portfolio language={language} theme={SECTION_THEME.projects} />
         <Manifesto language={language} theme={SECTION_THEME.manifesto} />
         <Contact language={language} theme={SECTION_THEME.contact} />
       </main>

@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { ContactFormData, ContactFormResponse } from "@shared/api";
+import { ContactFormData, ContactFormResponse } from "../../shared/api";
 
 export const handleContact: RequestHandler = async (req, res) => {
   try {

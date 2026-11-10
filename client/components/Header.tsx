@@ -21,13 +21,15 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
 
   const navLinks: Record<"en" | "es", NavItem[]> = {
     en: [
-      { label: "How We're Different", href: `${prefix}#methodology` },
-      { label: "What We've Built", href: `${prefix}#portfolio` },
+      { label: "Experiences", href: `${prefix}#offerings` },
+      { label: "How it works", href: `${prefix}#process` },
+      { label: "Projects", href: `${prefix}#projects` },
       { label: "Blog", to: "/blog" },
     ],
     es: [
-      { label: "Cómo Somos Diferentes", href: `${prefix}#methodology` },
-      { label: "Lo Que Hemos Construido", href: `${prefix}#portfolio` },
+      { label: "Experiencias", href: `${prefix}#offerings` },
+      { label: "Cómo funciona", href: `${prefix}#process` },
+      { label: "Proyectos", href: `${prefix}#projects` },
       { label: "Blog", to: "/blog" },
     ],
   };
@@ -38,7 +40,7 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
       active ? "text-foreground" : "text-foreground/70 hover:text-accent",
     );
 
-  const ctaLabel = language === "en" ? "Let's Talk" : "Hablemos";
+  const ctaLabel = language === "en" ? "Let's talk" : "Hablemos";
   const ctaHref = `${prefix}#contact`;
 
   return (

@@ -1,17 +1,16 @@
 # Maurique Labs
 
-**Software for the music industry.**
+**Bring people together. Turn ideas into something real.**
 
-Maurique Labs builds software for the music tech industry. We partner with artists, promoters, and music tech companies to discover real problems and build software that strengthens the music ecosystem.
+Maurique Labs is a creative innovation studio: hackathons, creative labs and workshops, plus digital product development for partners. We also explore our own projects and initiatives, including Mind the Beat, Brew & Move and AI Sound Labs.
 
-This repository is the Maurique Labs company marketing website — landing page, services, and contact flows.
+This repository is the Maurique Labs company marketing website: landing page and contact flows.
 
 ## Features
 
 - Bilingual landing page (English / Spanish) with persisted language preference
-- Homepage sections: Hero, Methodology, Portfolio, Manifesto, and Contact
-- Dedicated `/services` page with quote request flow
-- Contact and quote forms backed by Express API routes
+- Homepage sections: Hero, Ideas, Offerings, Process, Projects & Initiatives, Manifesto, and Contact
+- Contact form submitted via Formspree
 - Responsive, accessible UI built on Radix primitives and Tailwind CSS
 - Shared TypeScript types between client and server
 
@@ -23,7 +22,7 @@ This repository is the Maurique Labs company marketing website — landing page,
 | Layer           | Tools                                                    |
 | --------------- | -------------------------------------------------------- |
 | Frontend        | React 18, React Router 6, TypeScript, Vite, Tailwind CSS |
-| UI              | Radix UI, Lucide icons, Framer Motion                    |
+| UI              | Radix UI, Lucide icons                                   |
 | Backend         | Express 5 (integrated with Vite in development)          |
 | Validation      | Zod                                                      |
 | Testing         | Vitest                                                   |
@@ -67,7 +66,7 @@ Admin auth uses [Supabase Auth](https://supabase.com/docs/guides/auth). To set i
    - add the user's email to `ADMIN_EMAILS` in `.env`.
 5. Run `pnpm dev` and open [`/admin/login`](http://localhost:5000/admin/login).
 
-Protected routes live under `/admin`. The client calls `GET /api/auth/me` to verify admin access; the server enforces JWT validation and the `ADMIN_EMAILS` allowlist — the same pattern will protect future CMS write endpoints.
+Protected routes live under `/admin`. The client calls `GET /api/auth/me` to verify admin access; the server enforces JWT validation and the `ADMIN_EMAILS` allowlist. The same pattern will protect future CMS write endpoints.
 
 For hosted deployments (e.g. Vercel), set the Supabase and `ADMIN_EMAILS` variables in the project environment settings.
 
@@ -104,7 +103,7 @@ For hosted deployments (e.g. Vercel), set the Supabase and `ADMIN_EMAILS` variab
 
 ```text
 client/                 # React SPA
-├── pages/              # Route components (Index, ServicesPage, NotFound)
+├── pages/              # Route components (Index, NotFound, admin)
 ├── components/         # Section and shared UI components
 │   └── ui/             # Radix/shadcn-style primitives
 ├── App.tsx             # Router entry
@@ -133,7 +132,8 @@ Add new routes in `client/App.tsx` above the catch-all `*` route.
 
 ## API
 
-All endpoints are prefixed with `/api/`.
+All endpoints are prefixed with `/api/`. The homepage contact form posts to Formspree
+directly; it does not use the Express contact/quote routes below.
 
 
 | Method | Path           | Description              |
@@ -141,8 +141,8 @@ All endpoints are prefixed with `/api/`.
 | `GET`  | `/api/ping`    | Health check             |
 | `GET`  | `/api/demo`    | Demo endpoint            |
 | `GET`  | `/api/auth/me` | Current user (Bearer JWT) |
-| `POST` | `/api/contact` | Contact form submission  |
-| `POST` | `/api/quote`   | Quote request submission |
+| `POST` | `/api/contact` | Unused legacy contact endpoint |
+| `POST` | `/api/quote`   | Unused legacy quote endpoint |
 
 
 Request and response types live in `shared/api.ts`.
@@ -168,4 +168,4 @@ Engineering conventions, product context, and development guidelines are documen
 
 ## License
 
-Private — © Maurique Labs. All rights reserved.
+Private. © Maurique Labs. All rights reserved.
