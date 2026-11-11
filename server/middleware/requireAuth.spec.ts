@@ -62,7 +62,9 @@ describe("requireAdmin", () => {
     await requireAdmin(req, res, next);
 
     expect(res.status).toHaveBeenCalledWith(401);
-    expect(res.json).toHaveBeenCalledWith({ error: "Invalid or expired token" });
+    expect(res.json).toHaveBeenCalledWith({
+      error: "Invalid or expired token",
+    });
     expect(next).not.toHaveBeenCalled();
   });
 
@@ -93,6 +95,25 @@ describe("requireAdmin", () => {
     expect(res.status).toHaveBeenCalledWith(403);
     expect(res.json).toHaveBeenCalledWith({ error: "Admin access required" });
     expect(next).not.toHaveBeenCalled();
+  });
+
+  it("returns 500 when the authentication service throws", async () => {
+    vi.mocked(getSupabaseAdmin).mockImplementation(() => {
+      throw new Error("Missing SUPABASE_URL or SUPABASE_ANON_KEY");
+    });
+
+    const req = createMockRequest("Bearer valid-token");
+    const res = createMockResponse();
+    const next = vi.fn() as NextFunction;
+
+    await requireAdmin(req, res, next);
+
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({
+      error: "Authentication service unavailable",
+    });
+    expect(next).not.toHaveBeenCalled();
+    expect(req.authUser).toBeUndefined();
   });
 
   it("calls next when the user is an admin via email allowlist", async () => {
