@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import type { NextFunction, Request, Response } from "express";
-import { requireAdmin } from "./requireAuth";
+import { requireAdmin, requireAuth } from "./requireAuth";
 import { getSupabaseAdmin } from "../lib/supabase";
 
 vi.mock("../lib/supabase", () => ({
@@ -62,7 +62,9 @@ describe("requireAdmin", () => {
     await requireAdmin(req, res, next);
 
     expect(res.status).toHaveBeenCalledWith(401);
-    expect(res.json).toHaveBeenCalledWith({ error: "Invalid or expired token" });
+    expect(res.json).toHaveBeenCalledWith({
+      error: "Invalid or expired token",
+    });
     expect(next).not.toHaveBeenCalled();
   });
 
@@ -122,5 +124,194 @@ describe("requireAdmin", () => {
     expect(next).toHaveBeenCalledOnce();
     expect(req.authUser).toEqual(adminUser);
     expect(res.status).not.toHaveBeenCalled();
+  });
+
+  it("allows an admin role even when the email is not on the allowlist", async () => {
+    process.env.ADMIN_EMAILS = "admin@example.com";
+
+    const adminUser = {
+      id: "admin-1",
+      email: "other@example.com",
+      app_metadata: { role: "admin" },
+    };
+
+    vi.mocked(getSupabaseAdmin).mockReturnValue({
+      auth: {
+        getUser: vi.fn().mockResolvedValue({
+          data: { user: adminUser },
+          error: null,
+        }),
+      },
+    } as never);
+
+    const req = createMockRequest("Bearer valid-token");
+    const res = createMockResponse();
+    const next = vi.fn() as NextFunction;
+
+    await requireAdmin(req, res, next);
+
+    expect(next).toHaveBeenCalledOnce();
+    expect(req.authUser).toEqual(adminUser);
+    expect(res.status).not.toHaveBeenCalled();
+  });
+
+  it("matches allowlisted emails after normalizing ADMIN_EMAILS", async () => {
+    process.env.ADMIN_EMAILS = " Admin@Example.com , other@test.com ";
+
+    const adminUser = {
+      id: "admin-1",
+      email: "admin@example.com",
+      app_metadata: {},
+    };
+
+    vi.mocked(getSupabaseAdmin).mockReturnValue({
+      auth: {
+        getUser: vi.fn().mockResolvedValue({
+          data: { user: adminUser },
+          error: null,
+        }),
+      },
+    } as never);
+
+    const req = createMockRequest("Bearer valid-token");
+    const res = createMockResponse();
+    const next = vi.fn() as NextFunction;
+
+    await requireAdmin(req, res, next);
+
+    expect(next).toHaveBeenCalledOnce();
+    expect(res.status).not.toHaveBeenCalled();
+  });
+
+  it("returns 403 when only user_metadata.role is admin", async () => {
+    vi.mocked(getSupabaseAdmin).mockReturnValue({
+      auth: {
+        getUser: vi.fn().mockResolvedValue({
+          data: {
+            user: {
+              id: "user-1",
+              email: "person@example.com",
+              app_metadata: {},
+              user_metadata: { role: "admin" },
+            },
+          },
+          error: null,
+        }),
+      },
+    } as never);
+
+    const req = createMockRequest("Bearer valid-token");
+    const res = createMockResponse();
+    const next = vi.fn() as NextFunction;
+
+    await requireAdmin(req, res, next);
+
+    expect(res.status).toHaveBeenCalledWith(403);
+    expect(res.json).toHaveBeenCalledWith({ error: "Admin access required" });
+    expect(next).not.toHaveBeenCalled();
+  });
+
+  it("returns 500 when the authentication service throws", async () => {
+    vi.mocked(getSupabaseAdmin).mockReturnValue({
+      auth: {
+        getUser: vi.fn().mockRejectedValue(new Error("network down")),
+      },
+    } as never);
+
+    const req = createMockRequest("Bearer valid-token");
+    const res = createMockResponse();
+    const next = vi.fn() as NextFunction;
+
+    await requireAdmin(req, res, next);
+
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({
+      error: "Authentication service unavailable",
+    });
+    expect(next).not.toHaveBeenCalled();
+  });
+
+  it("passes only the bearer token to Supabase", async () => {
+    const getUser = vi.fn().mockResolvedValue({
+      data: { user: null },
+      error: { message: "Invalid token" },
+    });
+
+    vi.mocked(getSupabaseAdmin).mockReturnValue({
+      auth: { getUser },
+    } as never);
+
+    const req = createMockRequest("Bearer token-value");
+    const res = createMockResponse();
+    const next = vi.fn() as NextFunction;
+
+    await requireAdmin(req, res, next);
+
+    expect(getUser).toHaveBeenCalledWith("token-value");
+  });
+});
+
+describe("requireAuth", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("returns 401 when the authorization header is missing", async () => {
+    const req = createMockRequest();
+    const res = createMockResponse();
+    const next = vi.fn() as NextFunction;
+
+    await requireAuth(req, res, next);
+
+    expect(res.status).toHaveBeenCalledWith(401);
+    expect(res.json).toHaveBeenCalledWith({
+      error: "Missing or invalid authorization header",
+    });
+    expect(next).not.toHaveBeenCalled();
+  });
+
+  it("allows an authenticated user who is not an admin", async () => {
+    const user = {
+      id: "user-1",
+      email: "person@example.com",
+      app_metadata: {},
+    };
+
+    vi.mocked(getSupabaseAdmin).mockReturnValue({
+      auth: {
+        getUser: vi.fn().mockResolvedValue({
+          data: { user },
+          error: null,
+        }),
+      },
+    } as never);
+
+    const req = createMockRequest("Bearer valid-token");
+    const res = createMockResponse();
+    const next = vi.fn() as NextFunction;
+
+    await requireAuth(req, res, next);
+
+    expect(next).toHaveBeenCalledOnce();
+    expect(req.authUser).toEqual(user);
+    expect(res.status).not.toHaveBeenCalled();
+  });
+
+  it("returns 500 when the authentication service throws", async () => {
+    vi.mocked(getSupabaseAdmin).mockImplementation(() => {
+      throw new Error("Missing SUPABASE_URL or SUPABASE_ANON_KEY");
+    });
+
+    const req = createMockRequest("Bearer valid-token");
+    const res = createMockResponse();
+    const next = vi.fn() as NextFunction;
+
+    await requireAuth(req, res, next);
+
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({
+      error: "Authentication service unavailable",
+    });
+    expect(next).not.toHaveBeenCalled();
   });
 });
