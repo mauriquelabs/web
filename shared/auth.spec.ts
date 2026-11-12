@@ -18,17 +18,37 @@ describe("parseAdminEmails", () => {
 describe("isAdminUser", () => {
   it("allows users with app_metadata.role admin", () => {
     expect(
-      isAdminUser({ email: "anyone@example.com", app_metadata: { role: "admin" } }),
+      isAdminUser({
+        email: "anyone@example.com",
+        app_metadata: { role: "admin" },
+      }),
     ).toBe(true);
   });
 
   it("allows users whose email is in the allowlist", () => {
     expect(
-      isAdminUser(
-        { email: "Admin@Example.com", app_metadata: {} },
-        ["admin@example.com"],
-      ),
+      isAdminUser({ email: "Admin@Example.com", app_metadata: {} }, [
+        "admin@example.com",
+      ]),
     ).toBe(true);
+  });
+
+  it("matches allowlisted emails with surrounding whitespace", () => {
+    expect(
+      isAdminUser({ email: "  Admin@Example.com  ", app_metadata: {} }, [
+        "admin@example.com",
+      ]),
+    ).toBe(true);
+  });
+
+  it("does not treat a client-controlled user_metadata role as admin", () => {
+    const user = {
+      email: "person@example.com",
+      app_metadata: {},
+      user_metadata: { role: "admin" },
+    };
+
+    expect(isAdminUser(user)).toBe(false);
   });
 
   it("rejects users without admin role or allowlisted email", () => {
@@ -41,9 +61,11 @@ describe("isAdminUser", () => {
   });
 
   it("rejects users with no email when allowlist is configured", () => {
-    expect(isAdminUser({ app_metadata: { role: "admin" } }, ["admin@example.com"])).toBe(
-      true,
+    expect(
+      isAdminUser({ app_metadata: { role: "admin" } }, ["admin@example.com"]),
+    ).toBe(true);
+    expect(isAdminUser({ app_metadata: {} }, ["admin@example.com"])).toBe(
+      false,
     );
-    expect(isAdminUser({ app_metadata: {} }, ["admin@example.com"])).toBe(false);
   });
 });
