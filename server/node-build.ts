@@ -1,6 +1,6 @@
 import path from "path";
 import { createServer } from "./index";
-import * as express from "express";
+import { serveSpa } from "./serveSpa";
 
 const app = createServer();
 const port = process.env.PORT || 5000;
@@ -9,17 +9,7 @@ const port = process.env.PORT || 5000;
 const __dirname = import.meta.dirname;
 const distPath = path.join(__dirname, "../spa");
 
-// Serve static files
-app.use(express.static(distPath));
-
-// Handle React Router - serve index.html for all non-API routes
-app.get("/{*path}", (req, res) => {
-  if (req.path.startsWith("/api/") || req.path.startsWith("/health")) {
-    return res.status(404).json({ error: "API endpoint not found" });
-  }
-
-  res.sendFile(path.join(distPath, "index.html"));
-});
+serveSpa(app, distPath);
 
 app.listen(Number(port), "0.0.0.0", () => {
   console.log(`Server running on 0.0.0.0:${port}`);
