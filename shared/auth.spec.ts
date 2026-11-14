@@ -18,16 +18,18 @@ describe("parseAdminEmails", () => {
 describe("isAdminUser", () => {
   it("allows users with app_metadata.role admin", () => {
     expect(
-      isAdminUser({ email: "anyone@example.com", app_metadata: { role: "admin" } }),
+      isAdminUser({
+        email: "anyone@example.com",
+        app_metadata: { role: "admin" },
+      }),
     ).toBe(true);
   });
 
   it("allows users whose email is in the allowlist", () => {
     expect(
-      isAdminUser(
-        { email: "Admin@Example.com", app_metadata: {} },
-        ["admin@example.com"],
-      ),
+      isAdminUser({ email: "Admin@Example.com", app_metadata: {} }, [
+        "admin@example.com",
+      ]),
     ).toBe(true);
   });
 
@@ -41,9 +43,36 @@ describe("isAdminUser", () => {
   });
 
   it("rejects users with no email when allowlist is configured", () => {
-    expect(isAdminUser({ app_metadata: { role: "admin" } }, ["admin@example.com"])).toBe(
-      true,
+    expect(
+      isAdminUser({ app_metadata: { role: "admin" } }, ["admin@example.com"]),
+    ).toBe(true);
+    expect(isAdminUser({ app_metadata: {} }, ["admin@example.com"])).toBe(
+      false,
     );
-    expect(isAdminUser({ app_metadata: {} }, ["admin@example.com"])).toBe(false);
+  });
+
+  it("requires the admin role to match exactly", () => {
+    expect(
+      isAdminUser({
+        email: "other@example.com",
+        app_metadata: { role: "Admin" },
+      }),
+    ).toBe(false);
+  });
+
+  it("trims email before comparing it to the allowlist", () => {
+    expect(
+      isAdminUser({ email: "  Admin@Example.com  ", app_metadata: {} }, [
+        "admin@example.com",
+      ]),
+    ).toBe(true);
+  });
+
+  it("does not allowlist an email that only matches after removing internal spaces", () => {
+    expect(
+      isAdminUser({ email: "admin @example.com", app_metadata: {} }, [
+        "admin@example.com",
+      ]),
+    ).toBe(false);
   });
 });
