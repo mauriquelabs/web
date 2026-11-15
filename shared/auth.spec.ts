@@ -13,21 +13,30 @@ describe("parseAdminEmails", () => {
     expect(parseAdminEmails()).toEqual([]);
     expect(parseAdminEmails("  ,  ")).toEqual([]);
   });
+
+  it("drops empty segments from a comma-separated list", () => {
+    expect(parseAdminEmails("admin@example.com,, ,other@example.com")).toEqual([
+      "admin@example.com",
+      "other@example.com",
+    ]);
+  });
 });
 
 describe("isAdminUser", () => {
   it("allows users with app_metadata.role admin", () => {
     expect(
-      isAdminUser({ email: "anyone@example.com", app_metadata: { role: "admin" } }),
+      isAdminUser({
+        email: "anyone@example.com",
+        app_metadata: { role: "admin" },
+      }),
     ).toBe(true);
   });
 
   it("allows users whose email is in the allowlist", () => {
     expect(
-      isAdminUser(
-        { email: "Admin@Example.com", app_metadata: {} },
-        ["admin@example.com"],
-      ),
+      isAdminUser({ email: "Admin@Example.com", app_metadata: {} }, [
+        "admin@example.com",
+      ]),
     ).toBe(true);
   });
 
@@ -41,9 +50,29 @@ describe("isAdminUser", () => {
   });
 
   it("rejects users with no email when allowlist is configured", () => {
-    expect(isAdminUser({ app_metadata: { role: "admin" } }, ["admin@example.com"])).toBe(
-      true,
+    expect(
+      isAdminUser({ app_metadata: { role: "admin" } }, ["admin@example.com"]),
+    ).toBe(true);
+    expect(isAdminUser({ app_metadata: {} }, ["admin@example.com"])).toBe(
+      false,
     );
-    expect(isAdminUser({ app_metadata: {} }, ["admin@example.com"])).toBe(false);
+  });
+
+  it("trims and lowercases the user email before an allowlist comparison", () => {
+    expect(
+      isAdminUser({ email: "  Admin@Example.com  " }, ["admin@example.com"]),
+    ).toBe(true);
+  });
+
+  it("rejects blank emails, embedded spaces, and near-miss admin roles", () => {
+    expect(isAdminUser({ email: "   " }, ["admin@example.com"])).toBe(false);
+    expect(
+      isAdminUser({ email: "admin @example.com" }, ["admin@example.com"]),
+    ).toBe(false);
+    expect(isAdminUser({ app_metadata: { role: "Admin" } })).toBe(false);
+    expect(isAdminUser({ app_metadata: { role: "admin " } })).toBe(false);
+    expect(isAdminUser({ email: null, app_metadata: { role: "editor" } })).toBe(
+      false,
+    );
   });
 });
