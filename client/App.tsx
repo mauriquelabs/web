@@ -9,6 +9,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthProvider";
 import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 import Index from "./pages/Index";
+import JournalIndex from "./pages/journal/JournalIndex";
+import JournalArticle from "./pages/journal/JournalArticle";
 import LoginPage from "./pages/admin/LoginPage";
 import AdminPage from "./pages/admin/AdminPage";
 import NotFound from "./pages/NotFound";
@@ -24,6 +26,8 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/journal" element={<JournalIndex />} />
+            <Route path="/journal/:slug" element={<JournalArticle />} />
             <Route path="/services" element={<Navigate to="/" replace />} />
             <Route path="/admin/login" element={<LoginPage />} />
             <Route
