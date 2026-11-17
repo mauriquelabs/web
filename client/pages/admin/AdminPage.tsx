@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthProvider";
+import CompaniesView from "./CompaniesView";
 
 export default function AdminPage() {
   const { user, signOut } = useAuth();
@@ -26,20 +27,7 @@ export default function AdminPage() {
       </header>
 
       <main className="section-container py-12">
-        <div className="card-base max-w-2xl">
-          <h2 className="text-xl mb-2">Authentication is working</h2>
-          <p className="text-foreground/70 mb-6">
-            You are signed in. This area will become the content management
-            interface in a follow-up step.
-          </p>
-
-          <dl className="space-y-4 text-sm">
-            <div>
-              <dt className="font-medium text-foreground/60">Signed in as</dt>
-              <dd>{user?.email ?? "Unknown"}</dd>
-            </div>
-          </dl>
-        </div>
+        <CompaniesView />
 
         <p className="mt-8">
           <Link to="/" className="text-accent2 hover:underline">
