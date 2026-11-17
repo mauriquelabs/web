@@ -5,8 +5,8 @@ date: 2026-11-17
 pillar: exploration
 type: perspective
 excerpt: Great products begin with understanding people. Communities are one of the best places to discover what matters before you build.
-featured: true
-status: published
+featured: false
+status: coming-soon
 readingTime: 6
 ---
 

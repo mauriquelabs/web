@@ -78,11 +78,17 @@ describe("journal content corpus", () => {
     expect(posts.length).toBeGreaterThanOrEqual(5);
   });
 
-  it("exposes the featured communities article", () => {
+  it("exposes the featured bringing-people-together article", () => {
     const featured = getFeaturedPost();
-    expect(featured?.slug).toBe("best-product-ideas-come-from-communities");
+    expect(featured?.slug).toBe("why-we-believe-in-bringing-people-together");
     expect(featured?.status).toBe("published");
     expect(featured?.content.length).toBeGreaterThan(500);
+  });
+
+  it("keeps the communities philosophy piece parked as a draft", () => {
+    const parked = getPostBySlug("best-product-ideas-come-from-communities");
+    expect(parked?.status).toBe("coming-soon");
+    expect(parked?.featured).toBe(false);
   });
 
   it("resolves posts by slug", () => {
@@ -93,8 +99,10 @@ describe("journal content corpus", () => {
 
   it("lists only published posts for the public journal", () => {
     const published = getPublishedPosts();
-    expect(published.length).toBeGreaterThanOrEqual(1);
-    expect(published.every((p) => p.status === "published")).toBe(true);
+    expect(published.length).toBe(1);
+    expect(published[0]?.slug).toBe(
+      "why-we-believe-in-bringing-people-together",
+    );
     expect(
       published.some((p) => p.slug === "ai-native-product-builder"),
     ).toBe(false);
