@@ -1,8 +1,8 @@
 # Maurique Labs
 
-**Bring people together. Turn ideas into something real.**
+**Product builders, starting with community.**
 
-Maurique Labs is a creative innovation studio: hackathons, creative labs and workshops, plus digital product development for partners. We also explore our own projects and initiatives, including Mind the Beat, Brew & Move and AI Sound Labs.
+Maurique Labs is a community of product builders. We start with the communities we belong to, build digital products, and create in-person experiences alongside them. We also explore our own projects and initiatives, including Mind the Beat, Brew & Move and AI Sound Labs.
 
 This repository is the Maurique Labs company marketing website: landing page and contact flows.
 

@@ -73,7 +73,7 @@ AI makes that judgment more important, not less. Tools can help one person explo
 
 ## What this means for Maurique Labs
 
-We are a creative innovation studio. We design experiences. We build digital products. We also run our own projects in sectors we care about.
+We are a community of product builders. We start with the communities we belong to, build digital products, and create in-person experiences alongside them. We also run our own projects in sectors we care about.
 
 The Journal exists to document that process in public: the philosophies, the practices, and the experiments, including the ones that do not work.
 
