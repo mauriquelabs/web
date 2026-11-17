@@ -16,7 +16,7 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
 
   const navLinks = {
     en: [
-      { label: "Who we are?", href: `${prefix}#ideas` },
+      { label: "Who we are", href: `${prefix}#ideas` },
       { label: "What we do", href: `${prefix}#offerings` },
       { label: "Our process", href: `${prefix}#process` },
       { label: "Projects", href: `${prefix}#projects` },

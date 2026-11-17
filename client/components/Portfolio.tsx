@@ -151,7 +151,7 @@ export default function Portfolio({
           </p>
         </div>
 
-        <ul className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <ul className="border-t border-border">
           {copy.items.map((item, index) => {
             const inner = (
               <>
@@ -165,8 +165,8 @@ export default function Portfolio({
                   }`}
                 />
 
-                <div className="flex h-full flex-col">
-                  <div className="min-w-0 flex-1">
+                <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between sm:gap-12 pl-0 group-hover:pl-4 group-focus-visible:pl-4 transition-[padding] duration-300">
+                  <div className="min-w-0 max-w-2xl">
                     <p
                       className={`mb-3 text-xs font-semibold uppercase tracking-[0.18em] ${
                         item.accent === "orange"
@@ -176,16 +176,16 @@ export default function Portfolio({
                     >
                       {item.label}
                     </p>
-                    <h3 className="font-heading text-3xl sm:text-4xl xl:text-3xl font-bold tracking-tight text-foreground">
+                    <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
                       {item.title}
                     </h3>
-                    <p className="mt-4 text-base sm:text-lg xl:text-base text-foreground/65 leading-relaxed">
+                    <p className="mt-4 text-base sm:text-lg text-foreground/65 leading-relaxed max-w-xl">
                       {item.description}
                     </p>
                   </div>
 
                   {item.host && (
-                    <span className="mt-6 inline-flex shrink-0 items-center gap-2 self-start pt-4 text-sm font-semibold text-foreground/70 transition-colors duration-200 group-hover:text-accent2">
+                    <span className="inline-flex shrink-0 items-center gap-2 self-start text-sm font-semibold text-foreground/70 transition-colors duration-200 group-hover:text-accent2 sm:mt-10">
                       {item.host}
                       <ArrowUpRight
                         className={`h-4 w-4 transition-transform duration-200 ${
@@ -216,12 +216,12 @@ export default function Portfolio({
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative flex h-full flex-col card-base md:min-h-[20rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    className="group relative block border-b border-border py-10 sm:py-12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   >
                     {inner}
                   </a>
                 ) : (
-                  <div className="group relative flex h-full flex-col card-base md:min-h-[20rem]">
+                  <div className="group relative block border-b border-border py-10 sm:py-12">
                     {inner}
                   </div>
                 )}
