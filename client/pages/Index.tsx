@@ -30,6 +30,10 @@ export default function Index() {
   const [language, setLanguage] = useState<Language>("en");
 
   useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
+
+  useEffect(() => {
     const savedLanguage = localStorage.getItem(
       "maurique-language",
     ) as Language | null;

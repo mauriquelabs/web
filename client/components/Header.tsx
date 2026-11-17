@@ -16,18 +16,20 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
 
   const navLinks = {
     en: [
-      { label: "Experiences", href: `${prefix}#offerings` },
-      { label: "How it works", href: `${prefix}#process` },
+      { label: "Who we are?", href: `${prefix}#ideas` },
+      { label: "What we do", href: `${prefix}#offerings` },
+      { label: "Our process", href: `${prefix}#process` },
       { label: "Projects", href: `${prefix}#projects` },
     ],
     es: [
-      { label: "Experiencias", href: `${prefix}#offerings` },
-      { label: "Cómo funciona", href: `${prefix}#process` },
+      { label: "¿Quiénes somos?", href: `${prefix}#ideas` },
+      { label: "Qué hacemos", href: `${prefix}#offerings` },
+      { label: "Cómo trabajamos", href: `${prefix}#process` },
       { label: "Proyectos", href: `${prefix}#projects` },
     ],
   };
 
-  const ctaLabel = language === "en" ? "Let's talk" : "Hablemos";
+  const ctaLabel = language === "en" ? "Build with us" : "Construye con nosotros";
   const ctaHref = `${prefix}#contact`;
 
   return (
@@ -43,7 +45,7 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-8">
           {navLinks[language].map((link) => (
             <a
               key={link.href}
@@ -58,7 +60,7 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
         {/* CTA and Language Toggle */}
         <div className="flex items-center gap-4">
           {/* Language Toggle */}
-          <div className="hidden sm:flex items-center gap-2 border-l border-border pl-4">
+          <div className="hidden lg:flex items-center gap-2 border-l border-border pl-4">
             <button
               onClick={() => onLanguageChange("en")}
               className={`text-xs font-semibold px-2 py-1 rounded transition-colors ${
@@ -84,7 +86,7 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
           {/* CTA Button */}
           <a
             href={ctaHref}
-            className="hidden sm:inline-block btn-primary text-sm"
+            className="hidden lg:inline-block btn-primary text-sm"
           >
             {ctaLabel}
           </a>
@@ -92,7 +94,7 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-foreground hover:text-accent transition-colors"
+            className="lg:hidden p-2 text-foreground hover:text-accent transition-colors"
           >
             {mobileMenuOpen ? (
               <X className="w-5 h-5" />
@@ -105,7 +107,7 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-border bg-background/95">
+        <div className="lg:hidden border-t border-border bg-background/95">
           <nav className="section-container py-4 flex flex-col gap-4">
             {navLinks[language].map((link) => (
               <a

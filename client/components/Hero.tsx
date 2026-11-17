@@ -8,18 +8,16 @@ interface HeroProps {
 export default function Hero({ language }: HeroProps) {
   const content = {
     en: {
-      eyebrow: "Creative Innovation Studio",
       brand: "Maurique Labs",
-      h1: "Bring people together. Turn ideas into something real.",
-      ctaPrimary: "Let's create an experience",
-      ctaSecondary: "See our projects",
+      h1: "We build digital products and in-person experiences with the communities we belong to.",
+      ctaPrimary: "Build with us",
+      ctaSecondary: "Explore our projects",
     },
     es: {
-      eyebrow: "Estudio de innovación creativa",
       brand: "Maurique Labs",
-      h1: "Reúne a las personas. Convierte las ideas en algo real.",
-      ctaPrimary: "Creemos una experiencia",
-      ctaSecondary: "Ver nuestros proyectos",
+      h1: "Creamos productos digitales y experiencias presenciales junto a las comunidades de las que formamos parte.",
+      ctaPrimary: "Construye con nosotros",
+      ctaSecondary: "Explora nuestros proyectos",
     },
   };
 
@@ -120,19 +118,6 @@ export default function Hero({ language }: HeroProps) {
           }`}
           aria-hidden="true"
         />
-
-        <p
-          className={`mb-3 sm:mb-4 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-foreground/50 ${
-            reduceMotion ? "" : "animate-slide-up opacity-0"
-          }`}
-          style={
-            reduceMotion
-              ? undefined
-              : { animationDelay: "0.04s", animationFillMode: "forwards" }
-          }
-        >
-          {copy.eyebrow}
-        </p>
 
         <p
           className={`font-heading text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground mb-4 sm:mb-6 ${

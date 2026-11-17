@@ -38,14 +38,14 @@ export default function Contact({ language, theme = "dark" }: ContactProps) {
 
   const content = {
     en: {
-      sectionTitle: "What could we create together?",
+      sectionTitle: "Let’s build something together",
       sectionDesc:
-        "Bring a challenge, an idea or a community you’d like to engage. We can shape a hackathon, lab, workshop or digital product around it.",
+        "Organise a community, run a local business or build products? Bring us an idea or a challenge. We’d love to explore what we could make together.",
     },
     es: {
-      sectionTitle: "¿Qué podríamos crear juntos?",
+      sectionTitle: "Construyamos algo juntos",
       sectionDesc:
-        "Trae un reto, una idea o una comunidad con la que quieras conectar. Podemos dar forma a un hackathon, lab, workshop o producto digital a su alrededor.",
+        "¿Organizas una comunidad, tienes un negocio local o creas productos? Cuéntanos tu idea o reto. Nos encantará explorar qué podemos construir juntos.",
     },
   };
 

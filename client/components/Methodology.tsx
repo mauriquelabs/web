@@ -40,42 +40,42 @@ export default function Methodology({
 
   const content = {
     en: {
-      sectionTitle: "From a shared question to a practical next step",
+      sectionTitle: "Explore. Build. Deliver.",
       steps: [
         {
-          title: "Shape the challenge.",
+          title: "Explore & Define",
           description:
-            "Together, we define who the experience is for, what they want to explore and what a useful outcome looks like.",
+            "We listen to the community, understand the people and problem, and shape product direction through discovery, research and validation.",
         },
         {
-          title: "Learn and build together.",
+          title: "Design & Build",
           description:
-            "We design and facilitate the experience, combining collaboration with practical guidance and technical support.",
+            "We turn the clearest opportunity into a prototype, digital product or shared in-person experience, testing and learning with the people it is for.",
         },
         {
-          title: "Take the ideas forward.",
+          title: "Deliver & Iterate",
           description:
-            "We close with tangible outcomes and clear next steps your team can act on, from prototypes and insights to a plan for what comes next.",
+            "We prepare what works for launch, bring the experience to life, and agree practical next steps to keep improving with the community.",
         },
       ],
     },
     es: {
-      sectionTitle: "De una pregunta compartida a un siguiente paso práctico",
+      sectionTitle: "Explorar. Construir. Entregar.",
       steps: [
         {
-          title: "Damos forma al reto.",
+          title: "Explorar y definir",
           description:
-            "Juntos definimos para quién es la experiencia, qué quieren explorar y cómo se ve un resultado útil.",
+            "Escuchamos a la comunidad, entendemos a las personas y el problema, y definimos el rumbo del producto mediante descubrimiento, investigación y validación.",
         },
         {
-          title: "Aprendemos y construimos juntos.",
+          title: "Diseñar y construir",
           description:
-            "Diseñamos y facilitamos la experiencia, combinando colaboración con guía práctica y apoyo técnico.",
+            "Convertimos la oportunidad más clara en un prototipo, un producto digital o una experiencia presencial compartida, probando y aprendiendo con las personas a quienes va dirigida.",
         },
         {
-          title: "Llevamos las ideas más lejos.",
+          title: "Entregar e iterar",
           description:
-            "Cerramos con resultados tangibles y siguientes pasos claros que tu equipo puede aplicar, desde prototipos e insights hasta un plan para lo que viene después.",
+            "Preparamos lo que funciona para su lanzamiento, hacemos realidad la experiencia y acordamos pasos prácticos para seguir mejorando con la comunidad.",
         },
       ],
     },
@@ -100,7 +100,7 @@ export default function Methodology({
           {copy.sectionTitle}
         </h2>
 
-        <div className="content-narrow relative">
+        <div className="relative mx-auto max-w-xl">
           {/* Progress track — encodes sequence, fills when section enters view */}
           <div
             aria-hidden="true"

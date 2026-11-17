@@ -40,17 +40,17 @@ export default function Manifesto({
 
   const content = {
     en: {
-      sectionTitle: "Technology, culture & community",
+      sectionTitle: "Built with the communities we belong to",
       paragraphs: [
-        "Music and creative technology are central to Maurique Labs. They shape how we design experiences and digital products for partners.",
-        "That same approach extends to wellness, local business, education and other sectors where collaboration, learning and experimentation create real outcomes.",
+        "Music and creative technology are part of how we bring people together and make products. We also work across interests such as wellness, local business and education.",
+        "Community-led product building means listening, making and learning with the people a product or experience is for. That work starts with the first question and continues through launch and beyond.",
       ],
     },
     es: {
-      sectionTitle: "Tecnología, cultura y comunidad",
+      sectionTitle: "Creamos con las comunidades de las que formamos parte",
       paragraphs: [
-        "La música y la tecnología creativa están en el centro de Maurique Labs. Dan forma a cómo diseñamos experiencias y productos digitales para partners.",
-        "Ese mismo enfoque se extiende al bienestar, el comercio local, la educación y otros sectores donde la colaboración, el aprendizaje y la experimentación generan resultados reales.",
+        "La música y la tecnología creativa son parte de cómo reunimos a las personas y creamos productos. También trabajamos en ámbitos como el bienestar, el comercio local y la educación.",
+        "La creación de productos desde la comunidad consiste en escuchar, crear y aprender junto a las personas para quienes se diseña un producto o una experiencia, desde la primera pregunta hasta el lanzamiento y más allá.",
       ],
     },
   };

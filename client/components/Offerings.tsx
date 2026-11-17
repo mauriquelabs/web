@@ -48,46 +48,36 @@ export default function Offerings({
     { sectionTitle: string; intro: string; items: Offering[] }
   > = {
     en: {
-      sectionTitle: "What we can create together",
+      sectionTitle: "What we do",
       intro:
-        "Collaboration, community engagement, learning and experimentation that lead to tangible outcomes for your organisation.",
+        "Our work takes two connected forms: digital products that meet real needs, and in-person experiences shaped with the communities around them.",
       items: [
         {
-          title: "Hackathons & innovation experiences",
+          title: "Digital products",
           description:
-            "Design, organisation and facilitation of hackathons, ideathons and innovation challenges. From challenge definition and experience design to facilitation, technical mentoring and prototyping support.",
+            "We work with people close to a real need to explore it, define product direction, prototype, validate and launch useful digital products, from web and mobile experiences to AI-enabled tools where they help.",
         },
         {
-          title: "Creative technology labs & workshops",
+          title: "In-person experiences",
           description:
-            "Hands-on AI workshops, creative coding sessions, music-tech labs and collaborative learning. Standalone or integrated into larger events.",
-        },
-        {
-          title: "Digital product development",
-          description:
-            "Product discovery, validation, rapid prototyping, MVPs, web and mobile applications, and AI-powered solutions. Available independently of our events.",
+            "We bring communities together through music, movement, creative technology and learning. We shape participatory events, workshops and gatherings with the people who make them meaningful.",
         },
       ],
     },
     es: {
-      sectionTitle: "Lo que podemos crear juntos",
+      sectionTitle: "Qué hacemos",
       intro:
-        "Colaboración, engagement comunitario, aprendizaje y experimentación que llevan a resultados tangibles para tu organización.",
+        "Nuestro trabajo tiene dos formas conectadas: productos digitales que responden a necesidades reales y experiencias presenciales creadas con las comunidades que los rodean.",
       items: [
         {
-          title: "Hackathons y experiencias de innovación",
+          title: "Productos digitales",
           description:
-            "Diseño, organización y facilitación de hackathons, ideathons y retos de innovación. Desde la definición del reto y el diseño de la experiencia hasta la facilitación, el mentoring técnico y el apoyo al prototipado.",
+            "Trabajamos con personas cercanas a una necesidad real para explorarla, definir el rumbo del producto, crear prototipos, validar y lanzar productos digitales útiles: desde experiencias web y móviles hasta herramientas con IA cuando aportan valor.",
         },
         {
-          title: "Labs y workshops de tecnología creativa",
+          title: "Experiencias presenciales",
           description:
-            "Workshops prácticos de IA, sesiones de creative coding, labs de music-tech y aprendizaje colaborativo. Independientes o integrados en eventos más amplios.",
-        },
-        {
-          title: "Desarrollo de producto digital",
-          description:
-            "Discovery de producto, validación, prototipado rápido, MVPs, aplicaciones web y mobile, y soluciones con IA. Disponible de forma independiente a nuestros eventos.",
+            "Reunimos a comunidades a través de la música, el movimiento, la tecnología creativa y el aprendizaje. Diseñamos eventos participativos, talleres y encuentros con las personas que les dan sentido.",
         },
       ],
     },
@@ -124,11 +114,11 @@ export default function Offerings({
           </p>
         </div>
 
-        <ul className="grid gap-12 sm:gap-14 lg:grid-cols-3 lg:gap-10">
+        <ul className="grid gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-8">
           {copy.items.map((item, index) => (
             <li
               key={item.title}
-              className={`transition-opacity duration-300 ${
+              className={`card-base flex flex-col lg:min-h-[20rem] lg:justify-center transition-opacity duration-300 ${
                 show ? "opacity-100" : "opacity-0"
               }`}
               style={{

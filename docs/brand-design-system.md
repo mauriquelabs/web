@@ -1,10 +1,10 @@
 # Maurique Labs: Website Design System
 
-Maurique Labs is a **creative innovation studio**: experiences (hackathons, labs,
-workshops) and digital product development for partners, plus our own projects and
-initiatives. Every UI decision should favor clarity over decoration, real experiences
-over marketing noise, and confidence without arrogance. Think "bring people together;
-turn ideas into something real."
+Maurique Labs is a **community of product builders**. We start with the communities
+we belong to, build digital products, and create in-person experiences with those
+communities. Every UI decision should favor clarity over decoration, real experiences
+over marketing noise, and confidence without arrogance. Think "build with the
+communities we belong to."
 
 ## Typography
 
@@ -81,7 +81,7 @@ shadcn/ui component library in `client/components/ui/`).
 Defined in `client/global.css` `@layer components`:
 
 - `.btn-primary` — Electric Orange fill. The **only** button style for primary CTAs /
-  main conversion actions (e.g. "Let's create an experience", "Let's talk", form submit).
+  main conversion actions (e.g. "Build with us", "Let's talk", form submit).
 - `.btn-secondary` — Deep Pine fill / white text / hover Bright Teal. Use for
   neutral/secondary actions that shouldn't compete with the primary CTA.
 - `.btn-outline` — transparent, adaptive border (`border-foreground/30`), hover fills Deep

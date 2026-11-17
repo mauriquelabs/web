@@ -40,14 +40,14 @@ export default function IdeasSpace({
 
   const content = {
     en: {
-      sectionTitle: "Give your ideas space to grow",
-      lead: "An idea you keep coming back to. A challenge your team has been putting off. A community with talent, curiosity and nowhere to experiment together.",
-      body: "Maurique Labs creates the space, structure and technical support to take that first step: bringing people together to collaborate, learn, experiment and leave with tangible outcomes.",
+      sectionTitle: "Product builders, starting with community.",
+      lead: "Maurique Labs is a community of product builders. We start with the people and communities we belong to, then create digital products and in-person experiences around what matters to them.",
+      body: "A product builder takes an idea from product discovery to something people can use: understanding a need, prototyping, learning with the community, and preparing for launch. We build alongside the people a product is for, not at a distance.",
     },
     es: {
-      sectionTitle: "Dale a tus ideas espacio para crecer",
-      lead: "Una idea a la que vuelves una y otra vez. Un reto que tu equipo lleva aplazando. Una comunidad con talento, curiosidad y sin un lugar donde experimentar juntos.",
-      body: "Maurique Labs crea el espacio, la estructura y el apoyo técnico para dar ese primer paso: reunir a personas para colaborar, aprender, experimentar y salir con resultados tangibles.",
+      sectionTitle: "Creamos productos empezando por la comunidad.",
+      lead: "Maurique Labs es una comunidad de creadores de productos. Empezamos por las personas y comunidades de las que formamos parte, y creamos productos digitales y experiencias presenciales en torno a lo que les importa.",
+      body: "Un creador de productos lleva una idea desde el descubrimiento de producto hasta algo que las personas pueden usar: entiende una necesidad, crea prototipos, aprende con la comunidad y prepara el lanzamiento. Construimos junto a las personas para quienes es el producto, no desde lejos.",
     },
   };
 
