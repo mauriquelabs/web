@@ -29,3 +29,6 @@ readingTime: 5
 - Prefer 4 to 7 minute reads.
 - No em dashes or en dashes in public copy.
 - English first; Spanish can land later as separate files or a future i18n field.
+- Before drafting, editing, or publishing, follow the
+  [Journal Writer skill](../../../.agents/skills/journal-writer/SKILL.md)
+  (brand voice + gatekeeper checklist). Invoke with `/journal-writer` in Cursor.

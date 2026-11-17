@@ -196,6 +196,10 @@ When contributing to this repository:
 
 If a proposed implementation conflicts with Maurique Labs principles, explain why before implementing it.
 
+When drafting, editing, or publishing Journal posts (`client/content/journal/`), follow
+[`.agents/skills/journal-writer/SKILL.md`](.agents/skills/journal-writer/SKILL.md). It is the
+brand and voice gatekeeper for editorial consistency across authors.
+
 ---
 
 # Current Mission
