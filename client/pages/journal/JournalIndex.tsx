@@ -6,12 +6,12 @@ import {
   PillarFilter,
   PillarFilterValue,
 } from "@/components/journal/PillarFilter";
-import { getAllPosts, getFeaturedPost } from "@/lib/journal";
+import { getFeaturedPost, getPublishedPosts } from "@/lib/journal";
 
 export default function JournalIndex() {
   const [pillar, setPillar] = useState<PillarFilterValue>("all");
   const featured = getFeaturedPost();
-  const posts = getAllPosts();
+  const posts = getPublishedPosts();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -25,6 +25,9 @@ export default function JournalIndex() {
     if (pillar === "all") return withoutFeaturedDup;
     return posts.filter((p) => p.pillar === pillar);
   }, [pillar, posts, featured]);
+
+  const showFilters = posts.length > 1;
+  const showList = filtered.length > 0 || pillar !== "all";
 
   return (
     <JournalShell>
@@ -49,10 +52,14 @@ export default function JournalIndex() {
             </div>
           )}
 
-          <div className="mt-16 lg:mt-24 space-y-8">
-            <PillarFilter value={pillar} onChange={setPillar} />
-            <ArticleList posts={filtered} />
-          </div>
+          {(showFilters || showList) && (
+            <div className="mt-16 lg:mt-24 space-y-8">
+              {showFilters && (
+                <PillarFilter value={pillar} onChange={setPillar} />
+              )}
+              {showList && <ArticleList posts={filtered} />}
+            </div>
+          )}
         </div>
       </section>
     </JournalShell>

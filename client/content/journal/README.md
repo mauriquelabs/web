@@ -20,7 +20,8 @@ readingTime: 5
 
 - `pillar` maps to Exploration, Building, Community, Inside the Lab.
 - `type` is Perspective, Practice, or Experiment.
-- Only `status: published` posts are readable at `/journal/:slug`.
+- Only `status: published` posts appear on `/journal` or at `/journal/:slug`.
+- Use `status: coming-soon` for private drafts/outlines in the repo; they are not listed publicly.
 - At most one `featured: true` published post should exist for the index hero.
 
 ## Writing notes

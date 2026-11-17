@@ -3,6 +3,7 @@ import {
   getAllPosts,
   getFeaturedPost,
   getPostBySlug,
+  getPublishedPosts,
   metaFromFrontmatter,
   parseFrontmatter,
 } from "./journal";
@@ -88,5 +89,14 @@ describe("journal content corpus", () => {
     const post = getPostBySlug("ai-native-product-builder");
     expect(post?.status).toBe("coming-soon");
     expect(post?.pillar).toBe("building");
+  });
+
+  it("lists only published posts for the public journal", () => {
+    const published = getPublishedPosts();
+    expect(published.length).toBeGreaterThanOrEqual(1);
+    expect(published.every((p) => p.status === "published")).toBe(true);
+    expect(
+      published.some((p) => p.slug === "ai-native-product-builder"),
+    ).toBe(false);
   });
 });
