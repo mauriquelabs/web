@@ -114,11 +114,11 @@ export default function Offerings({
           </p>
         </div>
 
-        <ul className="grid gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-8">
+        <ul className="grid gap-12 sm:gap-14 lg:grid-cols-2 lg:gap-10">
           {copy.items.map((item, index) => (
             <li
               key={item.title}
-              className={`card-base flex flex-col lg:min-h-[20rem] lg:justify-center transition-opacity duration-300 ${
+              className={`transition-opacity duration-300 ${
                 show ? "opacity-100" : "opacity-0"
               }`}
               style={{

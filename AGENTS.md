@@ -2,7 +2,7 @@
 
 This repository belongs to Maurique Labs.
 
-Maurique Labs is a creative innovation studio: we design hackathons, creative labs and workshops, and we develop digital products for partners. We also run our own projects and initiatives in the sectors we care about. Every decision in this repository should reinforce that mission.
+Maurique Labs is a community of product builders. We start with the communities we belong to, build digital products, and create in-person experiences with those communities. Every decision in this repository should reinforce that mission.
 
 Our goal is not simply to ship features, but to create collaboration, community engagement, learning, experimentation and tangible outcomes.
 
@@ -52,11 +52,11 @@ Do not prematurely optimize.
 
 # Product Context
 
-Maurique Labs is a creative innovation studio. Events and experiences are a core value proposition: hackathons, creative technology labs and workshops. We also offer digital product development (discovery, prototyping, MVPs, web/mobile and AI-powered solutions), available independently of our events. In parallel, we explore our own projects and initiatives in sectors we care about.
+Maurique Labs is a community of product builders. Our work takes two connected forms: digital products that meet real needs (discovery, prototyping, validation, launch — web, mobile and AI-enabled tools where they help), and in-person experiences shaped with the communities around them (music, movement, creative technology and learning).
 
-Music and creative technology are central; the same approach extends to wellness, local business, education and other communities with challenges to explore.
+We start with the people and communities we belong to, then build alongside them. Music and creative technology are central; the same approach extends to wellness, local business, education and other communities with challenges to explore.
 
-**Projects & initiatives today:** Mind the Beat (curated electronic music experiences), Brew & Move (movement-powered rewards with specialty coffee), and AI Sound Labs (concept in development exploring AI, music and creative expression).
+**Projects today:** Mind the Beat (community & music), Brew & Move (movement & coffee), and AI Sound Labs (concept in development exploring AI, music and creative expression).
 
 **This repository today:** the Maurique Labs company marketing website (landing page and contact), not the product apps.
 
@@ -200,6 +200,6 @@ If a proposed implementation conflicts with Maurique Labs principles, explain wh
 
 # Current Mission
 
-Maurique Labs brings people together through experiences and digital products, and explores its own projects and initiatives in the sectors it cares about.
+Maurique Labs builds digital products and in-person experiences with the communities we belong to, learning by making things with people.
 
 Every line of code should contribute to that vision.

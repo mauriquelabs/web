@@ -48,7 +48,7 @@ combinations**:
   colors like `text-white` or `bg-[#0D2626]`. Because of that, wrapping a `<section>` in the
   `.light` class re-themes everything inside it automatically.
 - Section components that support theming (`IdeasSpace`, `Offerings`, `Methodology`
-  for the Process section, `Portfolio` for Projects & Initiatives, `Manifesto`,
+  for the Process section, `Portfolio` for Projects, `Manifesto`,
   `Contact`) accept a `theme?: "dark" | "light"` prop that toggles this class.
 - The active rhythm is a single config object, `SECTION_THEME`, at the top of
   `client/pages/Index.tsx`. Change it there to try a different look.
@@ -119,11 +119,10 @@ swap hue on hover.
   Most sections should stay flat white or flat Deep Pine — don't add a gradient background
   to every section.
 - Prefer real photography (workshops, events, community gatherings, product demos) over
-  stock/generic imagery. See "Known asset gaps" — none exist in the repo yet. Projects &
-  Initiatives is a text list with accent rules (not image cards); Hero and Contact use
-  intentional brand gradient washes; Offerings uses type hierarchy for the lead offering.
-  When photography lands, use it as a full-bleed or section visual and keep gradients
-  secondary.
+  stock/generic imagery. See "Known asset gaps" — none exist in the repo yet. Projects is
+  a text list with accent rules (not image cards); Hero and Contact use intentional brand
+  gradient washes; Offerings uses type hierarchy without decorative cards. When photography
+  lands, use it as a full-bleed or section visual and keep gradients secondary.
 - Illustrations (if ever added) should stay abstract/geometric — no cartoon style.
 
 ## Known asset gaps (flag, don't assume these exist)
