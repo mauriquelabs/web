@@ -16,16 +16,26 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
 
   const navLinks = {
     en: [
-      { label: "Who we are?", href: `${prefix}#ideas` },
-      { label: "What we do", href: `${prefix}#offerings` },
-      { label: "Our process", href: `${prefix}#process` },
-      { label: "Projects", href: `${prefix}#projects` },
+      { label: "Who we are?", href: `${prefix}#ideas`, kind: "hash" as const },
+      { label: "What we do", href: `${prefix}#offerings`, kind: "hash" as const },
+      { label: "Our process", href: `${prefix}#process`, kind: "hash" as const },
+      { label: "Projects", href: `${prefix}#projects`, kind: "hash" as const },
+      { label: "Journal", href: "/journal", kind: "route" as const },
     ],
     es: [
-      { label: "¿Quiénes somos?", href: `${prefix}#ideas` },
-      { label: "Qué hacemos", href: `${prefix}#offerings` },
-      { label: "Cómo trabajamos", href: `${prefix}#process` },
-      { label: "Proyectos", href: `${prefix}#projects` },
+      {
+        label: "¿Quiénes somos?",
+        href: `${prefix}#ideas`,
+        kind: "hash" as const,
+      },
+      { label: "Qué hacemos", href: `${prefix}#offerings`, kind: "hash" as const },
+      {
+        label: "Cómo trabajamos",
+        href: `${prefix}#process`,
+        kind: "hash" as const,
+      },
+      { label: "Proyectos", href: `${prefix}#projects`, kind: "hash" as const },
+      { label: "Journal", href: "/journal", kind: "route" as const },
     ],
   };
 
@@ -45,16 +55,30 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {navLinks[language].map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-foreground/70 hover:text-accent transition-colors duration-300"
-            >
-              {link.label}
-            </a>
-          ))}
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+          {navLinks[language].map((link) =>
+            link.kind === "route" ? (
+              <Link
+                key={link.href}
+                to={link.href}
+                className={`text-sm font-medium transition-colors duration-300 ${
+                  location.pathname.startsWith("/journal")
+                    ? "text-accent"
+                    : "text-foreground/70 hover:text-accent"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium text-foreground/70 hover:text-accent transition-colors duration-300"
+              >
+                {link.label}
+              </a>
+            ),
+          )}
         </nav>
 
         {/* CTA and Language Toggle */}
@@ -109,16 +133,31 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-border bg-background/95">
           <nav className="section-container py-4 flex flex-col gap-4">
-            {navLinks[language].map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-foreground/70 hover:text-accent transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks[language].map((link) =>
+              link.kind === "route" ? (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className={`text-sm font-medium transition-colors ${
+                    location.pathname.startsWith("/journal")
+                      ? "text-accent"
+                      : "text-foreground/70 hover:text-accent"
+                  }`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-medium text-foreground/70 hover:text-accent transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ),
+            )}
             <a
               href={ctaHref}
               className="btn-primary text-sm text-center"

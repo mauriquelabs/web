@@ -2,7 +2,7 @@
 
 This repository belongs to Maurique Labs.
 
-Maurique Labs is a creative innovation studio: we design hackathons, creative labs and workshops, and we develop digital products for partners. We also run our own projects and initiatives in the sectors we care about. Every decision in this repository should reinforce that mission.
+Maurique Labs is a community of product builders. We start with the communities we belong to, build digital products, and create in-person experiences alongside them. We also run our own projects and initiatives in the sectors we care about. Every decision in this repository should reinforce that mission.
 
 Our goal is not simply to ship features, but to create collaboration, community engagement, learning, experimentation and tangible outcomes.
 
@@ -52,7 +52,7 @@ Do not prematurely optimize.
 
 # Product Context
 
-Maurique Labs is a creative innovation studio. Events and experiences are a core value proposition: hackathons, creative technology labs and workshops. We also offer digital product development (discovery, prototyping, MVPs, web/mobile and AI-powered solutions), available independently of our events. In parallel, we explore our own projects and initiatives in sectors we care about.
+Maurique Labs is a community of product builders. A product builder takes an idea from discovery to something people can use: understanding a need, prototyping, learning with the community, and preparing for launch. We create digital products and in-person experiences (hackathons, labs, workshops, gatherings) shaped by the communities we belong to. In parallel, we explore our own projects and initiatives in sectors we care about.
 
 Music and creative technology are central; the same approach extends to wellness, local business, education and other communities with challenges to explore.
 
@@ -196,10 +196,14 @@ When contributing to this repository:
 
 If a proposed implementation conflicts with Maurique Labs principles, explain why before implementing it.
 
+When drafting, editing, or publishing Journal posts (`client/content/journal/`), follow
+[`.agents/skills/journal-writer/SKILL.md`](.agents/skills/journal-writer/SKILL.md). It is the
+brand and voice gatekeeper for editorial consistency across authors.
+
 ---
 
 # Current Mission
 
-Maurique Labs brings people together through experiences and digital products, and explores its own projects and initiatives in the sectors it cares about.
+Maurique Labs builds digital products and in-person experiences with the communities it belongs to, and explores its own projects and initiatives in the sectors it cares about.
 
 Every line of code should contribute to that vision.

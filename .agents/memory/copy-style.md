@@ -8,3 +8,6 @@ description: Punctuation rule for Maurique Labs public-facing copy.
 **Why:** The user stated, "We don't use long dashes."
 
 **How to apply:** Follow this rule when drafting or editing website and marketing copy.
+
+For Journal posts, also follow
+[`../skills/journal-writer/SKILL.md`](../skills/journal-writer/SKILL.md).

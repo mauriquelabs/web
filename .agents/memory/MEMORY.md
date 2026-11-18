@@ -1,1 +1,2 @@
 - [Maurique Labs copy style](copy-style.md) — Avoid long dashes in public-facing copy; use commas, periods, or rephrasing.
+- [Journal Writer skill](../skills/journal-writer/SKILL.md) — Brand voice and gatekeeper checklist for all Journal posts.

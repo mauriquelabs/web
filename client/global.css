@@ -235,4 +235,28 @@ html {
   .badge-pill {
     @apply inline-flex items-center gap-1.5 rounded-pill px-3 py-1 text-xs font-semibold;
   }
+
+  /*
+   * Journal long-form: Tailwind Typography with brand tokens.
+   * Used on markdown article bodies inside .content-narrow.
+   */
+  .prose-journal {
+    --tw-prose-body: hsl(var(--foreground) / 0.75);
+    --tw-prose-headings: hsl(var(--foreground));
+    --tw-prose-lead: hsl(var(--foreground) / 0.7);
+    --tw-prose-links: hsl(var(--secondary));
+    --tw-prose-bold: hsl(var(--foreground));
+    --tw-prose-counters: hsl(var(--foreground) / 0.5);
+    --tw-prose-bullets: hsl(var(--secondary));
+    --tw-prose-hr: hsl(var(--border));
+    --tw-prose-quotes: hsl(var(--foreground) / 0.8);
+    --tw-prose-quote-borders: hsl(var(--secondary));
+    --tw-prose-captions: hsl(var(--foreground) / 0.5);
+    --tw-prose-code: hsl(var(--foreground));
+    --tw-prose-pre-code: hsl(var(--foreground));
+    --tw-prose-pre-bg: hsl(var(--muted));
+    --tw-prose-th-borders: hsl(var(--border));
+    --tw-prose-td-borders: hsl(var(--border));
+    @apply prose-headings:font-heading prose-a:no-underline hover:prose-a:text-accent prose-a:transition-colors;
+  }
 }
