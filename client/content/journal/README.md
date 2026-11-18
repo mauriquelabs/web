@@ -32,3 +32,6 @@ readingTime: 5
 - Before drafting, editing, or publishing, follow the
   [Journal Writer skill](../../../.agents/skills/journal-writer/SKILL.md)
   (brand voice + gatekeeper checklist). Invoke with `/journal-writer` in Cursor.
+- To park a future post from an article or link: ask the agent to seed a draft
+  from the URL. It should save a `coming-soon` file with a `seed:` comment block
+  (source, why it matters, open questions) so you can pick it up later.

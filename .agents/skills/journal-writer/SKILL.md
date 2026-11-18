@@ -146,6 +146,34 @@ See also `client/content/journal/README.md`.
 4. Run the gatekeeper checklist.
 5. Only then offer to set `status: published` (ask the user if unclear).
 
+### When seeding a draft from an external article or link
+
+Use this when the user shares a URL, essay, talk, or news piece and wants a Journal draft saved for later (even if not publishing now).
+
+1. Fetch and read the source. Extract the core claim, not a full paraphrase dump.
+2. Find the **Maurique Labs angle**: what does this change for product builders working with communities, experiences, music, AI, or our projects? If there is no distinctive angle, say so and propose a sharper one before drafting.
+3. Do **not** republish or closely rewrite the source. Respond, interpret, and connect. Credit the source with title, author/org, and URL.
+4. Write a full draft (or a structured outline if substance is thin) to `client/content/journal/<slug>.md` with `status: coming-soon` and `featured: false`.
+5. Include an HTML comment seed block after frontmatter:
+
+```html
+<!--
+seed:
+  url: https://...
+  title: "Source title" (Author / Org)
+  saved: YYYY-MM-DD
+  why_it_matters: one or two lines
+  open_questions:
+    - ...
+  before_publish:
+    - Add firsthand detail
+    - Re-run gatekeeper checklist
+-->
+```
+
+6. End with a short “For later” note naming what is missing before publish (usually lived detail from our work).
+7. Report pillar/type rationale and checklist status. Seed drafts should remain `coming-soon` unless the user explicitly asks to publish and the checklist passes.
+
 ### When editing someone else’s draft
 
 1. Preserve their insights and facts.
